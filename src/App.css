@@ -1,0 +1,19 @@
+@font-face {
+    font-family: "MyFont";
+    src: url("./assets/fonts/first-class-demo.ttf") format("truetype");
+    font-style: normal;
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: "Satoshi";
+    src: url("./assets/fonts/Satoshi-Variable.ttf") format("truetype");
+    font-style: normal;
+    font-weight: 400;
+}
+
+body{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}

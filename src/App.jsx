@@ -1,3 +1,5 @@
+import "./App.css";
+
 import HomeComp from './components/Home';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
