@@ -1,0 +1,17 @@
+.hero-cont{
+    margin-bottom: 10%;
+}
+
+.hero-img{
+    height: 534px;
+    width: 100%;
+}
+
+.hero-text{
+    align-self: center;
+    display: flex;
+    font-size: 4.5rem;
+    font-weight: 100;
+    text-align: center;
+    width: 90%;
+}

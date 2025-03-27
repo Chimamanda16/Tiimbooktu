@@ -1,0 +1,21 @@
+.about-btn {
+    background-color: #CDFFAD;
+    border: none;
+    border-radius: 22px;
+    color: #1c1c1c;
+    cursor: pointer;
+    font-weight: 400;
+    padding: 10px;
+}
+
+.about-cont{
+    margin-bottom: 10%;
+}
+
+.about-content{
+    margin-left: 30%;
+}
+
+.about-title{
+    margin-left: 15%;
+}
