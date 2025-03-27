@@ -2,10 +2,10 @@ import "../Styles/Fotografie.css";
 
 function FotografieComp(){
     const images = [
-        { src: "../public/thought-card1.png", text: "Tattoo" },
-        { src: "../public/thought-card2.png", text: "Skeleton. Cloak. Scythe" },
-        { src: "../public/thought-card3.png", text: "Knowledge" },
-        { src: "../public/thought-card4.png", text: "Illegal" },
+        { src: "/thought-card1.png", text: "Tattoo" },
+        { src: "/thought-card2.png", text: "Skeleton. Cloak. Scythe" },
+        { src: "/thought-card3.png", text: "Knowledge" },
+        { src: "/thought-card4.png", text: "Illegal" },
       ];
     return(
         <div className="gallery-cont">

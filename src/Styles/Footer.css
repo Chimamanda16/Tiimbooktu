@@ -31,3 +31,39 @@
     font-weight: 400;
     letter-spacing: -2px;
 }
+
+@media screen and (max-width: 600px){
+    .about-footer, .subscribe{
+        margin: 15% 0;
+        width: 100%;
+    }
+    
+    .footer{
+        padding: 2% 5%;
+    }
+
+    .footer-cont{
+        display: block;
+    }
+
+    .footer-links{
+        justify-content: normal;
+    }
+
+    .footer-links div{
+        margin-right: 10%;
+    }
+
+    .subscribe h2{
+        font-size: 30px;
+    }
+
+    .subscribe input{
+        background-color: transparent;
+        border: 1px solid #34343C;
+        margin-bottom: 5%;
+        padding: 5%;
+        width: 80%;
+    }
+    
+}
