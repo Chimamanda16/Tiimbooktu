@@ -27,9 +27,9 @@
 }
 
 .subscribe h2{
-    font-family: "Anton", sans-serif;
+    font-family: "MyFont", sans-serif;
     font-size: 40px;
-    font-weight: 400;
+    font-weight: 500;
 }
 
 .subscribe input{

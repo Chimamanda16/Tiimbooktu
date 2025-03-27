@@ -30,6 +30,8 @@ function FooterComp(){
                             <p>+1 (001) 981-76-17</p>
                             <p>info@tiimbooktu</p>
                         </div>
+                        <p className="about-sub">Privacy</p>
+                        <p className="about-sub">2025-Copyright</p>
                     </div>
                 </div>
             </div>
