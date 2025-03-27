@@ -1,0 +1,44 @@
+.swiper-container {
+    height: 400px; /* Ensure a height */
+    margin: auto;
+    margin-inline: auto;
+    overflow: hidden;
+    position: relative;
+}
+  
+.swiper-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 250px; /* Controls image size */
+    height: 350px;
+}
+  
+.slide-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 20px; /* Optional: Rounds the images */
+}
+
+.swiper-container::after {
+    content: "";
+    position: absolute;
+    bottom: -20%;
+    width: 120%;
+    height: 100px;
+    background: #1c1c1c;
+    border-radius: 100%;
+    z-index: 1000;
+}
+
+.swiper-container::before {
+    content: "";
+    position: absolute;
+    top: -20%;
+    width: 120%;
+    height: 100px;
+    background: #1c1c1c;
+    border-radius: 100%;
+    z-index: 100;
+  }

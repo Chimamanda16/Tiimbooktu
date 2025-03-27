@@ -11,12 +11,14 @@
     color: #1c1c1c;
     cursor: pointer;
     font-weight: 400;
+    margin-top: 3%;
     padding: 10px;
     position: relative;
 }
 
 .gallery-cont{
     margin-bottom: 10%;
+    text-align: center;
 }
   
 .gallery-item {

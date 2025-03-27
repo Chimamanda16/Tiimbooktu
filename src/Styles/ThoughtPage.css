@@ -1,0 +1,58 @@
+.card{
+    border-bottom: 0.5px solid #353535;
+    border-top: 0.5px solid #353535;
+    display: flex;
+    justify-content: space-between;
+    padding: 4% 6%;
+}
+
+.cards{
+    margin-bottom: 5%;
+}
+
+.card-btn {
+    background-color: transparent;
+    border: 1px solid #CDFFAD;
+    border-radius: 22px;
+    color: #CDFFAD;
+    cursor: pointer;
+    font-weight: 400;
+    padding: 10px;
+}
+
+.card-date{
+    color: #808080;
+    font-size: 15px;
+    margin-top: 0;
+}
+
+.card-img{
+    width: 40%;
+}
+
+.card-text{
+    width: 40%;
+}
+
+.card-img img{
+    max-height: 300px;
+    object-fit: cover;
+    margin-left: 5%;
+    width: 100%;
+}
+
+.card-title{
+    font-family: "MyFont", sans-serif;
+    font-size: 2.5rem;
+    margin-bottom: 0;
+}
+
+.thought-page{
+    font-family: "Satoshi", sans-serif;
+}
+
+.thought-title{
+    font-family: "MyFont", sans-serif;
+    font-size: 6rem;
+    text-align: center;
+}
