@@ -8,7 +8,7 @@ function FotografieComp(){
         { src: "../public/thought-card4.png", text: "Illegal" },
       ];
     return(
-        <div>
+        <div className="gallery-cont">
             <h2 className="gallery-title">Fotografie</h2>
             <div className="gallery">
                 {images.map((img, index) => (

@@ -3,6 +3,7 @@ import HeroComp from "./Hero";
 import AboutComp from "./About";
 import "../styles/Home.css";
 import FotografieComp from "./Fotografie";
+import ShopComp from "./Shop";
 
 function HomeComp(){
     return (
@@ -11,6 +12,7 @@ function HomeComp(){
             <HeroComp />
             <AboutComp />
             <FotografieComp />
+            <ShopComp />
         </div>
     )
 }
