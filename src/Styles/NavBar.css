@@ -10,13 +10,14 @@
   align-items: center;
   padding: 15px 20px;
   position: relative;
+  margin-bottom: 10%;
 }  
   
 .navbar-heading {
   font-family: "Anton", sans-serif;
   font-size: 30px;
-  letter-spacing: 1%;
   font-weight: 700;
+  margin: 0;
 }
   
 .nav-items {

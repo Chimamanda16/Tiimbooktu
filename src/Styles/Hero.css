@@ -19,6 +19,13 @@
     word-wrap: break-word;
 }
 
+@media screen and (min-width: 600px) and (max-width: 950px){
+    .hero-text{
+        font-size: 3.5rem;
+    }
+    
+}
+
 @media screen and (max-width: 800px){
     .hero-text{
         font-size: 2rem;
