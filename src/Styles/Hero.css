@@ -15,3 +15,10 @@
     text-align: center;
     width: 90%;
 }
+
+@media screen and (max-width: 800px){
+    .hero-text{
+        font-size: 3rem;
+    }
+    
+}

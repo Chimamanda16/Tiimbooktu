@@ -54,6 +54,7 @@ function ShopComp(){
                     <button>Add To Cart</button>
                 </div>
             </div>
+            <button className="shop-btn">View All</button>
         </div>
     )
 }

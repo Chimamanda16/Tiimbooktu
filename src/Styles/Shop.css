@@ -27,11 +27,43 @@
 }
 
 .shop{
+    text-align: center;
     margin-bottom: 10%;
+}
+
+.shop-btn {
+    background-color: #CDFFAD;
+    border: none;
+    border-radius: 22px;
+    color: #1c1c1c;
+    cursor: pointer;
+    font-weight: 400;
+    margin-top: 5%;
+    padding: 3% 8%;
 }
 
 .shop-cont{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+}
+
+@media screen and (max-width: 800px) and (min-width: 500px) {
+    .artwork {
+        width: 25%;
+    }
+    
+}
+
+@media screen and (max-width: 500px) {
+    .artwork {
+        width: 50%;
+    }
+    .artwork img {
+        height: 200px;
+    }
+    .shop-btn{
+        font-size: 16px;
+    }
+    
 }
