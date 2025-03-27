@@ -4,6 +4,7 @@ import AboutComp from "./About";
 import "../styles/Home.css";
 import FotografieComp from "./Fotografie";
 import ShopComp from "./Shop";
+import FooterComp from "./Footer";
 
 function HomeComp(){
     return (
@@ -13,6 +14,7 @@ function HomeComp(){
             <AboutComp />
             <FotografieComp />
             <ShopComp />
+            <FooterComp />
         </div>
     )
 }
