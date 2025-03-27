@@ -2,7 +2,7 @@ import "../Styles/Shop.css";
 
 function ShopComp(){
     return(
-        <div>
+        <div className="shop">
             <h2>THE SHOP</h2>
             <div className="shop-cont">
                 <div className="artwork">
