@@ -65,10 +65,14 @@
     .artwork {
         width: 50%;
     }
+    .artwork button{
+        padding: 4% 5%;
+    }
     .artwork img {
         height: 200px;
     }
     .shop-btn{
+        font-size: 26px;
         padding: 3% 5%;
     }
     .shop-btn{
