@@ -13,13 +13,13 @@ const ThoughtComp = () => {
     if (swiperContainerRef.current) {
       new Swiper(swiperContainerRef.current, {
         loop: true,
-  slidesPerView: 2,
-  spaceBetween: 20,
-  centeredSlides: true,
-  navigation: {
-    nextEl: '.swiper-button-next',
-    prevEl: '.swiper-button-prev',
-  },
+        slidesPerView: 2,
+        spaceBetween: 10,
+        centeredSlides: true,
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
         modules: [Navigation, EffectCoverflow],
       });
     }

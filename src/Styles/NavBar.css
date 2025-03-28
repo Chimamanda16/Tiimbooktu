@@ -42,21 +42,35 @@
 }
 
 @media (max-width: 800px) {
-    .nav-items, .shop-now {
+  
+    .nav-items, .shop-now{
+      background: #f8f8f8;
       display: none;
       flex-direction: column;
+      padding: 15px 0;
       position: absolute;
       top: 60px;
       left: 0;
-      background: #f8f8f8;
       width: 100%;
       text-align: center;
-      padding: 15px 0;
+    }
+
+    .nav-items{
+      margin-top: 5%;
+    }
+
+    .nav-items p{
+      color: #000000;
     }
   
     /* Show when menuOpen is true */
     .nav-items.show, .shop-now.show {
       display: flex;
+    }
+
+    .shop-now{
+      border-radius: 0%;
+      font-size: 17px;
     }
   
     .hamburger {

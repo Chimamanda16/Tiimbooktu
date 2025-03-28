@@ -18,8 +18,7 @@ function NavBarComp(){
             <p>About</p>
             <p>Contact Us</p>
           </div>
-  
-        <button className={`shop-now ${menuOpen ? "show" : ""}`}>Shop Now</button>
+          <button className={`shop-now ${menuOpen ? "show" : ""}`}>Shop Now</button>
       </nav>    
     )
 }
