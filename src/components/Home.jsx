@@ -9,16 +9,23 @@ import "../styles/Home.css";
 
 function HomeComp(){
     return (
-        <div>
-            <NavBarComp />
-            <HeroComp />
-            <AboutComp />
-            <ThoughtComp />
-            <FotografieComp />
-            <ShopComp />
-            <FooterComp />
+      <div>
+        <NavBarComp />
+        <HeroComp />
+        <AboutComp />
+        <div className="thought">
+          <h1>Thought</h1>
+          <ThoughtComp />
+          <div className="center">
+            {" "}
+            <button className="gallery-btn">View all</button>
+          </div>
         </div>
-    )
+        <FotografieComp />
+        <ShopComp />
+        <FooterComp />
+      </div>
+    );
 }
 
 export default HomeComp;

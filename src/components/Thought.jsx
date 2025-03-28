@@ -28,9 +28,20 @@ const ThoughtComp = () => {
   return (
     <div className="swiper-container" ref={swiperContainerRef}>
       <div className="swiper-wrapper">
-        {["/thought-card1.png", "/thought-card2.png", "/thought-card3.png", "/thought-card4.png"].map((img, index) => (
+        {[
+          { img: "/thought-card1.png", desc: "Tatto" },
+          { img: "/thought-card2.png", desc: "Skeleton. Cloak. Scythe" },
+          { img: "/thought-card3.png", desc: "Knowledge" },
+          { img: "/thought-card4.png", desc: "Illegal" },
+        ].map((img, index) => (
           <div className="swiper-slide" key={index}>
-            <img src={img} alt={`Slide ${index + 1}`} className="slide-img" />
+            <img
+              src={img.img}
+              alt={`Slide ${index + 1}`}
+              className="slide-img"
+            />
+
+            <span className="slide-desc"> {img.desc} </span>
           </div>
         ))}
       </div>
