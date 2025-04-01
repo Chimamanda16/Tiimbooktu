@@ -17,7 +17,7 @@ function NavBarComp() {
 
       {/* Nav Items */}
       <div
-        className={`flex items-center gap-[36px] max-lg:absolute max-lg:left-0 max-lg:w-full max-lg:flex-col max-lg:bg-[#f8f8f8] max-lg:text-black text-[15px] ${
+        className={`flex items-center gap-[36px] max-lg:absolute max-lg:left-0 top-[60px] max-lg:w-full max-lg:flex-col max-lg:bg-[#f8f8f8] max-lg:text-black text-[15px] ${
           menuOpen ? "block" : "hidden"
         }`}
       >
@@ -30,7 +30,7 @@ function NavBarComp() {
 
       {/* Shop Now Button */}
       <button
-        className={`bg-[#cdffad] justify-center max-lg:bg-[#f8f8f8] left-0 max-lg:font-black max-lg:absolute text-[#1c1c1c] rounded-[22px] p-[10px] top-[60px] cursor-pointer max-lg:w-full max-lg:rounded-none max-lg:text-[17px] ${
+        className={`lg:flex bg-[#cdffad] justify-center max-lg:bg-[#f8f8f8] left-0 max-lg:font-black max-lg:absolute text-[#1c1c1c] rounded-[22px] p-[10px] top-[60px] cursor-pointer max-lg:w-full max-lg:rounded-none max-lg:text-[17px] ${
           menuOpen ? "flex" : "hidden"
         }`}
       >
