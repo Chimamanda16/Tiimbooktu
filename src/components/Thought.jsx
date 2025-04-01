@@ -1,56 +1,58 @@
-import { useRef, useEffect } from "react";
-import "../Styles/ThoughtComp.css";
-import Swiper from "swiper";
-import "swiper/css";
-import "swiper/css/effect-coverflow";
-import "swiper/css/navigation";
-import { Navigation, EffectCoverflow } from "swiper/modules";
+import NavBarComp from "../components/Navbar";
+import FooterComp from "../components/Footer";
 
-const ThoughtComp = () => {
-  const swiperContainerRef = useRef(null);
-
-  useEffect(() => {
-    if (swiperContainerRef.current) {
-      new Swiper(swiperContainerRef.current, {
-        loop: true,
-        slidesPerView: 2,
-        spaceBetween: 10,
-        centeredSlides: true,
-        navigation: {
-          nextEl: '.swiper-button-next',
-          prevEl: '.swiper-button-prev',
-        },
-        modules: [Navigation, EffectCoverflow],
-      });
-    }
-  }, []);
-
+function ThoughtPage() {
   return (
-    <div className="swiper-container relative h-[400px] mx-auto overflow-hidden" ref={swiperContainerRef}>
-      <div className="swiper-wrapper">
-        {[ 
-          { img: "/thought-card1.png", desc: "Tatto" },
-          { img: "/thought-card2.png", desc: "Skeleton. Cloak. Scythe" },
-          { img: "/thought-card3.png", desc: "Knowledge" },
-          { img: "/thought-card4.png", desc: "Illegal" },
-        ].map((img, index) => (
-          <div className="swiper-slide flex justify-center items-center w-[250px] h-[350px]" key={index}>
+    <div className="font-satoshi">
+      <NavBarComp />
+      <h1 className="font-myFont text-6xl text-center">LA COMPOS MENTIS</h1>
+      <div className="mb-20">
+        <div className="flex justify-between border-t border-b border-[#353535] px-6 py-4">
+          <div className="w-2/5">
+            <h3 className="font-myFont text-2xl mb-0">UNTITLED</h3>
+            <p className="text-[#808080] text-sm mt-0">February 12, 2024</p>
+            <p className="text-[#808080] text-base">
+              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sed dolorum dicta explicabo nihil odio accusamus veritatis, ipsum dolorem asperiores, similique ipsa laborum rem et velit quisquam laboriosam, doloribus omnis distinctio.
+            </p>
+            <button className="bg-transparent border border-[#CDFFAD] rounded-[22px] text-[#CDFFAD] font-normal py-2 px-4 cursor-pointer">
+              Learn more
+            </button>
+          </div>
+          <div className="w-2/5 ml-5">
             <img
-              src={img.img}
-              alt={`Slide ${index + 1}`}
-              className="w-full h-full object-cover rounded-[20px]"
+              src="https://fakeimg.pl/600x400?text=+"
+              alt=""
+              className="object-cover max-h-[300px] w-full"
             />
-            <span className="text-white font-light text-[20px]">{img.desc}</span>
+          </div>
+        </div>
+
+        {/* Repeat the card structure for each card */}
+        {[...Array(9)].map((_, index) => (
+          <div className="flex justify-between border-t border-b border-[#353535] px-6 py-4" key={index}>
+            <div className="w-2/5">
+              <h3 className="font-myFont text-2xl mb-0">UNTITLED</h3>
+              <p className="text-[#808080] text-sm mt-0">February 12, 2024</p>
+              <p className="text-[#808080] text-base">
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sed dolorum dicta explicabo nihil odio accusamus veritatis, ipsum dolorem asperiores, similique ipsa laborum rem et velit quisquam laboriosam, doloribus omnis distinctio.
+              </p>
+              <button className="bg-transparent border border-[#CDFFAD] rounded-[22px] text-[#CDFFAD] font-normal py-2 px-4 cursor-pointer">
+                Learn more
+              </button>
+            </div>
+            <div className="w-2/5 ml-5">
+              <img
+                src="https://fakeimg.pl/600x400?text=+"
+                alt=""
+                className="object-cover max-h-[300px] w-full"
+              />
+            </div>
           </div>
         ))}
       </div>
-      <div className="swiper-button-next"></div>
-      <div className="swiper-button-prev"></div>
-
-      {/* Decorative circle using Tailwind */}
-      <div className="absolute top-[-20%] left-0 w-[120%] h-[100px] bg-[#1c1c1c] rounded-full z-[100]"></div>
+      <FooterComp />
     </div>
   );
-};
+}
 
-export default ThoughtComp;
+export default ThoughtPage;
