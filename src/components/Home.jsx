@@ -5,7 +5,7 @@ import FotografieComp from "./Fotografie";
 import ShopComp from "./Shop";
 import FooterComp from "./Footer";
 import ThoughtComp from "./Thought";
-import "../styles/Home.css";
+import "../Styles/Home.css";
 
 function HomeComp(){
     return (
