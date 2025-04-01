@@ -5,26 +5,28 @@ import FotografieComp from "./Fotografie";
 import ShopComp from "./Shop";
 import FooterComp from "./Footer";
 import ThoughtComp from "./Thought";
-import "../Styles/Home.css";
 
-function HomeComp(){
+function HomeComp() {
     return (
-      <div>
-        <NavBarComp />
-        <HeroComp />
-        <AboutComp />
-        <div className="thought">
-          <h1>Thought</h1>
-          <ThoughtComp />
-          <div className="center">
-            {" "}
-            <button className="gallery-btn">View all</button>
-          </div>
+        <div className="bg-[#1c1c1c] text-white font-[Satoshi]">
+            <NavBarComp />
+            <HeroComp />
+            <AboutComp />
+            <div className="text-center">
+                <h1 className="font-[MyFont] text-[112px] max-md:text-5xl max-sm:text-4xl">
+                    Thought
+                </h1>
+                <ThoughtComp />
+                <div className="flex justify-center items-center">
+                    <button className="bg-[#cdffad] text-[#1c1c1c] font-normal rounded-[22px] px-4 py-2">
+                        View all
+                    </button>
+                </div>
+            </div>
+            <FotografieComp />
+            <ShopComp />
+            <FooterComp />
         </div>
-        <FotografieComp />
-        <ShopComp />
-        <FooterComp />
-      </div>
     );
 }
 
