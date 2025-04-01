@@ -1,4 +1,4 @@
-import "../styles/Hero.css";
+import "../Styles/Hero.css";
 function HeroComp(){
     return(
         <div className="hero-cont">
