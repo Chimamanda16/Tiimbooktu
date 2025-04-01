@@ -1,6 +1,6 @@
 import NavBarComp from "../components/Navbar";
 import FooterComp from "../components/Footer";
-import "../styles/ThoughtPage.css";
+import "../Styles/ThoughtPage.css";
 
 function ThoughtPage(){
     return(
