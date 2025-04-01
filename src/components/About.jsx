@@ -1,15 +1,17 @@
-import "../Styles/About.css";
-
-function AboutComp(){
-    return(
-        <div className="about-cont">
-            <h2 className="about-title">ABOUT TIIMBOOKTU</h2>
-            <div className="about-content">
-                <p>Lorem ipsum dolor sit amet consectetur. Vulputate commodo sit massa vitae. Sagittis tempor tempus ac sodales elementum eu convallis dui malesuada. Neque vulputate non nunc in gravida fringilla arcu id quis. Diam massa purus dictum sed. Vitae mi suspendisse a est cras. Sit varius egestas laoreet metus facilisi. Magna quisque tellus magna felis vitae.</p>
-                <button className="about-btn">Learn More</button>
+function AboutComp() {
+    return (
+        <div className="mb-[10%]">
+            <h2 className="text-[112px] font-[MyFont] ml-[15%] md:text-3xl">ABOUT TIIMBOOKTU</h2>
+            <div className="w-[50%] ml-[30%] md:w-fit md:mr-[5%]">
+                <p>
+                    Lorem ipsum dolor sit amet consectetur. Vulputate commodo sit massa vitae. Sagittis tempor tempus ac sodales elementum eu convallis dui malesuada. Neque vulputate non nunc in gravida fringilla arcu id quis. Diam massa purus dictum sed. Vitae mi suspendisse a est cras. Sit varius egestas laoreet metus facilisi. Magna quisque tellus magna felis vitae.
+                </p>
+                <button className="bg-[#CDFFAD] border-none rounded-[22px] text-[#1c1c1c] cursor-pointer font-normal px-4 py-2">
+                    Learn More
+                </button>
             </div>
         </div>
-    )
+    );
 }
 
 export default AboutComp;
