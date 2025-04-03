@@ -13,12 +13,12 @@ function HomeComp() {
             <HeroComp />
             <AboutComp />
             <div className="text-center">
-                <h1 className="font-[MyFont] text-[112px] max-md:text-5xl max-sm:text-4xl">
+                <h1 className="font-[MyFont] text-[40px] lg:text-[112px] max-md:text-5xl max-sm:text-4xl">
                     Thought
                 </h1>
                 <ThoughtComp />
                 <div className="flex justify-center items-center">
-                    <button className="bg-[#cdffad] text-[#1c1c1c] font-normal rounded-[22px] px-4 py-2">
+                    <button className="bg-[#cdffad] text-[#1c1c1c] font-normal rounded-[22px] mt-6 px-4 py-2">
                         View all
                     </button>
                 </div>

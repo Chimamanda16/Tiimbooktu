@@ -1,15 +1,16 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 function NavBarComp() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <nav className="flex justify-between items-center px-[10px] py-[20px] relative mb-[10px] max-lg:px-5 max-sm:px-2">
-      <p className="font-[Anton] text-[30px] font-bold uppercase">Tiimbooktu</p>
+    <nav className="flex justify-between items-center lg:px-[100px] lg:py-[20px] relative mb-[10px] p-4">
+      <a href="/"><h1 className="font-[Anton] text-[30px] text-white font-bold uppercase">Tiimbooktu</h1></a>
 
       {/* Hamburger Menu */}
       <div
-        className="hidden text-2xl cursor-pointer max-lg:block"
+        className="lg:hidden text-2xl cursor-pointer flex"
         onClick={() => setMenuOpen(!menuOpen)}
       >
         ☰
@@ -17,15 +18,13 @@ function NavBarComp() {
 
       {/* Nav Items */}
       <div
-        className={`flex items-center gap-[36px] max-lg:absolute max-lg:left-0 top-[60px] max-lg:w-full max-lg:flex-col max-lg:bg-[#f8f8f8] max-lg:text-black text-[15px] ${
-          menuOpen ? "block" : "hidden"
-        }`}
+        className={`lg:flex items-center gap-[36px] max-lg:w-full flex-row text-[15px] hidden`}
       >
-        <p className="cursor-pointer text-[#d9d9d9] max-lg:text-black">Tiimbooktu</p>
-        <p className="cursor-pointer text-[#d9d9d9] max-lg:text-black">Thought</p>
-        <p className="cursor-pointer text-[#d9d9d9] max-lg:text-black">Fotografie</p>
-        <p className="cursor-pointer text-[#d9d9d9] max-lg:text-black">About</p>
-        <p className="cursor-pointer text-[#d9d9d9] max-lg:text-black">Contact Us</p>
+        <Link to='/' className="cursor-pointer text-[#d9d9d9]">Tiimbooktu</Link>
+        <p className="cursor-pointer text-[#d9d9d9]">Thought</p>
+        <p className="cursor-pointer text-[#d9d9d9]">Fotografie</p>
+        <p className="cursor-pointer text-[#d9d9d9]">About</p>
+        <p className="cursor-pointer text-[#d9d9d9]">Contact Us</p>
       </div>
 
       {/* Shop Now Button */}

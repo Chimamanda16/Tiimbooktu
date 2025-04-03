@@ -3,7 +3,7 @@ import FooterComp from "../components/Footer";
 
 function ThoughtPage() {
   return (
-    <div className="font-satoshi">
+    <div className="font-satoshi bg-black">
       <NavBarComp />
       <h1 className="font-myFont text-6xl text-center">LA COMPOS MENTIS</h1>
       <div className="mb-20">
