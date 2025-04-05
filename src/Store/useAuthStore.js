@@ -7,9 +7,9 @@ export const useAuthStore = create((set) =>({
         set({ isRegistering: true });
         try{
             await axiosInstance.get("https://tiimbooktu-qmkn.onrender.com/sanctum/csrf-cookie");
-            // console.log("CSRF cookie set successfully!");
+            console.log("CSRF cookie set successfully!");
             const res = await axiosInstance.post("/register", data);
-            // console.log("Registration response", res.data);
+            console.log("Registration response", res.data);
             return res.data;
         }
         catch(error){

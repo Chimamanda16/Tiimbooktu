@@ -14,7 +14,7 @@ const SignUpPage = () => {
     const submitForm = async(e) => {
         e.preventDefault();
         try {
-            // console.log("formData",formData);
+            console.log("formData",formData);
             const response = await register(formData);
            console.log("Registration Successful", response);
         } catch (error) {
@@ -36,7 +36,7 @@ const SignUpPage = () => {
             </div>
             <div>
                 <select className="border-2 placeholder:text-[#000] border-[#000] mb-6 px-10 py-2 w-[40%]" name="type" placeholder="Type" id="type" value={formData.type} required onChange={(e) => (setFormData({ ...formData, type: e.target.value }))}>
-                    <option value="" disabled selected>Select a role</option>
+                    <option value="" disabled>Select a role</option>
                     <option value="customer">customer</option>
                     <option value="admin">admin</option>
                 </select>
