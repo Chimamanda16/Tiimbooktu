@@ -1,10 +1,10 @@
-import NavBarComp from "./Navbar";
-import HeroComp from "./Hero";
-import AboutComp from "./About";
-import FotografieComp from "./Fotografie";
-import ShopComp from "./Shop";
-import FooterComp from "./Footer";
-import ThoughtComp from "./Thought";
+import NavBarComp from "../components/Navbar";
+import HeroComp from "../components/Hero";
+import AboutComp from "../components/About";
+import FotografieComp from "../components/Fotografie";
+import ShopComp from "../components/Shop";
+import FooterComp from "../components/Footer";
+import ThoughtComp from "../components/Thought";
 
 function HomeComp() {
     return (
