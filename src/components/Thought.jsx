@@ -34,13 +34,13 @@ const ThoughtComp = () => {
           { img: "/thought-card3.png", desc: "Knowledge" },
           { img: "/thought-card4.png", desc: "Illegal" },
         ].map((img, index) => (
-          <div className="swiper-slide flex justify-center items-center w-[250px] h-[350px]" key={index}>
+          <div className="swiper-slide flex items-center w-[250px] h-[350px]" key={index}>
             <img
               src={img.img}
               alt={`Slide ${index + 1}`}
               className="w-full h-full object-cover rounded-[20px]"
             />
-            <span className="text-white font-light text-[20px]">{img.desc}</span>
+            <p className="text-white lg:pl-4 lg:mt-4 text-start font-light text-[20px]">{img.desc}</p>
           </div>
         ))}
       </div>
