@@ -6,7 +6,7 @@ function NavBarComp() {
 
   return (
     <nav className="flex justify-between items-center lg:px-[100px] lg:py-[20px] relative mb-[10px] p-4">
-      <a href="/"><h1 className="font-[Anton] text-[30px] text-white font-bold uppercase">Tiimbooktu</h1></a>
+      <a href="/"><img src="/assets/logos/tiimbooku.png" alt="tiimbooku" /></a>
 
       {/* Hamburger Menu */}
       <div
@@ -20,11 +20,11 @@ function NavBarComp() {
       <div
         className={`lg:flex items-center gap-[36px] max-lg:w-full flex-row text-[15px] hidden`}
       >
-        <Link to='/' className="cursor-pointer text-[#d9d9d9]">Tiimbooktu</Link>
-        <p className="cursor-pointer text-[#d9d9d9]">Thought</p>
-        <p className="cursor-pointer text-[#d9d9d9]">Fotografie</p>
-        <p className="cursor-pointer text-[#d9d9d9]">About</p>
-        <p className="cursor-pointer text-[#d9d9d9]">Contact Us</p>
+        <Link to='/' className="cursor-pointer text-[#d9d9d9] uppercase">Tiimbooktu</Link>
+        <p className="cursor-pointer text-[#d9d9d9] uppercase">Thought</p>
+        <p className="cursor-pointer text-[#d9d9d9] uppercase">Fotografie</p>
+        <p className="cursor-pointer text-[#d9d9d9] uppercase">About</p>
+        <p className="cursor-pointer text-[#d9d9d9] uppercase">Contact Us</p>
       </div>
 
       {/* Shop Now Button */}
