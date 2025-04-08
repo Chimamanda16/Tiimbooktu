@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { axiosInstance } from "../lib/axios";
+import axiosInstance from "../lib/axios";
 
 export const useAuthStore = create((set) =>({
     isRegistering: false,
@@ -29,6 +29,7 @@ export const useAuthStore = create((set) =>({
             console.log("CSRF cookie set successfully!");
             const res = await axiosInstance.post("/login", data);
             console.log("Login response", res.data);
+            localStorage.setItem('access_token', res.data.access_token);
             return res.data;
         }
         catch(error){
