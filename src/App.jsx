@@ -4,6 +4,7 @@ import HomeComp from './pages/HomePage';
 import LoginPage from "./pages/LoginPage";
 import SignUpPage from "./pages/SignUpPage";
 import ThoughtPage from "./pages/ThoughtPage";
+import ShopPage from "./pages/ShopPage";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Tiimbooktu } from "./pages/Tiimbooku";
 
@@ -16,6 +17,7 @@ function App() {
               <Route path="/register" element={<SignUpPage />} />
               <Route path="/login" element={<LoginPage />} />
               <Route path="/tiimbooku" element={<Tiimbooktu />} />
+              <Route path="/shop" element={<ShopPage />} />
           </Routes>
       </Router>
   );
