@@ -5,21 +5,21 @@ import FotografieComp from "../components/Fotografie";
 import ShopComp from "../components/Shop";
 import FooterComp from "../components/Footer";
 import ThoughtComp from "../components/Thought";
-import { useStore } from "../Store/useStore";
-import { useEffect } from "react";
+// import { useStore } from "../Store/useArtworkStore";
+// import { useEffect } from "react";
 
 function HomeComp() {
-    const fetchArtWork = useStore((state) => state.fetchArtWork);
-    const artWorks = useStore((state) => state.artWorks);
+    // const fetchArtWork = useStore((state) => state.fetchArtWork);
+    // const artWorks = useStore((state) => state.artWorks);
     
-    useEffect(() => {
-        window.scrollTo(0, 0);
-        fetchArtWork();
-    }, [fetchArtWork]);
+    // useEffect(() => {
+    //     window.scrollTo(0, 0);
+    //     fetchArtWork();
+    // }, [fetchArtWork]);
 
-    useEffect(() => {
-        console.log(artWorks);
-    }, [artWorks]);
+    // useEffect(() => {
+    //     console.log(artWorks);
+    // }, [artWorks]);
 
     return (
         <div className="bg-[#1c1c1c] text-white font-[Satoshi]">
