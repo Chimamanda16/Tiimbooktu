@@ -15,8 +15,6 @@ const ShopPage = () =>{
         <div className="bg-[#1c1c1c] text-center text-[#fff] p-6">
             <NavBarComp />
             <h2 className="font-[chango] font-400 text-[70px]">The Shop</h2>
-            {console.log(artworks.artworks)}
-
             <div className="grid grid-cols-4 justify-center max-lg:grid-cols-2 max-sm:grid-cols-2 mb-8 lg:mb-16">
                 {
                     artworks ? (artworks.artworks.map((artwork) => (
@@ -26,7 +24,7 @@ const ShopPage = () =>{
                             <p className="text-[20px] font-400">${artwork.base_price}</p>
                             <button className="p-2 border-[#fff] border-[1px] font-bold mt-2">Add To Cart</button>
                         </div>
-                    ))) : (<h2> Loading</h2>) 
+                    ))) : (<h2 className="text-[40px]"> Loading</h2>) 
                 }
             </div>
             <FooterComp />
