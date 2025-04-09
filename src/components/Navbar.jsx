@@ -10,7 +10,7 @@ function NavBarComp() {
 
       {/* Hamburger Menu */}
       <div
-        className="lg:hidden text-2xl cursor-pointer flex"
+        className="lg:hidden text-2xl cursor-pointer flex text-white"
         onClick={() => setMenuOpen(!menuOpen)}
       >
         ☰
@@ -20,8 +20,11 @@ function NavBarComp() {
       <div
         className={`lg:flex items-center gap-[36px] max-lg:w-full flex-row text-[15px] hidden`}
       >
-        <Link to='/' className="cursor-pointer text-[#d9d9d9] uppercase">Tiimbooktu</Link>
-        <p className="cursor-pointer text-[#d9d9d9] uppercase">Thought</p>
+        <Link to='/' className="cursor-pointer text-[#d9d9d9] uppercase flex gap-1 items-end">
+        Tiimbooktu
+        <img src="/assets/icons/dropdown-icon-black.svg" alt="dropdown" />
+        </Link>
+        <p className="cursor-pointer text-[#D9D9D9] uppercase">Thought</p>
         <p className="cursor-pointer text-[#d9d9d9] uppercase">Fotografie</p>
         <p className="cursor-pointer text-[#d9d9d9] uppercase">About</p>
         <p className="cursor-pointer text-[#d9d9d9] uppercase">Contact Us</p>

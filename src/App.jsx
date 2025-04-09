@@ -8,6 +8,10 @@ import ShopPage from "./pages/ShopPage";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Tiimbooktu } from "./pages/Tiimbooku";
 import StoryPage from "./pages/BlogPages";
+import { Tuiites } from "./pages/Tuiites";
+import { RichUs } from "./pages/RichUs";
+import { MyHair } from "./pages/MyHair";
+import { Guestnetno } from "./pages/Guestnetno";
 
 function App() {
   return (
@@ -17,9 +21,13 @@ function App() {
               <Route path="/thought" element={<ThoughtPage />} />
               <Route path="/register" element={<SignUpPage />} />
               <Route path="/login" element={<LoginPage />} />
-              <Route path="/tiimbooku" element={<Tiimbooktu />} />
+              <Route path="/tiimbooktu" element={<Tiimbooktu />} />
               <Route path="/shop" element={<ShopPage />} />
               <Route path="/story" element={<StoryPage />}/>
+              <Route path="/tuiites" element={<Tuiites />} />
+              <Route path="/rich-us" element={<RichUs />} />
+              <Route path="/my-hair" element={<MyHair />} />
+              <Route path="/guestnetno" element={<Guestnetno />} />
           </Routes>
       </Router>
   );
