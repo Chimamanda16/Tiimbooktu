@@ -7,6 +7,7 @@ import ThoughtPage from "./pages/ThoughtPage";
 import ShopPage from "./pages/ShopPage";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Tiimbooktu } from "./pages/Tiimbooku";
+import StoryPage from "./pages/BlogPages";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
               <Route path="/login" element={<LoginPage />} />
               <Route path="/tiimbooku" element={<Tiimbooktu />} />
               <Route path="/shop" element={<ShopPage />} />
+              <Route path="/story" element={<StoryPage />}/>
           </Routes>
       </Router>
   );
