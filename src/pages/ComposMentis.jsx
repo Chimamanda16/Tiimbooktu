@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import NavBarComp from '../components/Navbar'
 import FooterComp from '../components/Footer'
 
-export default function Shop() {
+const Composmentis =  () => {
     useEffect(() => {
         window.scrollTo(0, 0)
     }, [])
@@ -72,7 +72,7 @@ export default function Shop() {
                     return (
                         <div key={index} className='bg-white py-[15px] px-[19px] border flex flex-col gap-[19px] items-center text-center'>
                         <img className='w-[223px] h-[276px]' src={shop.image} alt="item1" />
-                        <div className='flex-flex-col gap-[14px]'>
+                        <div className='flex flex-col gap-[14px]'>
                             <div className='flex flex-col gap-2'>
                                 <div className='flex gap-2 justify-center items-center'>
                                     <img src="/assets/icons/calender-icon.svg" alt="" />
@@ -94,3 +94,5 @@ export default function Shop() {
     </div>
   )
 }
+
+export default Composmentis;

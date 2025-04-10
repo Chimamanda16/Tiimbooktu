@@ -24,10 +24,10 @@ function NavBarComp() {
         Tiimbooktu
         <img src="/assets/icons/dropdown-icon-black.svg" alt="dropdown" />
         </Link>
-        <p className="cursor-pointer text-[#D9D9D9] uppercase">Thought</p>
-        <p className="cursor-pointer text-[#d9d9d9] uppercase">Fotografie</p>
-        <p className="cursor-pointer text-[#d9d9d9] uppercase">About</p>
-        <p className="cursor-pointer text-[#d9d9d9] uppercase">Contact Us</p>
+        <Link to="/thought" className="cursor-pointer text-[#D9D9D9] uppercase">Thought</Link>
+        <Link to="" className="cursor-pointer text-[#d9d9d9] uppercase">Fotografie</Link>
+        <Link to="" className="cursor-pointer text-[#d9d9d9] uppercase">About</Link>
+        <Link to="" className="cursor-pointer text-[#d9d9d9] uppercase">Contact Us</Link>
       </div>
 
       {/* Shop Now Button */}

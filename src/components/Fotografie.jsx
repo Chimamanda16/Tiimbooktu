@@ -8,7 +8,7 @@ function FotografieComp() {
     
     return (
         <div className="my-[10%] text-center">
-            <h2 className="font-[MyFont] text-[40px] lg:text-[112px] mb-5">Fotografie</h2>
+            <h2 className="font-[Chango] text-[40px] lg:text-[112px] mb-5">Fotografie</h2>
             <div className="flex flex-col md:grid md:grid-cols-2 xl:grid-cols-4 justify-center gap-5">
                 {images.map((img, index) => (
                     <div key={index} className="text-left w-[295px] mx-auto max-sm:w-[90%]">

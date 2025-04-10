@@ -5,8 +5,9 @@ export const useArtworkStore = create((set) => ({
     fetchingArtwork: false,
     error: null,
     artworks: null,
+    artworkItem: null,
     // Other app-wide state management functions...
-    fetchArtwork: async() => {
+    fetchArtworks: async() => {
         set({fetchingArtwork: true, error: null});
         try {
             const res = await axiosInstance.get('/artworks');
@@ -23,5 +24,23 @@ export const useArtworkStore = create((set) => ({
             set({fetchingArtwork: false})
         }
         
-}
+    },
+    fetchArtwork: async(id) =>{
+        set({fetchingArtwork: true, error: null});
+        try {
+            const res = await axiosInstance.get(`/artworks/${id}`);
+            if(res.data) {
+                set({artworkItem: res.data})
+                console.log(res.data)
+            }
+            return res.data;
+        }
+        catch(err) {
+            console.error('Error fetching artworks:', err);
+            set({error: err.message})
+        }
+        finally {
+            set({fetchingArtwork: false})
+        }
+    }
 }))
