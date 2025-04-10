@@ -6,9 +6,9 @@ import FooterComp from "../components/Footer";
 
 const ShopPage = () =>{
 
-    const { artworks, fetchArtwork } = useArtworkStore();
+    const { artworks, fetchArtworks } = useArtworkStore();
     useEffect(() =>{
-        fetchArtwork();
+        fetchArtworks();
     }, []);
     
     return(

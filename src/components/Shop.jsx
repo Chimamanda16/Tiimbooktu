@@ -3,10 +3,10 @@ import { useEffect } from "react";
 import { Link } from 'react-router-dom'
 function ShopComp() {
 
-  const {artworks, fetchArtwork} = useArtworkStore();
+  const {artworks, fetchArtworks} = useArtworkStore();
 
     useEffect(() =>{
-      fetchArtwork();
+      fetchArtworks();
     },[])
   
     return (
