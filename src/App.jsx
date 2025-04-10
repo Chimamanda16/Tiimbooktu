@@ -12,6 +12,7 @@ import { Tuiites } from "./pages/Tuiites";
 import { RichUs } from "./pages/RichUs";
 import { MyHair } from "./pages/MyHair";
 import { Guestnetno } from "./pages/Guestnetno";
+import Composmentis from "./pages/ComposMentis";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
               <Route path="/rich-us" element={<RichUs />} />
               <Route path="/my-hair" element={<MyHair />} />
               <Route path="/guestnetno" element={<Guestnetno />} />
+              <Route path="/lacomposmentis" element={< Composmentis />} />
           </Routes>
       </Router>
   );
