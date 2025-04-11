@@ -1,5 +1,6 @@
 import NavBarComp from "../components/Navbar";
 import FooterComp from "../components/Footer";
+import { Comment } from "../components/Comment";
 
 const StoryPage = () =>{
     return(
@@ -15,7 +16,7 @@ const StoryPage = () =>{
                 <p className="font-[cinzel] mb-6">Truth is, people are typically vultures who hover and won’t give a fuck how much work you’re putting in if they don’t sense or feel a measure of potential excellence to it</p>
                 <p className="font-[cinzel] mb-6">It’s just the way I wouldn’t share a badly written story with a great plot until it’s written well. It’s just the way you’d likely not share the pic of your obese neighbor with a good character until she trims down.</p>
             </div>
-            
+            <Comment />
             <FooterComp/>
         </div>
     )
