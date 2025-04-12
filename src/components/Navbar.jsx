@@ -5,39 +5,41 @@ function NavBarComp() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <nav className="flex justify-between items-center lg:px-[100px] lg:py-[20px] relative mb-[10px] p-4">
-      <a href="/"><img src="/assets/logos/tiimbooku.png" alt="tiimbooku" /></a>
-
-      {/* Hamburger Menu */}
-      <div
-        className="lg:hidden text-2xl cursor-pointer flex text-white"
-        onClick={() => setMenuOpen(!menuOpen)}
-      >
-        ☰
-      </div>
-
-      {/* Nav Items */}
-      <div
-        className={`lg:flex items-center gap-[36px] max-lg:w-full flex-row text-[15px] hidden`}
-      >
-        <Link to='/' className="cursor-pointer text-[#d9d9d9] uppercase flex gap-1 items-end">
-        Tiimbooktu
-        <img src="/assets/icons/dropdown-icon-black.svg" alt="dropdown" />
-        </Link>
-        <Link to="/thought" className="cursor-pointer text-[#D9D9D9] uppercase">Thought</Link>
-        <Link to="" className="cursor-pointer text-[#d9d9d9] uppercase">Fotografie</Link>
-        <Link to="" className="cursor-pointer text-[#d9d9d9] uppercase">About</Link>
-        <Link to="" className="cursor-pointer text-[#d9d9d9] uppercase">Contact Us</Link>
-      </div>
-
-      {/* Shop Now Button */}
-      <button
-        className={`lg:flex bg-[#cdffad] justify-center max-lg:bg-[#f8f8f8] left-0 max-lg:font-black max-lg:absolute text-[#1c1c1c] rounded-[22px] p-[10px] top-[60px] cursor-pointer max-lg:w-full max-lg:rounded-none max-lg:text-[17px] ${
-          menuOpen ? "flex" : "hidden"
-        }`}
-      >
-        Shop Now
-      </button>
+    <nav className="relative mb-[10px]">
+        <div className="flex justify-between items-center border-b-2 border-[#353535] px-[5%] py-[1%]">
+            <img src="/assets/logos/tiimbooktu.png" alt="" />
+            <div className="relative w-[60%]">
+              <img
+                className="absolute top-1/2 left-4 -translate-y-1/2"
+                src="/assets/icons/Magnifier.svg"
+                alt="Search Icon"
+              />
+              <input
+                type="text"
+                placeholder="Search"
+                className="w-full h-auto rounded-none bg-transparent border border-[#34343C] py-[14px] pl-12 pr-5"
+              />
+            </div>
+            <div className="flex">
+                <img src="/assets/icons/user-rounded.svg" alt="" />
+                <img src="/assets/icons/nav-arrow-down.svg" alt="" />
+            </div>
+        </div>
+        <div className="flex justify-between items-center border-b-2 border-[#353535] px-[5%] py-[2%] ">
+            <div className="flex gap-6">
+                <div>
+                  <Link>Tiimbooktu</Link>
+                </div>
+                <Link>Thought</Link>
+                <Link>Fotografie</Link>
+                <Link>About</Link>
+                <Link>Contact Us</Link>
+            </div>
+            <div className="flex justify-between gap-6">
+                <img src="/assets/icons/Bag-4.svg" alt="" />
+                <img src="/assets/icons/Heart.svg" alt="" />
+            </div>
+        </div>
     </nav>
   );
 }

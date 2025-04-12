@@ -16,10 +16,6 @@ const DetailsPage = () =>{
         <div className="bg-[#1C1C1C] text-[#fff]">
             <NavBarComp />
             <div className="px-4 bp900:px-[100px] mt-6 mb-6 font-cinzel">
-                <div className="flex items-center mb-6">
-                    <Link to="/shop" className="bg-[#2B2B2B] mr-6 px-6 py-4 rounded-[35px]">Back</Link>
-                    <p className="uppercase">The shop/Osmoto</p>
-                </div>
                 <div className="block justify-between bp900:flex mb-6">
                     <div className="bp900:w-[50%] w-full p-4 border-[#595959] border-[1px] rounded-[20px] bg-[#2B2B2B]">
                         <img className="h-[250px] w-[100%] mb-[5%] object-cover rounded-[20px]" src="https://s3-alpha-sig.figma.com/img/7936/2862/61002f5f5c6c0777f7d92589be89be2d?Expires=1745193600&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=USHu72QxBD3-4CMZxzU0A2Jg3TABR8g~XdXDI0S7LjGj0wTRNaD2rZGrTZVESHthy6othFa1q9OxSwrjAJR9lK0NkQAyeFZtPZ8YTZrWu03aUkLmBi0wupOVvEDlqlc8jKTIZ8E0rTM7D9PLZhBbzC7tuRxGpIQ1JMahAUFzbAZytvQeC8iZbjSRDOpifJvtrQ3LqJITFFhiVhWEbVCQL9b6zCvb5vWhTUHbKOQne3e0Mx2AePMTKq4DeKkEORS4yEfZimfFH1TRjF5Oo6zaz-8TbdZrebm-sh1t0ZuDkl6O1x-Gpvlg9bQZsY8GKk~BmfeP9LebQc~rIaG8UIw9cQ__" alt="" />
