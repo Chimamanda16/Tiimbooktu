@@ -12,6 +12,9 @@ export default {
         chango: ["Chango", "cursive"],
         cinzel: ["Cinzel", "cursive"],
       },
+      screens: {
+        'bp900': '900px',
+      },
     },
   },
   plugins: [lineClamp],
