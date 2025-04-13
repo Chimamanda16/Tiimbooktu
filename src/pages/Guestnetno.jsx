@@ -24,7 +24,7 @@ export const Guestnetno = () => {
         <div className="bg-[#1C1C1C] flex flex-col gap-6">
             <NavBarComp />
             <section
-                id="tiimbooku"
+                id="guestnetno"
                 className="text-white flex flex-col pb-8 justify-center items-center gap-6 lg:gap-[160px] w-[88%] mx-auto"
             >
                 <div className="flex flex-col w-full lg:items-center gap-4 lg:gap-[123px] mb-6">
