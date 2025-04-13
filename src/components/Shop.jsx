@@ -11,7 +11,7 @@ function ShopComp() {
   
     return (
       <div className="w-[90%] mx-auto text-center mb-[10%]">
-        <h2 className="font-[Chango] text-[40px] lg:text-[112px] tracking-[2px]">
+        <h2 className="font-chango text-[26px] md:text-[40px] lg:text-[112px] text-white tracking-[2px]">
           THE SHOP
         </h2>
   
@@ -33,7 +33,7 @@ function ShopComp() {
                   Add To Cart
                 </button>
               </div>
-            )) : (<h2>Loading...</h2>)
+            )) : (<h2 className='text-white'>Loading...</h2>)
           }
         </div>
   

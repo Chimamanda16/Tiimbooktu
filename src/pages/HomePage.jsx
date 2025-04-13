@@ -5,8 +5,23 @@ import FotografieComp from "../components/Fotografie";
 import ShopComp from "../components/Shop";
 import FooterComp from "../components/Footer";
 import ThoughtComp from "../components/Thought";
+import { useLocation } from "react-router-dom";
+import { useEffect } from "react";
 
 function HomeComp() {
+    const location = useLocation();
+
+    useEffect(() => {
+      setTimeout(() => {
+        if (location.hash) {
+          const id = location.hash.replace('#', '');
+          const el = document.getElementById(id);
+          if (el) {
+            el.scrollIntoView({ behavior: 'smooth' });
+          }
+        }
+      }, 100);
+    }, [location]);
 
     return (
         <div className="bg-[#1c1c1c] text-white font-[Satoshi]">
