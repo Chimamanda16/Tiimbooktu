@@ -14,6 +14,7 @@ import { MyHair } from "./pages/MyHair";
 import { Guestnetno } from "./pages/Guestnetno";
 import Composmentis from "./pages/ComposMentis";
 import DetailsPage from "./pages/Details";
+import ResetComp from "./pages/ResetPassword";
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
               <Route path="/guestnetno" element={<Guestnetno />} />
               <Route path="/lacomposmentis" element={< Composmentis />} />
               <Route path="/details" element={< DetailsPage />}/>
+              <Route path="/reset" element={< ResetComp />}/>
           </Routes>
       </Router>
   );

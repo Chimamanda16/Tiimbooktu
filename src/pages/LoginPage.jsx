@@ -24,11 +24,11 @@ const LoginPage = () => {
     }
 
   return (
-    <div className="bg-[#1c1c1c]">
+    <div className="bg-[#1c1c1c] w-full">
         <NavBarComp />
-        <div className="md:w-[510px] m-auto text-[#fff] text-center min-h-screen py-6">
+        <div className="md:w-[510px] m-auto text-[#fff] text-center py-6">
             <h2 className="mb-4 font-[400] font-chango text-[26px]">Login</h2>
-            <form className="text-left m-auto bg-[#0A0A0A] w-[90%] p-[15px] rounded-[20px]" onSubmit={submitForm}>
+            <form className="text-left m-auto my-10 bg-[#0A0A0A] w-[90%] p-[15px] rounded-[20px]" onSubmit={submitForm}>
                 <div>
                     <label htmlFor="email" className="block text-left">Email</label>
                     <input className="border-2 placeholder:text-white border-[#000] rounded-[12px] mb-2 px-4 py-2" type="email" id="email" name="email" placeholder="Enter Your Mail" value={formData.email} required onChange={(e) =>(setFormData({...formData, email: e.target.value}))} autoComplete="email"/>
