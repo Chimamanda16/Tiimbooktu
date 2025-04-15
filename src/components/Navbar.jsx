@@ -2,10 +2,9 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 
 function NavBarComp() {
-  const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <nav className="relative mb-[10px]">
+    <nav className="relative mb-[10px] text-[#fff]">
         <div className="flex justify-between items-center border-b-2 border-[#353535] px-[5%] py-[1%]">
             <img src="/assets/logos/tiimbooktu.png" alt="" />
             <div className="relative w-[60%]">
