@@ -1,5 +1,6 @@
 import { create } from "zustand";
 import axiosInstance from "../lib/axios";
+import { toast } from "react-toastify";
 
 export const useAuthStore = create((set) =>({
     isRegistering: false,
@@ -10,12 +11,23 @@ export const useAuthStore = create((set) =>({
         try{
             await axiosInstance.get("https://tiimbooktu-qmkn.onrender.com/sanctum/csrf-cookie");
             console.log("CSRF cookie set successfully!");
+            // let hardCodedPayload = {
+            //     first_name: 'ola',
+            //     last_name: 'fatomi',
+            //     email: 'fatomiabdulrahmon@gmail.com',
+            //     phone_number: '09061716060',
+            //     password: '12345678',
+            //     password_confirmation: '12345678',
+            //     type:'customer'
+            // }
             const res = await axiosInstance.post("/register", data);
-            console.log("Registration response", res.data);
+            window.location.href = 'login';
+            toast.success('Sign up successfull, continue to log in')
             return res.data;
         }
         catch(error){
             console.error(error);
+            toast.error(error?.response?.data?.errors?.email[0])
             throw new Error("Registration failed. Please try again.");
         }
         finally{
@@ -28,12 +40,14 @@ export const useAuthStore = create((set) =>({
             await axiosInstance.get("https://tiimbooktu-qmkn.onrender.com/sanctum/csrf-cookie");
             console.log("CSRF cookie set successfully!");
             const res = await axiosInstance.post("/login", data);
-            console.log("Login response", res.data);
+            toast.success(res?.data?.message);
             localStorage.setItem('access_token', res.data.access_token);
+            window.location.href = '/';
             return res.data;
         }
         catch(error){
             console.error(error);
+            toast.error(error?.response?.data?.error)
             throw new Error("Login failed. Please try again.");
         }
         finally{
