@@ -15,6 +15,7 @@ import { Guestnetno } from "./pages/Guestnetno";
 import Composmentis from "./pages/ComposMentis";
 import DetailsPage from "./pages/Details";
 import ResetComp from "./pages/ResetPassword";
+import WishlistPage from "./pages/Wishlist";
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
               <Route path="/lacomposmentis" element={< Composmentis />} />
               <Route path="/details" element={< DetailsPage />}/>
               <Route path="/reset" element={< ResetComp />}/>
+              <Route path="/wishlist" element={<WishlistPage />} />
           </Routes>
       </Router>
   );

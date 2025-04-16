@@ -10,7 +10,7 @@ function ShopComp() {
     },[])
   
     return (
-      <div className="w-[90%] mx-auto text-center mb-[10%]">
+      <div className="w-[90%] mx-auto text-center mb-[10%] font-cinzel">
         <h2 className="font-[Chango] text-[40px] lg:text-[112px] tracking-[2px]">
           THE SHOP
         </h2>

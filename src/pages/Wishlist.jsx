@@ -1,0 +1,47 @@
+import {useEffect} from "react";
+import { useArtworkStore } from "../Store/useArtworkStore";
+import ShopComp from "../components/Shop";
+import NavBarComp from "../components/Navbar";
+import FooterComp from "../components/Footer";
+
+const WishlistPage = () =>{
+
+     const {artworks, fetchArtworks} = useArtworkStore();
+    
+        useEffect(() =>{
+          fetchArtworks();
+        },[])
+
+    return (
+        <div className="bg-[#1A1A1A] text-white text-center">
+            <NavBarComp />
+            <div className="">
+                <h2 className="font-chango font-[400] text-[81px]">Wishlist</h2>
+                <div className="relative mx-auto my-8 h-[200px] w-[200px]">
+                    <div className="absolute  bg-[linear-gradient(to_top,_#1C1C1C_35%,_#353535_65%)] rounded-full w-full h-full inset-0"></div>
+                    <img className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[150px] h-[150px]" src="./assets/icons/wishlist-heart.svg" alt="wishlist heart icon" />
+                </div>
+                <p className="font-chango font-[400]">Your Wishlist is Empty</p>
+                <p>Your Wishlist Is Empty At The Moment, Explore Our Shop Below</p>
+                <h2 className="font-[chango] font-400 text-[70px]">The Shop</h2>
+                <div className="grid grid-cols-4 justify-center max-lg:grid-cols-2 max-sm:grid-cols-2 mb-8 mx-8 lg:mb-16">
+                    {
+                        artworks ? (artworks.artworks.slice(0, 4).map((artwork) => (
+                            <div key={artwork.id} className="border-[#353535] border-[1px] p-2 font-[cinzel]">
+                                <img className="w-[100%]" src="https://s3-alpha-sig.figma.com/img/7936/2862/61002f5f5c6c0777f7d92589be89be2d?Expires=1745193600&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=USHu72QxBD3-4CMZxzU0A2Jg3TABR8g~XdXDI0S7LjGj0wTRNaD2rZGrTZVESHthy6othFa1q9OxSwrjAJR9lK0NkQAyeFZtPZ8YTZrWu03aUkLmBi0wupOVvEDlqlc8jKTIZ8E0rTM7D9PLZhBbzC7tuRxGpIQ1JMahAUFzbAZytvQeC8iZbjSRDOpifJvtrQ3LqJITFFhiVhWEbVCQL9b6zCvb5vWhTUHbKOQne3e0Mx2AePMTKq4DeKkEORS4yEfZimfFH1TRjF5Oo6zaz-8TbdZrebm-sh1t0ZuDkl6O1x-Gpvlg9bQZsY8GKk~BmfeP9LebQc~rIaG8UIw9cQ__" alt={artwork.category.description}/>
+                                <h3 className="">{artwork.name}</h3>
+                                <p className="text-[20px] font-400">${artwork.base_price}</p>
+                                <button className="p-2 border-[#fff] border-[1px] font-bold mt-2">Add To Cart</button>
+                            </div>
+                        ))) : (<h2 className="text-[40px]"> Loading</h2>) 
+                    }
+            </div>
+  
+        
+            </div>
+            <FooterComp />
+        </div>
+    )
+}
+
+export default WishlistPage;
