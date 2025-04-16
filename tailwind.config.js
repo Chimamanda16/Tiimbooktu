@@ -14,6 +14,7 @@ export default {
       },
       screens: {
         'bp900': '900px',
+        'max800': { 'max': '800px' },
       },
     },
   },
