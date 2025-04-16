@@ -30,7 +30,7 @@ export const Tuiites = () => {
         <div className="bg-[#1C1C1C] flex flex-col gap-6">
             <NavBarComp />
             <section
-                id="tiimbooku"
+                id="tuiites"
                 className="text-white flex flex-col pb-8 justify-center items-center gap-6 w-[88%] mx-auto font-chango"
             >
                 <div className="flex flex-col w-full lg:items-center gap-4 lg:gap-8 mb-6">

@@ -7,7 +7,7 @@ function FotografieComp() {
     ];
     
     return (
-        <div className="my-[10%] text-center">
+        <section id="fotografie" className="my-[10%] text-center">
             <h2 className="font-[Chango] text-[40px] lg:text-[112px] mb-5">Fotografie</h2>
             <div className="flex flex-col md:grid md:grid-cols-2 xl:grid-cols-4 justify-center gap-5">
                 {images.map((img, index) => (
@@ -21,7 +21,7 @@ function FotografieComp() {
             <button className="relative mt-5 lg:mt-16  bg-[#CDFFAD] border-none rounded-[22px] text-[#1c1c1c] cursor-pointer font-normal px-4 py-2 max-sm:px-5 max-sm:py-3">
                 View all
             </button>
-        </div>
+        </section>
     );
 }
 
