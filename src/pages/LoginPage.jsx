@@ -7,8 +7,7 @@ const LoginPage = () => {
     const { login } = useAuthStore();
     const [formData, setFormData] = useState({
         email: '',
-        password: '',
-        type:''
+        password: ''
     });
 
     const submitForm = async(e) => {

@@ -7,9 +7,11 @@ const SignUpPage = () => {
 
     const { register } = useAuthStore();
     const [formData, setFormData] = useState({
-        name: '',
+        first_name: '',
+        last_name: '',
         email: '',
-        type:'',
+        phone_number: "",
+        type:'customer',
         password: '',
         password_confirmation: ''
     });
@@ -17,7 +19,6 @@ const SignUpPage = () => {
     const submitForm = async(e) => {
         e.preventDefault();
         try {
-            console.log("formData",formData);
             const response = await register(formData);
            console.log("Registration Successful", response);
         } catch (error) {
@@ -35,23 +36,31 @@ const SignUpPage = () => {
         <form className="text-left m-auto mt-6 my-10 bg-[#0A0A0A] w-[90%] p-[15px] rounded-[20px]" onSubmit={submitForm}>
             <div className="flex gap-2">
                 <div>
-                    <label className="block" htmlFor="first name">First Name</label>
-                    <input className="border-2 placeholder:text-[#D9D9D9] border-[#000] mb-6 px-10 py-2" type="text" id="username" name="first name" placeholder="Name" value={formData.name} required onChange={(e) =>(setFormData((formData) =>({ ...formData, name: e.target.value })))} autoComplete="name"/>
+                    <label className="block" htmlFor="first_name">First Name</label>
+                    <input className="border-2 placeholder:text-[#D9D9D9] border-[#000] mb-6 px-10 py-2" type="text" id="first_name" name="first_name" placeholder="Enter First Name" value={formData.first_name} required onChange={(e) =>(setFormData((formData) =>({ ...formData, first_name: e.target.value })))} autoComplete="given-name"/>
                 </div>
                 <div>
-                    <label className="block" htmlFor="name">Last Name</label>
-                    <input className="border-2 text-[#D9D9D9] border-[#000] mb-6 px-10 py-2" type="text" id="username" name="name" placeholder="Name" value={formData.name} required onChange={(e) =>(setFormData((formData) =>({ ...formData, name: e.target.value })))} autoComplete="name"/>
+                    <label className="block" htmlFor="last_name">Last Name</label>
+                    <input className="border-2 text-[#D9D9D9] border-[#000] mb-6 px-10 py-2" type="text" id="last_name" name="last_name" placeholder="Enter Last Name" value={formData.last_name} required onChange={(e) =>(setFormData((formData) =>({ ...formData, last_name: e.target.value })))} autoComplete="family-name"/>
                 </div>
             </div>
             <div>
-                <input className="border-2 placeholder:text-[#D9D9D9] border-[#000] mb-6 px-10 py-2" type="email" id="email" name="email" placeholder="Email" value={formData.email} required onChange={(e) =>(setFormData({...formData, email: e.target.value}))} autoComplete="email"/>
+                <label className="block" htmlFor="email">Email</label>
+                <input className="border-2 placeholder:text-[#D9D9D9] border-[#000] mb-6 px-10 py-2" type="text" id="email" name="email" placeholder="Enter Your Mail" value={formData.email} required onChange={(e) =>(setFormData({...formData, email: e.target.value}))} autoComplete="email"/>
             </div>
             <div>
+                <label className="block" htmlFor="phone_number">Phone Number</label>
+                <input className="border-2 placeholder:text-[#D9D9D9] border-[#000] mb-6 px-10 py-2" type="text" id="phone_number" name="phone_number" placeholder="Enter Your Phone Number" value={formData.phone_number} required onChange={(e) =>(setFormData({...formData, phone_number: e.target.value}))} autoComplete="tel"/>
+            </div>
+            <div>
+                <label className="block" htmlFor="phone_number">Password</label>
                 <input className="border-2 placeholder:text-[#D9D9D9] border-[#000] mb-6 px-10 py-2" type="password" id="password" name="password" placeholder="Password" value={formData.password} required onChange={(e) =>(setFormData({...formData, password: e.target.value}))}/>
             </div>
             <div>
-                <input className="border-2 placeholder:text-[#D9D9D9] border-[#000] mb-6 px-10 py-2" type="password" id="password_confirmation" name="password_confirmation" placeholder="Confirm Password" value={formData.password_confirmation} required onChange={(e) =>(setFormData({...formData, password_confirmation: e.target.value}))}/>
+                <label className="block" htmlFor="confirm-Password">Confirm Password</label>
+                <input className="border-2 placeholder:text-[#D9D9D9] border-[#000] mb-6 px-10 py-2" type="password" id="confirm-Password" name="confirm-Password" placeholder="Confirm Your Password" value={formData.password_confirmation} required onChange={(e) =>(setFormData({...formData, password_confirmation: e.target.value}))}/>
             </div>
+            <p className="underline text-[#CDFFAD] text-right">Forgot Password?</p>
             <button className="bg-[#CDFFAD] w-full rounded-[12px] text-black px-6 py-2 my-4" type="submit">Send</button>
             <p className="text-[#D9D9D9] text-center">Already Have An Account? <span className="underline font-bold">Signin</span></p>
 

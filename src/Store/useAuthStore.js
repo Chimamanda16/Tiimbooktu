@@ -5,6 +5,7 @@ export const useAuthStore = create((set) =>({
     isRegistering: false,
     isLoggingIn: false,
     isLoggingOut: false,
+    isResettingPassword: false,
     register: async(data) =>{
         set({ isRegistering: true });
         try{
@@ -54,5 +55,18 @@ export const useAuthStore = create((set) =>({
         finally{
             set({isLoggingOut: false});
         }
-    }
+    },
+    forgotPassword: async(data) =>{
+        try{
+            await axiosInstance.get("https://tiimbooktu-qmkn.onrender.com/sanctum/csrf-cookie");
+            const res = await axiosInstance.post("/forgot-password", data);
+            console.log("Forgot password response", res.data);
+            return res.data;
+        }
+        catch(error){
+            console.error(error);
+            throw new Error("Email submission failed. Please try again.");
+        }
+    },
+
 }))
