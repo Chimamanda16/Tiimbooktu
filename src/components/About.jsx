@@ -1,9 +1,9 @@
 function AboutComp() {
     return (
-        <div className="mb-[10%]">
+        <div className="mb-[10%] font-cinzel">
             <h2 className="lg:text-[80px] max-lg:text-[50px] font-[chango] max-md:ml-[5%] md:ml-[15%] uppercase max-md:text-3xl mb-[2%]">Feat. Post</h2>
-            <div className="flex max-lg:block justify-between mx-[5%] md:ml-[15%] max-md:w-fit md:mr-[5%]">
-                <img className="h-[400px] max-md:h-[250px] w-[60%] max-lg:w-[100%]" src="../about-img.png" alt="" />
+            <div className="block md:flex justify-between mx-[5%] md:ml-[15%] max-md:w-fit md:mr-[5%]">
+                <img className="h-[400px] max-md:h-[250px] w-full md:w-[60%]" src="../about-img.png" alt="" />
                 <div className="max-lg:w-[100%] lg:w-[38%]">
                     <p className="font-[chango] uppercase mb-6">I am my hair</p>
                     <p className="lg:text-[22px]">

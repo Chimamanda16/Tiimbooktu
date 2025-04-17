@@ -1,13 +1,13 @@
 function FooterComp() {
   return (
-    <section className="bg-[#2B2B2B] w-full pt-12 pb-6">
+    <section className="bg-[#2B2B2B] w-full pt-12 pb-6 font-cinzel">
       <div className="w-[90%] mx-auto text-center">
         <div className="flex flex-col lg:flex-row gap-16 justify-between">
           {/* Subscribe Section */}
           <div className="w-full sm:w-full flex flex-col justify-between gap-8 lg:w-[35%] text-start">
             <div className="flex flex-col gap-8">
               <div className="flex flex-col gap-6 lg:w-[571px]">
-                <p className="text-white font-cinzel text-start">
+                <p className="text-white text-start">
                   YOU MIGHT WANT TO
                 </p>
                 <h2 className="lg:text-[40px] text-[22px] text-white text-start font-medium font-chango uppercase">
@@ -35,8 +35,8 @@ function FooterComp() {
           <div className="w-full lg:w-[35%] flex flex-col gap-12 text-start">
             <div className="flex gap-8 text-start md:gap-[120px]">
               <div className="flex flex-col gap-5">
-                <p className="text-[#FFFFFF] font-cinzel text-[10px] mb-[2%]">About Us</p>
-                <div className="flex gap-[120px] text-white font-cinzel">
+                <p className="text-[#FFFFFF] text-[10px] mb-[2%]">About Us</p>
+                <div className="flex gap-[120px] text-white">
                   <div className="flex flex-col gap-4">
                     <p>Tiimbooktu</p>
                     <p>Thought</p>
@@ -52,7 +52,7 @@ function FooterComp() {
             </div>
 
             {/* Contact & Privacy Section */}
-            <div className="flex flex-col gap-[120px] font-cinzel text-white">
+            <div className="flex flex-col gap-[120px] text-white">
               <div className="flex flex-col gap-6">
               <p className="text-[10px] uppercase">Contact Us</p>
               <div>

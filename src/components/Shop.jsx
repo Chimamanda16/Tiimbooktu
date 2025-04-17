@@ -32,7 +32,7 @@ function ShopComp() {
         THE SHOP
       </h2>
 
-      <div className="grid grid-cols-4 justify-center gap-4 max-lg:grid-cols-2 max-sm:grid-cols-2 mb-8 lg:mb-16">
+      <div className="grid grid-cols-2 justify-center gap-4 md:grid-cols-3 lg:grid-cols-4 mb-8 lg:mb-16">
         {fetchingArtwork ? (<h2 className='text-white'>Loading...</h2>) :
           (artworks?.length > 0) ? artworks?.map((artwork) => (
             <div
@@ -51,7 +51,7 @@ function ShopComp() {
                 Add To Cart
               </button>
             </div>
-          )) : 'No Artwort Found'
+          )) : 'No Artwork Found'
         }
 
       </div>

@@ -12,15 +12,6 @@ export const useAuthStore = create((set) =>({
         try{
             await axiosInstance.get("https://tiimbooktu-qmkn.onrender.com/sanctum/csrf-cookie");
             console.log("CSRF cookie set successfully!");
-            // let hardCodedPayload = {
-            //     first_name: 'ola',
-            //     last_name: 'fatomi',
-            //     email: 'fatomiabdulrahmon@gmail.com',
-            //     phone_number: '09061716060',
-            //     password: '12345678',
-            //     password_confirmation: '12345678',
-            //     type:'customer'
-            // }
             const res = await axiosInstance.post("/register", data);
             window.location.href = 'login';
             toast.success('Sign up successfull, continue to log in')
