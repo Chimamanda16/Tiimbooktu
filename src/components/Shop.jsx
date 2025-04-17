@@ -51,7 +51,7 @@ function ShopComp() {
                 Add To Cart
               </button>
             </div>
-          )) : 'No Artwort Found'
+          )) : 'No Artwork Found'
         }
 
       </div>

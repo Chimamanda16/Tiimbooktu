@@ -11,7 +11,7 @@ export const useCartStore = create((set, get) => ({
         try {
             const res = await axiosInstance.post('/cart', data);
             if(res.data) {
-                set({cartItems: res.data})
+                set((state) => ({ cartItems: [...state.cartItems, res.data.item] }))
                 toast.success(res?.data?.message)
             }
             return res.data;
@@ -22,14 +22,14 @@ export const useCartStore = create((set, get) => ({
             set({error: err.message})
         }
         finally {
-            set({fetchingArtwork: false})
+            set({fetchingCartItem: false})
         }  
     },
     fetchCart: async() => {
         set({fetchingCartItem: true})
         try {
             const res = await axiosInstance.get('/cart');
-            set({cartItems: res?.data})
+            set({ cartItems: res?.data })
             return res.data
         } 
         catch (err) {
