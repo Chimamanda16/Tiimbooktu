@@ -38,7 +38,7 @@ function App() {
               <Route path="/lacomposmentis" element={< Composmentis />} /><Route path="/detail/:id" element={<DetailsPage />} />
               <Route path="/cart" element={<Cart />} />
               <Route path="/confirmation" element={<ConfirmationPage />} />
-              <Route path="/details" element={< DetailsPage />}/>
+              <Route path="/details/:id" element={< DetailsPage />}/>
               <Route path="/reset" element={< ResetComp />}/>
               <Route path="/wishlist" element={<WishlistPage />} />
           </Routes>

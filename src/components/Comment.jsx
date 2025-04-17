@@ -14,7 +14,7 @@ export const Comment = () => {
         setForm((prev) => ({ ...prev, [name]: value }));
     };
     return (
-        <form id="comment" className="bg-[#0A0A0A] mt-[20px] py-5 px-[14px] mx-auto mb-10 lg:py-[30px] lg:px-[33px] lg:w-[70%] rounded-xl flex flex-col gap-5">
+        <form id="comment" className="bg-[#0A0A0A] mt-[20px] py-5 px-[14px] mx-auto mb-10 lg:py-[30px] lg:px-[33px] lg:w-[70%] w-[100%] rounded-xl flex flex-col gap-5">
             <h4 className="text-[26px] font-chango text-white text-center">COMMENT?</h4>
             <div className="flex flex-col gap-4">
                 <div className="flex flex-col lg:flex-row w-full gap-4 lg:gap-[30px] items-center">
