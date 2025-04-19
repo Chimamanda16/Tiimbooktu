@@ -1,14 +1,12 @@
 import ShopComp from "../components/Shop";
 import NavBarComp from "../components/Navbar";
 import FooterComp from "../components/Footer";
-import { useArtworkStore } from "../Store/useArtworkStore";
 import { useWishlistStore } from "../Store/useWishlistStore";
 import { useEffect, useState } from "react";
 
 const WishlistPage = () =>{
     const [quantity, setQuantity] = useState(1);
-    const {fetchWishlist, fetchingWishlist,wishlistItems} = useWishlistStore();
-    const { artworks, fetchArtworks, fetchingArtwork } = useArtworkStore();
+    const {fetchWishlist, fetchingWishlist, wishlistItems} = useWishlistStore();
     const increaseQuantity = () => {
         setQuantity((prev) => prev + 1)  
       };
@@ -16,11 +14,12 @@ const WishlistPage = () =>{
         if(quantity === 1) return
         setQuantity((prev) => prev - 1)
       };
+
     useEffect(() =>{
-        fetchArtworks();
         fetchWishlist();
-        console.log("frontend", wishlistItems);//This logs an empty array
-    }, [fetchArtworks, fetchWishlist]);
+    }, [fetchWishlist]);
+
+
 
     return (
         <div className="bg-[#1A1A1A] text-white text-center font-cinzel">
@@ -61,7 +60,7 @@ const WishlistPage = () =>{
                             </div>
                             <p className="font-chango font-[400]">Your Wishlist is Empty</p>
                             <p>Your Wishlist Is Empty At The Moment, Explore Our Shop Below</p>
-                            <ShopComp artworks={artworks} fetchingArtwork={fetchingArtwork}/>  
+                            <ShopComp />  
                         </div>
                     )}
                 </div>

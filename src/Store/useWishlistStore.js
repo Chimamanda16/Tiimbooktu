@@ -2,7 +2,7 @@ import { toast } from "react-toastify";
 import axiosInstance from "../lib/axios";
 import { create } from "zustand";
 
-export const useWishlistStore = create((get, set) => ({ 
+export const useWishlistStore = create((set, get) => ({ 
     fetchingWishlist: false,
     deletingWishlist: false,
     error: null,
@@ -11,9 +11,8 @@ export const useWishlistStore = create((get, set) => ({
         set({ fetchingWishlist: true, error: null });
         try {
             const res = await axiosInstance.get('/wishlist');
-            console.log("backend artworks:", res);//This logs the correct array
+            console.log("backend artworks:", res);
             set({ wishlistItems: res.data.artworks})
-            toast.success(res?.data?.message)
             return res.data;
         } catch (err) {
           console.error("Error fetching wishlist:", err);
@@ -27,8 +26,9 @@ export const useWishlistStore = create((get, set) => ({
         try {
           const res = await axiosInstance.post(`/wishlist/${id}`);
           if(res.data) {
-            set((state) => ({ wishlistItems: [...state.wishlistItems, res.data.artworks] }))
             toast.success(res?.data?.message)
+            const { fetchWishlist } = get();
+            await fetchWishlist();
             }
             return res.data;
         } catch (err) {
