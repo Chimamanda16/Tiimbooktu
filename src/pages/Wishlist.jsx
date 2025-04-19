@@ -1,11 +1,21 @@
 import ShopComp from "../components/Shop";
 import NavBarComp from "../components/Navbar";
 import FooterComp from "../components/Footer";
+import { useCartStore } from '../Store/useCartStore';
 import { useWishlistStore } from "../Store/useWishlistStore";
 import { useEffect } from "react";
 
 const WishlistPage = () =>{
-    const {fetchWishlist, fetchingWishlist, removeFromWishlist, wishlistItems} = useWishlistStore()
+    const { addToCart } = useCartStore();
+    const {fetchWishlist, fetchingWishlist, removeFromWishlist, wishlistItems} = useWishlistStore();
+    const addArtToCart = (e, data) => {
+        let payload = {
+          artwork_id: data?.id,
+          quantity: 1,
+        };
+        e.stopPropagation();
+        addToCart(payload);
+      }
     function handleDelete(e, id) {
         e.stopPropagation();
         removeFromWishlist(id);
@@ -38,7 +48,7 @@ const WishlistPage = () =>{
                                             <p className="text-[20px]">{item.name}</p>
                                             <p className="font-[700] text-[20px]">{item.base_price}</p>
                                         </div>
-                                        <button className="rounded-[34px] bg-[#CDFFAD] text-black p-3 mt-2 md:w-1/2">Add To Cart</button>
+                                        <button onClick={(e) => addArtToCart(e, item)} className="rounded-[34px] bg-[#CDFFAD] text-black p-3 mt-2 md:w-1/2">Add To Cart</button>
                                     </div>
                                     <img className="w-[24px] h-[24px] cursor-pointer" src="./assets/icons/trash-bin.svg" alt="" onClick={(e) => handleDelete(e, item.id)} />                                
                                 </div>
