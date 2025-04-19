@@ -1,5 +1,6 @@
 import "./App.css";
 
+import { useEffect } from "react";
 import HomeComp from './pages/HomePage';
 import LoginPage from "./pages/LoginPage";
 import SignUpPage from "./pages/SignUpPage";
@@ -20,7 +21,16 @@ import { Cart } from "./pages/Cart";
 import { ConfirmationPage } from "./pages/ConfirmationPage";
 import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css'
+import { CheckoutPage } from "./pages/CheckoutPage";
+import { useWishlistStore } from "./Store/useWishlistStore";
+
 function App() {
+  const {fetchWishlist} = useWishlistStore();
+
+  useEffect(() => {
+    fetchWishlist();
+  }, []);
+  
   return (
     <><Router>
           <Routes>
@@ -41,11 +51,11 @@ function App() {
               <Route path="/details/:id" element={< DetailsPage />}/>
               <Route path="/reset" element={< ResetComp />}/>
               <Route path="/wishlist" element={<WishlistPage />} />
+              <Route path="/checkout" element={<CheckoutPage />} />
           </Routes>
       </Router><ToastContainer
         position="top-right"
         autoClose={5000}
-        newestOnTop={true}
         pauseOnHover={true}
         closeOnClick={true}
         /></>

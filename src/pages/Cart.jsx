@@ -62,7 +62,7 @@ export const Cart = () => {
                                                 <div className="w-[130px] h-[117px] md:w-[213px] md:h-[189px] rounded-[14px] overflow-hidden">
                                                     <img className="w-fit" src={data?.artwork.images[0].url} alt="cart" />
                                                 </div>
-                                                <img className="cursor-pointer w-6 h-6 block md:hidden" src="/assets/icons/delete-icon-white.svg" alt="delete" />
+                                                <img onClick={() => removeCartItem(data?.id)} className="cursor-pointer w-6 h-6 block md:hidden" src="/assets/icons/delete-icon-white.svg" alt="delete" />
                                                 </div>
                                                 <div className="flex flex-col justify-between">
                                                     <div className="flex flex-col gap-3 lg:gap-2">
@@ -80,9 +80,9 @@ export const Cart = () => {
                                         </div>)
                                     })}  
                                     </div>
-                                    <button className="w-full lg:hidden bg-[#CDFFAD] p-[10px] rounded-[12px] text-[#1C1C1C] text-center">
+                                    <Link to='/checkout' className="w-full lg:hidden bg-[#CDFFAD] p-[10px] rounded-[12px] text-[#1C1C1C] text-center">
                                         Checkout (${cartData['total_cart_price']?.toFixed(2)})
-                                    </button>
+                                    </Link>
                                     <Link to="/shop" className="text-xl w-full text-center lg:text-start text-[#CDFFAD] underline">Continue Shopping</Link>
                                 </div>
                             </div>
@@ -95,9 +95,9 @@ export const Cart = () => {
                                     <span>${cartData['total_cart_price']?.toFixed(2)}</span>
                                 </div>
                                 <div className="py-[18px] px-4 text-xl">
-                                    <button className="w-full bg-[#CDFFAD] p-[10px] rounded-[12px] text-[#1C1C1C] text-center">
+                                    <Link to='/checkout' className="w-full block bg-[#CDFFAD] p-[10px] rounded-[12px] text-[#1C1C1C] text-center">
                                         Checkout
-                                    </button>
+                                    </Link>
                                 </div>
                             </div>
                         </div>}
