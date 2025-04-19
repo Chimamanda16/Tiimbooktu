@@ -41,7 +41,7 @@ function ShopComp() {
               className="flex flex-col cursor-pointer items-center border border-[#353535] lg:p-4 gap-2 pb-2"
             >
               <img
-                src={artwork.images[0].url}
+                src={artwork?.images[0].url}
                 alt=""
                 className="w-[90%] h-[200px] md:h-[251px] object-cover block"
               />

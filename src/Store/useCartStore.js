@@ -10,15 +10,21 @@ export const useCartStore = create((set, get) => ({
         set({fetchingCartItem: true, error: null});
         try {
             const res = await axiosInstance.post('/cart', data);
+            toast.success(res.data.message)
             if(res.data) {
-                set((state) => ({ cartItems: [...state.cartItems, res.data.item] }))
-                toast.success(res?.data?.message)
+                const { fetchCart } = get();
+                await fetchCart();
             }
             return res.data;
         }
         catch(err) {
             console.error('Error fetching artworks:', err);
             toast.error(err?.response?.data?.message)
+            setTimeout(() => {
+                if(err.status === 401) {
+                    window.location.href = '/login'
+                }
+            }, 5000)
             set({error: err.message})
         }
         finally {
@@ -34,7 +40,6 @@ export const useCartStore = create((set, get) => ({
         } 
         catch (err) {
             console.error('Error fetching artworks:', err);
-            toast.error(err?.response?.data?.message)
             set({error: err.message})
         } 
         finally {
