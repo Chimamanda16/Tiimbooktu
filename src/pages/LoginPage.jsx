@@ -13,7 +13,6 @@ const LoginPage = () => {
     const submitForm = async(e) => {
         e.preventDefault();
         try {
-            console.log("formData",formData);
             const response = await login(formData);
            console.log("Login Successful", response);
         } catch (error) {

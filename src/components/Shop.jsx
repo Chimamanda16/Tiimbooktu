@@ -1,16 +1,26 @@
 import { Link, useNavigate } from 'react-router-dom'
 import { useCartStore } from '../Store/useCartStore';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useArtworkStore } from '../Store/useArtworkStore';
+import { useWishlistStore } from '../Store/useWishlistStore';
 function ShopComp() {
   const navigate = useNavigate()
-
-  const { artworks, fetchingArtwork, fetchArtworks } = useArtworkStore()
+  const [likedItems, setLikedItems] = useState([]);
+  const { artworks, fetchingArtwork, fetchArtworks } = useArtworkStore();
+  const { addToWishlist } = useWishlistStore();
   const { addToCart } = useCartStore();
 
   useEffect(() => {
     fetchArtworks();
-  }, [fetchArtworks])
+  }, [fetchArtworks]);
+
+  function addToFavorites(e, artwork, id) {
+    e.stopPropagation();
+    addToWishlist(id);
+    setLikedItems((prev) =>
+      prev.includes(id) ? prev.filter(item => item !== id) : [...prev, id]
+    )
+  }
 
   const addArtToCart = (e, data) => {
     let payload = {
@@ -35,19 +45,23 @@ function ShopComp() {
       <div className="grid grid-cols-2 justify-center gap-4 md:grid-cols-3 lg:grid-cols-4 mb-8 lg:mb-16">
         {fetchingArtwork ? (<h2 className='text-white'>Loading...</h2>) :
           (artworks?.length > 0) ? artworks?.map((artwork) => (
-            <div
-              onClick={(e) => goToDetail(e, artwork.id)}
-              key={artwork.id}
-              className="flex flex-col cursor-pointer items-center border border-[#353535] lg:p-4 gap-2 pb-2"
-            >
-              <img
-                src={artwork.images[0].url}
-                alt=""
-                className="w-[90%] h-[251px] object-cover block"
-              />
-              <p className='capitalize'>{artwork.name}</p>
+            <div onClick={(e) => goToDetail(e, artwork.id)} key={artwork.id} className="flex flex-col cursor-pointer items-center border border-[#353535] lg:p-4 gap-2 pb-2">
+              <div className="relative w-[90%] h-[251px]">
+                <img src={artwork.images[0].url} alt="" className="w-full h-full object-cover block"/>
+                <div className="absolute top-2 right-2 bg-[#595959] p-2 rounded-full">
+                  <img
+                  src={likedItems.includes(artwork.id)
+                  ? "./assets/icons/favorite-heart-black.svg"
+                  : "./assets/icons/favorite-heart-white.svg"}
+                  alt=""
+                  className="w-[24px] h-[24px]"
+                  onClick={(e) => addToFavorites(e, artwork, artwork.id)} />                
+                </div>
+              </div>
+              <p className="capitalize">{artwork.name}</p>
               <p>${artwork.base_price}</p>
-              <button onClick={(e) => addArtToCart(e, artwork)} className="bg-transparent border border-[#a9a9a9] text-white font-bold py-2 px-4 cursor-pointer max-sm:py-1 max-sm:text-xs">
+              <button onClick={(e) => addArtToCart(e, artwork)}
+                className="bg-transparent border border-[#a9a9a9] text-white font-bold py-2 px-4 cursor-pointer max-sm:py-1 max-sm:text-xs">
                 Add To Cart
               </button>
             </div>
