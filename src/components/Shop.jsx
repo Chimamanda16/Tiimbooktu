@@ -1,25 +1,28 @@
 import { Link, useNavigate } from 'react-router-dom'
 import { useCartStore } from '../Store/useCartStore';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useArtworkStore } from '../Store/useArtworkStore';
 import { useWishlistStore } from '../Store/useWishlistStore';
 function ShopComp() {
   const navigate = useNavigate()
-  const [likedItems, setLikedItems] = useState([]);
   const { artworks, fetchingArtwork, fetchArtworks } = useArtworkStore();
-  const { addToWishlist } = useWishlistStore();
+  const {fetchWishlist, addToWishlist, removeFromWishlist, wishlistItems} = useWishlistStore();
   const { addToCart } = useCartStore();
+
 
   useEffect(() => {
     fetchArtworks();
-  }, [fetchArtworks]);
+  }, [fetchArtworks, fetchWishlist]);
 
-  function addToFavorites(e, artwork, id) {
+  function addToFavorites(e, id) {
     e.stopPropagation();
-    addToWishlist(id);
-    setLikedItems((prev) =>
-      prev.includes(id) ? prev.filter(item => item !== id) : [...prev, id]
-    )
+
+    if(wishlistItems?.some((item) => item.id === id)){
+      removeFromWishlist(id);
+    }
+    else{
+      addToWishlist(id);
+    }
   }
 
   const addArtToCart = (e, data) => {
@@ -50,12 +53,12 @@ function ShopComp() {
                 <img src={artwork.images[0].url} alt="" className="w-full h-full object-cover block"/>
                 <div className="absolute top-2 right-2 bg-[#595959] p-2 rounded-full">
                   <img
-                  src={likedItems.includes(artwork.id)
-                  ? "./assets/icons/favorite-heart-black.svg"
-                  : "./assets/icons/favorite-heart-white.svg"}
+                  src={wishlistItems?.some((item) => item.id === artwork.id)
+                    ? "./assets/icons/favorite-heart-black.svg"
+                    : "./assets/icons/favorite-heart-white.svg"}
                   alt=""
                   className="w-[24px] h-[24px]"
-                  onClick={(e) => addToFavorites(e, artwork, artwork.id)} />                
+                  onClick={(e) => addToFavorites(e, artwork.id)} />                
                 </div>
               </div>
               <p className="capitalize">{artwork.name}</p>
