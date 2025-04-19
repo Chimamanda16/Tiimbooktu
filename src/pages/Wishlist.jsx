@@ -26,18 +26,18 @@ const WishlistPage = () =>{
             <NavBarComp />
             <h2 className="font-chango font-[400] text-[40px] md:text-[81px]">Wishlist</h2>
             {fetchingWishlist ? (<h2>Loading...</h2>) :
-                <div>
+                <div className="mb-8">
                     {wishlistItems && (wishlistItems.length > 0) ? (
                     wishlistItems.map((item) => (
-                        <div className="mb-8" key={item.id}>
-                            <div className="block p-2 md:p-10 justify-items-center">
+                        <div className="mb-2" key={item.id}>
+                            <div className="block p-2 md:px-10 justify-items-center">
                                 <div className="w-full md:w-[60%] h-[200px] md:h-[274px] bg-[#2B2B2B] border-[1px] border-[#595959] rounded-[20px]">
                                     <div className="flex gap-8 px-2 py-2 h-[200px] md:h-[274px]">
-                                        <img className="xl:w-[40%] w-[45%] h-full rounded-[14px] object-cover" src="./assets/images/sample-cart.png" alt="" />
+                                        <img className="xl:w-[40%] w-[45%] h-full rounded-[14px] object-cover" src={item.images[0].url} alt="" />
                                         <div className="flex justify-between xl:w-[55%] w-[50%]">
                                             <div className="text-left">
-                                                <p className="text-[20px]">Gatorback Purse</p>
-                                                <p className="font-[700] text-[20px]">$11</p>
+                                                <p className="text-[20px]">{item.name}</p>
+                                                <p className="font-[700] text-[20px]">{item.base_price}</p>
                                                 <div className="w-fit text-[17px] flex bg-[#0A0A0A] mt-10 items-center rounded-[12px] py-3 max-h:[34px]">
                                                     <div onClick={decreaseQuantity} className="px-4 border-r-2 border-r-[#595959] cursor-pointer">-</div>
                                                     <div className="px-4 border-r-2 border-r-[#595959]">{quantity}</div>

@@ -11,7 +11,7 @@ export const useWishlistStore = create((set, get) => ({
         set({ fetchingWishlist: true, error: null });
         try {
             const res = await axiosInstance.get('/wishlist');
-            console.log("backend artworks:", res);
+            console.log("backend artworks:", res.data.artworks);
             set({ wishlistItems: res.data.artworks})
             return res.data;
         } catch (err) {
