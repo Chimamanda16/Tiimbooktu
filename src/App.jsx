@@ -21,6 +21,7 @@ import { ConfirmationPage } from "./pages/ConfirmationPage";
 import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css'
 import { CheckoutPage } from "./pages/CheckoutPage";
+import { OrderPage } from "./pages/Order";
 function App() {
   return (
     <><Router>
@@ -43,6 +44,7 @@ function App() {
               <Route path="/reset" element={< ResetComp />}/>
               <Route path="/wishlist" element={<WishlistPage />} />
               <Route path="/checkout" element={<CheckoutPage />} />
+              <Route path="/order" element={<OrderPage />} />
           </Routes>
       </Router><ToastContainer
         position="top-right"

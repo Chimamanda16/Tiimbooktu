@@ -25,7 +25,7 @@ function NavBarComp() {
   return (
     <nav className="relative mb-[10px] text-[#fff] font-cinzel">
     {/* Top Nav */}
-    <div className="flex justify-between items-center border-b-2 border-[#353535] px-[5%] py-[1%]">
+    <div className="flex justify-between items-center border-b-2 border-[#353535] w-[90%] mx-auto py-[1%]">
       <a href="/"><img src="/assets/logos/tiimbooktu.png" alt="Logo" /></a>
 
       {/* Search Input */}
@@ -62,7 +62,7 @@ function NavBarComp() {
         {/* Hamburger/X toggle */}
         <button
           onClick={() => setMenuOpen(!menuOpen)}
-          className="block max800:block hidden"
+          className="max800:block hidden"
         >
           {menuOpen ? (
             <img src="/assets/icons/close.svg" alt="Close Menu" />

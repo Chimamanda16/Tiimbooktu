@@ -1,15 +1,31 @@
 .swiper-container::before {
-    background: #1c1c1c;
-    border-radius: 100%;
+    background: hsl(0, 0%, 11%);
+    border-radius: 120%;
     content: "";
-    height: 100px;
+    height: 90px;
     left: 0;
     position: absolute;
-    top: -10%;
+    top: -8%;
+    width: 100%;
+    z-index: 100;
+}
+.curve_bottom {
+    background: hsl(0, 0%, 11%);
+    content: "";
+    height: 80px;
+    left: 0;
+    position: absolute;
+    bottom: 25px;
     width: 100%;
     z-index: 100;
 }
 
 .swiper-slide {
-    height: 350px !important;
+    height: 470px !important;
+}
+
+@media only screen and (max-width: 768px) {
+    .swiper-slide {
+        width: 100% !important;
+    }
 }
