@@ -41,12 +41,13 @@ function App() {
               <Route path="/login" element={<LoginPage />} />
               <Route path="/tiimbooktu" element={<Tiimbooktu />} />
               <Route path="/shop" element={<ShopPage />} />
-              <Route path="/story" element={<StoryPage />}/>
+              <Route path="/blog" element={<StoryPage />}/>
               <Route path="/tuiites" element={<Tuiites />} />
               <Route path="/rich-us" element={<RichUs />} />
               <Route path="/my-hair" element={<MyHair />} />
               <Route path="/guestnetno" element={<Guestnetno />} />
-              <Route path="/lacomposmentis" element={< Composmentis />} /><Route path="/detail/:id" element={<DetailsPage />} />
+              <Route path="/lacomposmentis" element={< Composmentis />} />
+              <Route path="/detail/:id" element={<DetailsPage />} />
               <Route path="/cart" element={<Cart />} />
               <Route path="/confirmation" element={<ConfirmationPage />} />
               <Route path="/details/:id" element={< DetailsPage />}/>
@@ -57,9 +58,9 @@ function App() {
           </Routes>
       </Router><ToastContainer
         position="top-right"
-        autoClose={5000}
         pauseOnHover={true}
         closeOnClick={true}
+        hideProgressBar={true}
         /></>
   );
 }
