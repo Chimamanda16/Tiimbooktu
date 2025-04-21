@@ -1,5 +1,6 @@
 import "./App.css";
 
+import { useEffect } from "react";
 import HomeComp from './pages/HomePage';
 import LoginPage from "./pages/LoginPage";
 import SignUpPage from "./pages/SignUpPage";
@@ -22,7 +23,15 @@ import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css'
 import { CheckoutPage } from "./pages/CheckoutPage";
 import { OrderPage } from "./pages/Order";
+import { useWishlistStore } from "./Store/useWishlistStore";
+
 function App() {
+  const {fetchWishlist} = useWishlistStore();
+
+  useEffect(() => {
+    fetchWishlist();
+  }, []);
+  
   return (
     <><Router>
           <Routes>
