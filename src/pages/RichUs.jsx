@@ -9,7 +9,7 @@ export const RichUs = () => {
             <NavBarComp />
             <section
                 id="richus"
-                className="text-white flex flex-col pb-8 justify-center items-center gap-6 w-[88%] mx-auto font-chango"
+                className="text-white flex flex-col pb-8 justify-center items-center gap-6 w-[88%] mx-auto"
             >
                 <div className="flex flex-col w-full lg:items-center gap-4 lg:gap-8 mb-6">
                     <div className="flex flex-col gap-2">

@@ -26,29 +26,27 @@ const ThoughtComp = () => {
   }, []);
 
   return (
-    <div className="swiper-container relative h-[400px] mx-auto overflow-hidden" ref={swiperContainerRef}>
-      <div className="swiper-wrapper">
+    <div className="swiper-container w-full relative h-[500px] mx-auto overflow-hidden" ref={swiperContainerRef}>
+      <div className="swiper-wrapper relative">
         {[ 
           { img: "/thought-card1.png", desc: "Tatto" },
           { img: "/thought-card2.png", desc: "Skeleton. Cloak. Scythe" },
           { img: "/thought-card3.png", desc: "Knowledge" },
           { img: "/thought-card4.png", desc: "Illegal" },
         ].map((img, index) => (
-          <div className="swiper-slide flex items-center w-[250px] h-[350px]" key={index}>
+          <div className="swiper-slide relative z-[9999] flex items-center w-[250px]" key={index}>
             <img
               src={img.img}
               alt={`Slide ${index + 1}`}
               className="w-full h-full object-cover rounded-[20px]"
             />
-            <p className="text-white lg:pl-4 lg:mt-4 text-start font-light text-[20px]">{img.desc}</p>
+            <p className="text-white lg:pl-4 lg:mt-1 text-start font-light text-[20px]">{img.desc}</p>
           </div>
         ))}
       </div>
+      <div className="curve_bottom rounded-t-[100%]"></div>
       <div className="swiper-button-next"></div>
       <div className="swiper-button-prev"></div>
-
-      {/* Decorative circle using Tailwind */}
-      <div className="absolute top-[-20%] left-0 w-[120%] h-[100px] bg-[#1c1c1c] rounded-full z-[100]"></div>
     </div>
   );
 };

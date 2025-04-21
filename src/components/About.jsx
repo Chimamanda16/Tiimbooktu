@@ -1,10 +1,10 @@
 function AboutComp() {
     return (
-        <div className="mb-[10%] font-cinzel">
-            <h2 className="lg:text-[80px] max-lg:text-[50px] font-chango max-md:ml-[5%] md:ml-[15%] uppercase max-md:text-3xl mb-[2%]">Feat. Post</h2>
-            <div className="block md:flex justify-between mx-[5%] md:ml-[15%] max-md:w-fit md:mr-[5%]">
-                <img className="h-[400px] max-md:h-[250px] w-full md:w-[60%]" src="../about-img.png" alt="" />
-                <div className="max-lg:w-[100%] lg:w-[38%]">
+        <div className="mb-[10%] w-[90%] mx-auto font-cinzel">
+            <h2 className="lg:text-[80px] max-lg:text-[50px] font-chango uppercase max-md:text-3xl mb-[2%]">Feat. Post</h2>
+            <div className="grid lg:grid-cols-2 gap-10">
+                <img className="h-[400px] max-md:h-[250px] w-full" src="../about-img.png" alt="" />
+                <div className="w-full">
                     <p className="font-[chango] uppercase mb-6">I am my hair</p>
                     <p className="lg:text-[22px]">
                     "... it's toughness and strength. I am a city wall built against attacks; built to build from ashes and adversity: built to use storms and rain and storm to toughen me up to the point of yelling: "IS THERE NO ONE ELSE?"
