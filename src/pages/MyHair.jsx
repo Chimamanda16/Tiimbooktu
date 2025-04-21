@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
 import NavBarComp from "../components/Navbar";
 import FooterComp from "../components/Footer";
 import { Comment } from "../components/Comment";
 
 export const MyHair = () => {
+        useEffect(() => {
+            window.scrollTo(0, 0)
+        }, [])
     return (
         <div className="bg-[#1C1C1C] flex flex-col gap-6">
             <NavBarComp />

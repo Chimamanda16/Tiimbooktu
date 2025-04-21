@@ -6,7 +6,9 @@ import ShopComp from "../components/Shop";
 
 
 const ShopPage = () =>{
-
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
     const { artworks, fetchArtworks, fetchingArtwork } = useArtworkStore();
     useEffect(() =>{
         fetchArtworks();

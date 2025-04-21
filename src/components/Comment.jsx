@@ -35,7 +35,7 @@ export const Comment = () => {
     return (
         <form onSubmit={(e) => handleSubmit(e)} id="comment" className="bg-[#0A0A0A] mt-[20px] py-5 px-[14px] mx-auto mb-10 lg:py-[30px] lg:px-[33px] lg:w-[70%] w-[100%] rounded-xl flex flex-col gap-5">
             <h4 className="text-[26px] font-chango text-white text-center">COMMENT?</h4>
-            <div className="flex flex-col gap-4">
+            <div className="flex flex-col gap-4 font-sans">
                 <div className="flex flex-col lg:flex-row w-full gap-4 lg:gap-[30px] items-center">
                     <Input onChange={handleInputChange} label="First name" id="first_name" required name="first_name" type="text" value={form.first_name} placeholder="Enter first name" />
                     <Input onChange={handleInputChange} label="Last name" id="last_name" required name="last_name" value={form.last_name} type="text" placeholder="Enter last name" />

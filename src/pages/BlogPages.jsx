@@ -1,8 +1,12 @@
 import NavBarComp from "../components/Navbar";
 import FooterComp from "../components/Footer";
 import { Comment } from "../components/Comment";
+import { useEffect } from "react";
 
 const StoryPage = () =>{
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
     return(
         <div className="bg-[#1c1c1c] text-[#ffffff]">
             <NavBarComp />

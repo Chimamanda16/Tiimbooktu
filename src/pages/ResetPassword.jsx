@@ -1,9 +1,12 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useAuthStore } from "../Store/useAuthStore.js";
 import NavBarComp from "../components/Navbar";
 import FooterComp from "../components/Footer";
 
 const ResetComp = () =>{
+        useEffect(() => {
+            window.scrollTo(0, 0)
+        }, [])
     const [formData, setFormData] = useState({
         email: ""
     });

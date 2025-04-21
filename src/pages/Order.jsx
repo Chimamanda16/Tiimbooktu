@@ -6,6 +6,9 @@ import { format } from "date-fns";
 import { useAuthStore } from "../Store/useAuthStore";
 
 export const OrderPage = () => {
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
     const { fetchOrders, orders, fetchingOrders } = useOrderStore();
     const [isOpen, setIsOpen] = useState(false);
     const [myOrders, setMyOrder] = useState(orders.data);

@@ -59,6 +59,10 @@ body{
 
 }
 
+img  {
+    cursor: pointer;
+}
+
 input::placeholder, textarea::placeholder {
     color: #D9D9D9;
 }

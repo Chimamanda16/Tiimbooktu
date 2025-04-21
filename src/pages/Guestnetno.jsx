@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import NavBarComp from "../components/Navbar";
 import FooterComp from "../components/Footer";
 
@@ -20,6 +20,9 @@ export const Guestnetno = () => {
             desc: "A few thousand years ago, there was an obscure, rustic settlement, existing off the beaten path. Its people were mostly…",
         },
     ]
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
     return (
         <div className="bg-[#1C1C1C] flex flex-col gap-6">
             <NavBarComp />
@@ -45,10 +48,10 @@ export const Guestnetno = () => {
                                     <span> {data.date} </span>
                                 </div>
                                 <h4 className="font-chango line-clamp-1 text-[22px] lg:text-[26px]">
-                                {data.title}
+                                    {data.title}
                                 </h4>
                                 <p className="text-[#2B2B2B] text-xl line-clamp-4">
-                                {data.desc}
+                                    {data.desc}
                                 </p>
                             </div>
                             <div className="flex justify-center">
