@@ -1,7 +1,11 @@
 import NavBarComp from "../components/Navbar";
 import FooterComp from "../components/Footer";
+import { useEffect } from "react";
 
 function ThoughtPage() {
+      useEffect(() => {
+          window.scrollTo(0, 0)
+      }, [])
   return (
     <div className="font-satoshi bg-black">
       <NavBarComp />

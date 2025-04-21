@@ -19,7 +19,6 @@ export const useCartStore = create((set, get) => ({
         }
         catch(err) {
             console.error('Error fetching artworks:', err);
-            toast.error(err?.response?.data?.message)
             setTimeout(() => {
                 if(err.status === 401) {
                     window.location.href = '/login'

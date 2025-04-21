@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import FooterComp from "../components/Footer";
 import NavBarComp from "../components/Navbar";
 import { Input } from "../components/Input";
@@ -6,7 +6,10 @@ import { useCheckoutStore } from "../Store/useCheckoutStore";
 import { useCartStore } from "../Store/useCartStore";
 
 export const CheckoutPage = () => {
-    const {cartItems} = useCartStore();
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
+    const { cartItems } = useCartStore();
     const [formData, setFormData] = useState({
         contact: '',
         shipping_method: '',
@@ -64,7 +67,7 @@ export const CheckoutPage = () => {
 
     const handleInputChange = (e) => {
         const { name, value, type, checked } = e.target;
-        if(name == 'shipping_as_billing') {
+        if (name == 'shipping_as_billing') {
             setFormData((prev) => ({
                 ...prev,
                 [name]: value === 'true' ? true : false,
@@ -118,14 +121,14 @@ export const CheckoutPage = () => {
         try {
             const response = await createOrder(updatedFormData);
             resetForm();
-            if(response) {
+            if (response) {
                 resetForm()
                 console.log(response)
                 window.location.href = response.checkout_url
             }
-          } catch (error) {
+        } catch (error) {
             console.error('Error creating order:', error);
-          }
+        }
     }
 
 

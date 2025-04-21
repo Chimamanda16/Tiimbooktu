@@ -1,4 +1,9 @@
+import { useState } from "react";
+import { Link } from "react-router-dom";
+
 function FooterComp() {
+  const [tiimbooktuMenu, setTiimbooktuMenu] = useState(false);
+  const [contentMenu, setContentMenu] = useState(false);
   return (
     <section className="bg-[#2B2B2B] w-full pt-12 pb-6 font-cinzel">
       <div className="w-[90%] mx-auto text-center">
@@ -38,14 +43,28 @@ function FooterComp() {
                 <p className="text-[#FFFFFF] text-[10px] mb-[2%]">About Us</p>
                 <div className="flex gap-[120px] text-white">
                   <div className="flex flex-col gap-4">
-                    <p>Tiimbooktu</p>
-                    <p>Thought</p>
-                    <p>Fotografie</p>
-                    <p>Shop</p>
+                    <div className="flex gap-2 capitalize">
+                      Tiimbooktu
+                      {tiimbooktuMenu ? <img className=" rotate-180" onClick={() => setTiimbooktuMenu(!tiimbooktuMenu)} src="/assets/icons/nav-arrow-down.svg" alt="" /> : <img onClick={() => setTiimbooktuMenu(!tiimbooktuMenu)} src="/assets/icons/nav-arrow-down.svg" alt="" />}
+                    </div>
+                    {tiimbooktuMenu && <>
+                      <Link to='/tiimbooktu'>On Tiimbooktu</Link>
+                      <Link to='/tuiites'>From The Tutsi</Link>
+                    </>}
+                    <div className="flex gap-2 capitalize">
+                      Content
+                      {contentMenu ? <img className=" rotate-180" onClick={() => setContentMenu(!contentMenu)} src="/assets/icons/nav-arrow-down.svg" alt="" /> : <img onClick={() => setContentMenu(!contentMenu)} src="/assets/icons/nav-arrow-down.svg" alt="" />}
+                    </div>
+                    {contentMenu && <>
+                      <Link to='/lacomposmentis'>La Compos Mentis</Link>
+                      <Link to='/guestnetno'>Guest Content</Link>
+                    </>}
+                    <Link to=''>Fotos</Link>
+                    <Link to='/rich-us'>Rich Us</Link>
                   </div>
                   <div className="flex flex-col gap-4">
-                    <p>About</p>
-                    <p>Contact</p>
+                    <Link to=''>Our Things</Link>
+
                   </div>
                 </div>
               </div>
@@ -54,12 +73,12 @@ function FooterComp() {
             {/* Contact & Privacy Section */}
             <div className="flex flex-col gap-[120px] text-white">
               <div className="flex flex-col gap-6">
-              <p className="text-[10px] uppercase">Contact Us</p>
-              <div>
-                <a href="tel:+2349015019295">+[234] 901 501 9295</a> <br />
-                <a href="mailto:kijagoban@tiimbooktu.com">kijagoban@tiimbooktu.com</a> <br /> <br />
-                <a href="https://www.google.com/maps/dir/9.0578598,7.4922416/Millennium+Plaza/@9.0581268,7.4790519,15z/data=!3m1!4b1!4m9!4m8!1m1!4e1!1m5!1m1!1s0x104e0bb745872e9d:0xdd22f306d1ed9d5!2m2!1d7.4851904!2d9.0523852?entry=ttu&g_ep=EgoyMDI1MDExMC4wIKXMDSoASAFQAw%3D%3D">303, Suite D, Millennium Plaza, Central Business District,Abuja, FCT, Nigeria.</a>
-              </div>
+                <p className="text-[10px] uppercase">Contact Us</p>
+                <div>
+                  <a href="tel:+2349015019295">+[234] 901 501 9295</a> <br />
+                  <a href="mailto:kijagoban@tiimbooktu.com">kijagoban@tiimbooktu.com</a> <br /> <br />
+                  <a href="https://www.google.com/maps/dir/9.0578598,7.4922416/Millennium+Plaza/@9.0581268,7.4790519,15z/data=!3m1!4b1!4m9!4m8!1m1!4e1!1m5!1m1!1s0x104e0bb745872e9d:0xdd22f306d1ed9d5!2m2!1d7.4851904!2d9.0523852?entry=ttu&g_ep=EgoyMDI1MDExMC4wIKXMDSoASAFQAw%3D%3D">303, Suite D, Millennium Plaza, Central Business District,Abuja, FCT, Nigeria.</a>
+                </div>
               </div>
               <div className="flex flex-col lg:flex-row gap-6 lg:justify-between">
                 <p className="text-sm">Privacy</p>

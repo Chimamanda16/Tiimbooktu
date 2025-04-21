@@ -7,6 +7,10 @@ import { RelatedProduct } from "../components/RelatedProduct";
 import { useCartStore } from "../Store/useCartStore";
 
 const DetailsPage = () => {
+
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
     
     const { id } = useParams();
     const navigate = useNavigate();

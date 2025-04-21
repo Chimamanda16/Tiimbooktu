@@ -1,10 +1,14 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useAuthStore } from "../Store/useAuthStore.js"
 import NavBarComp from "../components/Navbar.jsx";
 import FooterComp from "../components/Footer.jsx";
 import { Link } from "react-router-dom";
 
 const LoginPage = () => {
+
+        useEffect(() => {
+            window.scrollTo(0, 0)
+        }, [])
 
     const { login } = useAuthStore();
     const [formData, setFormData] = useState({

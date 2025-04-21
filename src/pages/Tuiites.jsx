@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
 import NavBarComp from "../components/Navbar";
 import FooterComp from "../components/Footer";
 import { Comment } from "../components/Comment";
 
 export const Tuiites = () => {
+        useEffect(() => {
+            window.scrollTo(0, 0)
+        }, [])
     const tuiiteData = [
         {
             title: '"Strawberry Moon, with the intensity of the voicing of I Am My Hair, combined with better beats, has the potential to become a sledgehammer!"',

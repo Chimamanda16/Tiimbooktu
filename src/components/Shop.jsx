@@ -40,13 +40,13 @@ function ShopComp() {
   }
 
   return (
-    <div className="w-[90%] mx-auto text-center mb-[10%] font-cinzel text-white">
+    <div className="w-[90%] mx-auto text-center flex flex-col gap-[30px] items-center font-cinzel pb-[50px] lg:pb-[100px] text-white">
       <h2 className="font-chango text-[26px] md:text-[40px] lg:text-[50px] tracking-[2px]">
         THE SHOP
       </h2>
 
-      <div className="grid grid-cols-2 justify-center gap-4 md:grid-cols-3 lg:grid-cols-4 mb-8 lg:mb-16">
-        {fetchingArtwork ? (<h2 className='text-white'>Loading...</h2>) :
+      <div className="grid w-full grid-cols-2 justify-center gap-4 md:grid-cols-3 lg:grid-cols-4 mb-8 lg:mb-16">
+        {fetchingArtwork ? (<h2 className='text-white text-start w-full'>Loading...</h2>) :
           (artworks?.length > 0) ? artworks?.map((artwork) => (
             <div onClick={(e) => goToDetail(e, artwork.id)} key={artwork.id} className="flex flex-col cursor-pointer justify-between items-center border border-[#353535] lg:p-4 gap-2 pb-2">
               <div className="relative w-[90%] h-[251px]">
