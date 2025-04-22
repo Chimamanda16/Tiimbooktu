@@ -5,6 +5,7 @@ import "swiper/css";
 import "swiper/css/effect-coverflow";
 import "swiper/css/navigation";
 import { Navigation, EffectCoverflow } from "swiper/modules";
+import { Link } from "react-router-dom";
 
 const ThoughtComp = () => {
   const swiperContainerRef = useRef(null);
@@ -29,17 +30,19 @@ const ThoughtComp = () => {
     <div className="swiper-container w-full relative h-[500px] mx-auto overflow-hidden" ref={swiperContainerRef}>
       <div className="swiper-wrapper relative">
         {[ 
-          { img: "/thought-card1.png", desc: "Tatto" },
-          { img: "/thought-card2.png", desc: "Skeleton. Cloak. Scythe" },
-          { img: "/thought-card3.png", desc: "Knowledge" },
-          { img: "/thought-card4.png", desc: "Illegal" },
+          { id: 2, img: "/thought-card1.png", desc: "Tatto" },
+          { id: 9, img: "/thought-card2.png", desc: "Skeleton. Cloak. Scythe" },
+          { id: 5, img: "/thought-card3.png", desc: "Knowledge" },
+          { id: 4, img: "/thought-card4.png", desc: "Illegal" },
         ].map((img, index) => (
           <div className="swiper-slide relative z-[9999] flex items-center w-[250px]" key={index}>
+            <Link to={`/blog/${img.id}`}>
             <img
               src={img.img}
               alt={`Slide ${index + 1}`}
               className="w-full h-full object-cover rounded-[20px]"
             />
+            </Link>
             <p className="text-white lg:pl-4 lg:mt-1 text-start font-light text-[20px]">{img.desc}</p>
           </div>
         ))}

@@ -17,11 +17,11 @@ const StoryPage = () =>{
         <div className="bg-[#1c1c1c] text-[#ffffff] flex flex-col gap-4">
             <NavBarComp />
             {blog && <>
-            <h2 className="text-[50px] text-center font-chango mt-4">{blog[0].title}</h2>
-            <div className="flex flex-col justify-center gap-12 text-center py-4">
+            <h2 className="text-[50px] lg:text-center font-chango lg:mt-4 px-2">{blog[0].title}</h2>
+            <div className="flex flex-col lg:justify-center gap-8 lg:gap-12 lg:text-center py-4 px-2">
                 {blog[0].content.map((data, index) => {
                     return data === 'ruller' ? 
-                    <img className="w-1/2 mx-auto" src="/assets/icons/ruller.svg" alt="ruller" /> 
+                    <img className="lg:w-1/2 w-full mx-auto" src="/assets/icons/ruller.svg" alt="ruller" /> 
                     :
                     <p key={index} className="font-[cinzel]">{data}</p>    
                 })}
