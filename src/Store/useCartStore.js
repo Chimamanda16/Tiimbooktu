@@ -6,71 +6,68 @@ export const useCartStore = create((set, get) => ({
     fetchingCartItem: false,
     cartItems: [],
     error: null,
-    addToCart: async(data) => {
-        set({fetchingCartItem: true, error: null});
+    addToCart: async (data) => {
+        set({ fetchingCartItem: true, error: null });
         try {
             const res = await axiosInstance.post('/cart', data);
             toast.success(res.data.message)
-            if(res.data) {
+            if (res.data) {
                 const { fetchCart } = get();
                 await fetchCart();
             }
             return res.data;
         }
-        catch(err) {
+        catch (err) {
             console.error('Error fetching artworks:', err);
-            toast.error(err?.response?.data?.message)
-            setTimeout(() => {
-                if(err.status === 401) {
-                    window.location.href = '/login'
-                }
-            }, 5000)
-            set({error: err.message})
+            if (err.status === 401) {
+                window.location.href = '/login'
+            }
+            set({ error: err.message })
         }
         finally {
-            set({fetchingCartItem: false})
-        }  
+            set({ fetchingCartItem: false })
+        }
     },
-    fetchCart: async() => {
-        set({fetchingCartItem: true})
+    fetchCart: async () => {
+        set({ fetchingCartItem: true })
         try {
             const res = await axiosInstance.get('/cart');
             set({ cartItems: res?.data })
             return res.data
-        } 
+        }
         catch (err) {
             console.error('Error fetching artworks:', err);
-            set({error: err.message})
-        } 
+            set({ error: err.message })
+        }
         finally {
-            set({fetchingCartItem: false})
+            set({ fetchingCartItem: false })
         }
     },
-    updateCart: async(payload) => {
+    updateCart: async (payload) => {
         try {
             const res = await axiosInstance.put('/cart', payload);
             const { fetchCart } = get();
             await fetchCart();
             return res.data
-        } 
+        }
         catch (err) {
             console.error('Error fetching artworks:', err);
             toast.error(err?.response?.data?.message)
-            set({error: err.message})
-        } 
+            set({ error: err.message })
+        }
     },
-    removeCartItem: async(id) => {
+    removeCartItem: async (id) => {
         try {
             const res = await axiosInstance.delete(`/cart/${id}`);
             toast.success(res.data.message)
             const { fetchCart } = get();
             await fetchCart();
             return res.data
-        } 
+        }
         catch (err) {
             console.error('Error fetching artworks:', err);
             toast.error(err?.response?.data?.message)
-            set({error: err.message})
-        } 
+            set({ error: err.message })
+        }
     },
 }))

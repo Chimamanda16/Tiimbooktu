@@ -11,6 +11,10 @@ export const Cart = () => {
     const {cartItems,  removeCartItem, updateCart, fetchingCartItem} = useCartStore();
     const [cartData, setCartData] = useState(cartItems);
 
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
+
     useEffect(()=> {
         setCartData(cartItems);
     }, [cartItems])

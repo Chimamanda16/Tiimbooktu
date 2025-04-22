@@ -1,15 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
 import NavBarComp from "../components/Navbar";
 import FooterComp from "../components/Footer";
 import { Comment } from "../components/Comment";
 
 export const Tiimbooktu = () => {
+      useEffect(() => {
+          window.scrollTo(0, 0)
+      }, [])
   return (
     <div className="bg-[#1C1C1C] flex flex-col gap-6">
       <NavBarComp />
       <section
         id="tiimbooku"
-        className="flex flex-col pb-8 justify-center items-center gap-6 w-[88%] mx-auto font-chango"
+        className="flex flex-col pb-8 justify-center items-center gap-6 w-[88%] mx-auto"
       >
         <div className="flex flex-col lg:items-center gap-4 lg:gap-6 mb-6">
           <h1 className="lg:text-[81px] text-[26px] font-chango text-white lg:text-center uppercase">ON TIIMBOOKTU</h1>
