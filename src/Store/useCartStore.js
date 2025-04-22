@@ -33,6 +33,7 @@ export const useCartStore = create((set, get) => ({
         try {
             const res = await axiosInstance.get('/cart');
             set({ cartItems: res?.data })
+            set({ error: null })
             return res.data
         }
         catch (err) {

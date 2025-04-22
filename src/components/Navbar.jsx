@@ -9,6 +9,7 @@ function NavBarComp() {
   const [searchValue, setSearchValue] = useState('');
   const { searchArtworks, fetchArtworks } = useArtworkStore();
   const { fetchCart, cartItems } = useCartStore();
+  const { error} = useCartStore()
   const {  fetchWishlist, wishlistItems } = useWishlistStore();
 
   const [tiimbooktuMenu, setTiimbooktuMenu] = useState(false);
@@ -70,7 +71,7 @@ function NavBarComp() {
           />
 
           {/* Hide user icons on mobile */}
-          {localStorage.getItem('access_token') ? <div className="flex gap-2 max800:hidden">
+          {!error ? <div className="flex gap-2 max800:hidden">
             <img src="/assets/icons/user-rounded.svg" alt="" />
             <img src="/assets/icons/nav-arrow-down.svg" alt="" />
           </div> : <>
