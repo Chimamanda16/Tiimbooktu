@@ -26,14 +26,14 @@ const WishlistPage = () => {
 
     useEffect(() => {
         fetchWishlist()
-    }, []);
+    }, [fetchWishlist]);
 
     return (
         <div className="bg-[#1A1A1A] text-white text-center font-cinzel">
             <NavBarComp />
             <h2 className="font-chango font-[400] text-[40px] md:text-[81px]">Wishlist</h2>
 
-            {fetchingWishlist && <h2>Loading...</h2>}
+            {fetchingWishlist && <h2 className="mb-10">Loading...</h2>}
 
             {!fetchingWishlist && wishlistItems.length > 0 && (
                 <div className="mb-8">
@@ -46,14 +46,14 @@ const WishlistPage = () => {
                                             <img className="xl:w-[40%] w-[45%] h-full rounded-[14px] object-cover" src={item.images[0].url} alt="" />
                                         )}
                                         <div className="flex justify-between xl:w-[55%] w-[50%]">
-                                            <div className="text-left flex flex-col justify-between">
-                                                <div>
+                                            <div className="text-left flex flex-col items-start justify-between">
+                                                <div className="flex flex-col gap-4">
                                                     <p className="text-[20px]">{item.name}</p>
                                                     <p className="font-[700] text-[20px]">{item.base_price}</p>
                                                 </div>
-                                                <button onClick={(e) => addArtToCart(e, item)} className="rounded-[34px] bg-[#CDFFAD] text-black p-3 mt-2 md:w-1/2">Add To Cart</button>
+                                                <button onClick={(e) => addArtToCart(e, item)} className="rounded-[34px] bg-[#CDFFAD] text-black p-2 lg:py-4 lg:px-[33px] mt-2">Add To Cart</button>
                                             </div>
-                                            <img className="w-[24px] h-[24px] cursor-pointer" src="./assets/icons/trash-bin.svg" alt="" onClick={(e) => handleDelete(e, item.id)} />
+                                            <img className="w-[24px] h-[24px] cursor-pointer flex" src="./assets/icons/trash-bin.svg" alt="" onClick={(e) => handleDelete(e, item.id)} />
                                         </div>
                                     </div>
                                 </div>

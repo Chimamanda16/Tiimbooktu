@@ -41,7 +41,7 @@ function App() {
               <Route path="/login" element={<LoginPage />} />
               <Route path="/tiimbooktu" element={<Tiimbooktu />} />
               <Route path="/shop" element={<ShopPage />} />
-              <Route path="/blog" element={<StoryPage />}/>
+              <Route path="/blog/:id" element={<StoryPage />}/>
               <Route path="/tuiites" element={<Tuiites />} />
               <Route path="/rich-us" element={<RichUs />} />
               <Route path="/my-hair" element={<MyHair />} />

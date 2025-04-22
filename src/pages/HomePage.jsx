@@ -5,7 +5,7 @@ import FotografieComp from "../components/Fotografie";
 import ShopComp from "../components/Shop";
 import FooterComp from "../components/Footer";
 import ThoughtComp from "../components/Thought";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import { useArtworkStore } from "../Store/useArtworkStore";
 
@@ -39,9 +39,9 @@ function HomeComp() {
           </h1>
           <ThoughtComp />
           <div className="flex justify-center items-center">
-            <button className="bg-[#cdffad] text-[#1c1c1c] font-normal rounded-[22px] mt-20 px-4 py-2">
+            <Link to='/lacomposmentis' className="bg-[#cdffad] text-[#1c1c1c] font-normal rounded-[22px] mt-20 px-4 py-2">
               View all
-            </button>
+            </Link>
           </div>
         </div>
         <FotografieComp /></>

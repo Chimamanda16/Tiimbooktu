@@ -2,19 +2,22 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useArtworkStore } from "../Store/useArtworkStore";
 import { useCartStore } from "../Store/useCartStore";
+import { useWishlistStore } from "../Store/useWishlistStore";
 
 function NavBarComp() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [searchValue, setSearchValue] = useState('');
   const { searchArtworks, fetchArtworks } = useArtworkStore();
   const { fetchCart, cartItems } = useCartStore();
+  const {  fetchWishlist, wishlistItems } = useWishlistStore();
 
   const [tiimbooktuMenu, setTiimbooktuMenu] = useState(false);
   const [contentMenu, setContentMenu] = useState(false);
 
   useEffect(() => {
     fetchCart();
-  }, [fetchCart])
+    fetchWishlist();
+  }, [fetchCart, fetchWishlist])
 
   const handleSearch = (value) => {
     setSearchValue(value)
@@ -115,14 +118,17 @@ function NavBarComp() {
           </div>
           <Link to="/#fotografie" className="capitalize">Fotos</Link>
           <Link to="rich-us" className="capitalize">Rich Us</Link>
-          <Link to="" className="capitalize">Our Things</Link>
+          <Link to="/shop" className="capitalize">Our Things</Link>
         </div>
-        <div className="flex justify-between gap-6 text-black">
+        <div className="flex justify-between gap-10 text-black">
           <Link className="relative" to='/cart'>
             <img src="/assets/icons/Bag-4.svg" alt="" />
             <span className="absolute top-[-15px] right-[-15px] text-sm w-6 h-6 flex items-center justify-center rounded-[100%] bg-[#CDFFAD]">{cartItems?.cart_count || '0'}</span>
           </Link>
+          <Link className="relative" to='/wishlist'>
           <img src="/assets/icons/Heart.svg" alt="" />
+            <span className="absolute top-[-15px] right-[-15px] text-sm w-6 h-6 flex items-center justify-center rounded-[100%] bg-[#CDFFAD]">{wishlistItems.length || '0'}</span>
+          </Link>
         </div>
       </div>
 

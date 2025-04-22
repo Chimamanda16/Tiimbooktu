@@ -63,7 +63,7 @@ function FooterComp() {
                     <Link to='/rich-us'>Rich Us</Link>
                   </div>
                   <div className="flex flex-col gap-4">
-                    <Link to=''>Our Things</Link>
+                    <Link to='/shop'>Our Things</Link>
 
                   </div>
                 </div>

@@ -77,7 +77,7 @@ export const OrderPage = () => {
                                 {showDetail ? <>
                                     <div className={`border-b border-b-[#595959] flex flex-col lg:flex-row gap-4 items-start justify-between lg:items-center px-4 py-[18px] text-xl`}>
                                             <div className="flex flex-col gap-2">
-                                                <span className="font-bold">Order ID: 3354654654526</span>
+                                                <span className="font-bold">Order ID: {orderDetail.id}</span>
                                                 <span className="text-sm">Placed On  {format(new Date(orderDetail?.placed_on), 'd MMMM yyyy h:mm a')} </span>
                                             </div>
                                         </div>
@@ -86,7 +86,7 @@ export const OrderPage = () => {
                                     return (
                                         <div key={index} className={`${orders.length - 1 === index ? 'border-b border-b-[#595959]' : ''} flex flex-col lg:flex-row gap-4 items-start justify-between lg:items-center px-4 py-[18px] text-xl`}>
                                             <div className="flex flex-col gap-2">
-                                                <span className="font-bold">Order ID: 3354654654526</span>
+                                                <span className="font-bold">Order ID: {order.id}</span>
                                                 <span className="text-sm">Placed On  {format(new Date(order?.placed_on), 'd MMMM yyyy h:mm a')} </span>
                                                 {!order.showDetail && <span className="mt-1">Status: <span className={`${order.status} capitalize`}>{order.status}</span></span>}
                                             </div>
