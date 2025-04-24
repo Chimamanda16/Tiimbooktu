@@ -190,8 +190,8 @@ export const CheckoutPage = () => {
                                             <Input onChange={handleShippingDetails} label='Last Name' required id="last_name" name="last_name" value={shippingDetails.last_name} type="text" placeholder="Enter Last Name" />
                                         </div>
                                         <div className="flex flex-col lg:flex-row gap-5">
-                                            <Input onChange={handleShippingDetails} label='Phone Number' required id="phone_number" name="phone_number" value={shippingDetails.phone_number} type="number" />
-                                            <Input onChange={handleShippingDetails} label='Additional Phone number' id="additionalPhoneNumber" name="additionalPhoneNumber" value={formData.additionalPhoneNumber} type="number" />
+                                            <Input onChange={handleShippingDetails} phone={true} label='Phone Number' required id="phone_number" name="phone_number" value={shippingDetails.phone_number} type="number" />
+                                            <Input onChange={handleShippingDetails} phone={true} label='Additional Phone number' id="additionalPhoneNumber" name="additionalPhoneNumber" value={formData.additionalPhoneNumber} type="number" />
                                         </div>
                                         <Input onChange={handleShippingDetails} label='Address' required id="address" name="address" value={shippingDetails.address} type="text" placeholder='Enter Delivery Address' />
                                         <div className="flex flex-col lg:flex-row gap-5">
