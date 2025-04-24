@@ -29,15 +29,20 @@ export const useAuthStore = create((set) =>({
         set({isLoggingIn: true});
         try{
             await axiosInstance.get("https://tiimbooktu-qmkn.onrender.com/sanctum/csrf-cookie");
-            const res = await axiosInstance.post("/login", data);
-            localStorage.setItem('access_token', res.data.access_token);
-            toast.success(res?.data?.message);
             if(data.email ==='test@example2.com') {
+                data.type = 'admin'
+                const res = await axiosInstance.post("/login", data);
                 window.location.href = '/dashboard';
+                localStorage.setItem('access_token', res.data.access_token);
+                toast.success(res?.data?.message);
+                return res.data;
             } else {
+                const res = await axiosInstance.post("/login", data);
                 window.location.href = '/'
+                localStorage.setItem('access_token', res.data.access_token);
+                toast.success(res?.data?.message);
+                return res.data;
             }
-            return res.data;
         }
         catch(error){
             console.error(error);
