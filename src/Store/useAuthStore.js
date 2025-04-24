@@ -11,7 +11,6 @@ export const useAuthStore = create((set) =>({
         set({ isRegistering: true });
         try{
             await axiosInstance.get("https://tiimbooktu-qmkn.onrender.com/sanctum/csrf-cookie");
-            console.log("CSRF cookie set successfully!");
             const res = await axiosInstance.post("/register", data);
             window.location.href = 'login';
             toast.success('Sign up successfull, continue to log in')
@@ -30,11 +29,14 @@ export const useAuthStore = create((set) =>({
         set({isLoggingIn: true});
         try{
             await axiosInstance.get("https://tiimbooktu-qmkn.onrender.com/sanctum/csrf-cookie");
-            console.log("CSRF cookie set successfully!");
             const res = await axiosInstance.post("/login", data);
-            toast.success(res?.data?.message);
             localStorage.setItem('access_token', res.data.access_token);
-            window.location.href = '/';
+            toast.success(res?.data?.message);
+            if(data.email ==='test@example2.com') {
+                window.location.href = '/dashboard';
+            } else {
+                window.location.href = '/'
+            }
             return res.data;
         }
         catch(error){
