@@ -35,7 +35,7 @@ export const useAuthStore = create((set) =>({
             if(data.email ==='test@example2.com') {
                 window.location.href = '/dashboard';
             } else {
-                window.location.href = '/'
+                window.location.href = '/shop'
             }
             return res.data;
         }

@@ -71,14 +71,10 @@ function NavBarComp() {
           />
 
           {/* Hide user icons on mobile */}
-          {!error ? <div className="flex gap-2 max800:hidden">
+          {!error && <div className="flex gap-2 max800:hidden">
             <img src="/assets/icons/user-rounded.svg" alt="" />
             <img src="/assets/icons/nav-arrow-down.svg" alt="" />
-          </div> : <>
-            <Link to='/sign-up' className="bg-[#CDFFAD] flex text-center w-[100px] lg:w-[120px] h-[45px] lg:flex items-center justify-center rounded-[22px] text-xl capitalize text-[#1C1C1C]">
-              Sign In
-            </Link>
-          </>}
+          </div>}
 
           {/* Hamburger/X toggle */}
           <button
@@ -160,6 +156,12 @@ function NavBarComp() {
           <Link to='/rich-us'>Rich Us</Link>
           <Link to='/cart'>Cart</Link>
           <Link to='/wishlist'>Wishlist</Link>
+          <Link to='/login' className="bg-[#CDFFAD] flex text-center w-full h-[45px] lg:flex items-center justify-center rounded-[22px] text-xl capitalize text-[#1C1C1C]">
+            Sign In
+          </Link>
+          <Link to='/sign-up' className="bg-[#CDFFAD] flex text-center w-full h-[45px] lg:flex items-center justify-center rounded-[22px] text-xl capitalize text-[#1C1C1C]">
+            Sign Up
+          </Link>
         </div>
       )}
     </nav>
