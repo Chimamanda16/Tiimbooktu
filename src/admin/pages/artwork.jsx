@@ -4,9 +4,10 @@ import { Modal } from "../components/modal";
 import { Input } from "../../components/Input";
 import { Link } from "react-router-dom";
 import useAdminStore from "../../Store/useAdminStore";
+import { Loader } from "lucide-react";
 
 export const Artwork = () => {
-    const { fetchAllArtworks, artworks, createArtwork, updateArtwork, deleteArtwork } = useAdminStore();
+    const { fetchAllArtworks, artworks, createArtwork, updateArtwork, deleteArtwork, loading } = useAdminStore();
 
     const [form, setForm] = useState({
         name: '',
@@ -15,6 +16,7 @@ export const Artwork = () => {
         description: '',
     })
     const [isOpen, setIsOpen] = useState(null);
+    const [uploadSuccess, setUploadSuccess] = useState(false);
     const [images, setImages] = useState([null, null, null, null, null, null]);
 
     useEffect(() => {
@@ -73,11 +75,15 @@ export const Artwork = () => {
         const res = await createArtwork(formData);
         if (res) {
             toggleModal();
-            resetForm();
+            setUploadSuccess(true)
         }
     }
+    const closeSuccessModal = () => {
+        setUploadSuccess(false);
+        resetForm()
+    }
 
-    const update = async(e) => {
+    const update = async (e) => {
         e.preventDefault();
         const formData = new FormData();
         formData.append('name', form.name);
@@ -166,12 +172,27 @@ export const Artwork = () => {
                             </div>
                         </div>
                     </div>
-                    {form.id ? <button className="w-full py-3 border border-[#CDFFAD] rounded-xl text-[#CDFFAD]">Update</button>
+                    {form.id ? <button disabled={loading} className="w-full py-3 border flex justify-center border-[#CDFFAD] rounded-xl text-[#CDFFAD]">
+                        {loading ? (<Loader className="animate-spin" />) : ("Update")}
+                        </button>
                         :
-                        <button type="submit" className="w-full py-3 bg-[#CDFFAD] rounded-xl text-[#0A0A0A]">Add</button>
+                        <button disabled={loading} type="submit" className="w-full py-3 bg-[#CDFFAD] rounded-xl flex justify-center text-[#0A0A0A]">
+                            {loading ? (<Loader className="animate-spin" />) : ("Add")}
+                        </button>
                     }
                 </form>
             </Modal>
+
+            {uploadSuccess && <div className="fixed inset-0 flex items-start justify-center z-50 bg-black bg-opacity-50">
+                <div className="bg-[#0A0A0A] mt-[100px] relative rounded-[20px] py-11 px-[72px] flex flex-col items-center gap-6 text-center">
+                    <img onClick={closeSuccessModal} className="absolute right-6 top-5" src="/assets/icons/close-icon.svg" alt="close" />
+                    <img height={112} width={140} src="/assets/icons/upload-success.svg" alt="" />
+                    <div className="flex flex-col gap-4">
+                        <h2 className="text-white font-chango text-[26px]">Upload <br /> Successful</h2>
+                        <p className="text-[#666] capitalize">Your art work {form.name} has been successfully created</p>
+                    </div>
+                </div>
+            </div>}
         </div>
     )
 }

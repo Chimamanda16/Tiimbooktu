@@ -3,11 +3,12 @@ import { Link } from "react-router-dom";
 import PaginationTable from "../components/paginationTable";
 import { Modal } from "../components/modal";
 import useAdminStore from "../../Store/useAdminStore";
+import { Loader } from "lucide-react";
 
 const filterBtn = ['All', 'Pending Order', 'Delivered Orders']
 
 export const OverViewPage = () => {
-    const { fetchAllOrders, fetchAllArtworks, orders, artworks, updateOrder } = useAdminStore();
+    const { fetchAllOrders, fetchAllArtworks, orders, artworks, updateOrder, loading } = useAdminStore();
 
     const successfulOrders = orders.filter((order) => (order.status.toLowerCase() === 'delivered'));
     const pendingOrders = orders.filter((order) => (order.status.toLowerCase() !== 'delivered'));
@@ -48,8 +49,8 @@ export const OverViewPage = () => {
     }
 
     const toggleStatus = (status) => {
-        const updatedData = {...detail, status: status};
-        if(updatedData.status !== initialDetail.status) {
+        const updatedData = { ...detail, status: status };
+        if (updatedData.status !== initialDetail.status) {
             setUpdateBtn(false);
         } else {
             setUpdateBtn(true);
@@ -64,9 +65,9 @@ export const OverViewPage = () => {
         toggleModal();
     }
 
-    const updateOrderItem = async(data) => {
-       const res = await updateOrder({status: data.status}, data.id)
-        if(res) {
+    const updateOrderItem = async (data) => {
+        const res = await updateOrder({ status: data.status }, data.id)
+        if (res) {
             toggleModal();
         }
     }
@@ -149,7 +150,9 @@ export const OverViewPage = () => {
                                 </div>
                             </div>
                         </div>
-                        <button onClick={() => updateOrderItem(detail)} disabled={updateBtn} className="w-full disabled:bg-[#f5f5f5] disabled:cursor-not-allowed py-3 bg-[#CDFFAD] rounded-xl text-[#0A0A0A]">Update</button>
+                        <button onClick={() => updateOrderItem(detail)} disabled={updateBtn || loading} className="w-full flex justify-center disabled:bg-[#f5f5f5] disabled:cursor-not-allowed py-3 bg-[#CDFFAD] rounded-xl text-[#0A0A0A]">
+                            {loading ? (<Loader className="animate-spin" />) : ("Update")}
+                        </button>                
                     </div>
                 </Modal>
             }

@@ -9,8 +9,8 @@ function NavBarComp() {
   const [searchValue, setSearchValue] = useState('');
   const { searchArtworks, fetchArtworks } = useArtworkStore();
   const { fetchCart, cartItems } = useCartStore();
-  const { error} = useCartStore()
-  const {  fetchWishlist, wishlistItems } = useWishlistStore();
+  const { error } = useCartStore()
+  const { fetchWishlist, wishlistItems } = useWishlistStore();
   const [tiimbooktuMenu, setTiimbooktuMenu] = useState(false);
   const [contentMenu, setContentMenu] = useState(false);
   const [isActive, setIsActive] = useState(false);
@@ -44,7 +44,7 @@ function NavBarComp() {
   }
 
   const toggleSubMenu = (menu) => {
-    if(menu === 'content') {
+    if (menu === 'content') {
       setContentMenu(!contentMenu)
       setTiimbooktuMenu(false)
     } else {
@@ -56,7 +56,7 @@ function NavBarComp() {
   return (
     <nav className="relative mb-[10px] text-[#fff] font-cinzel">
       {/* Top Nav */}
-      <div className="flex justify-between items-center border-b-2 border-[#353535] w-[90%] mx-auto py-3">
+      <div className="flex justify-between gap-4 items-center border-b-2 border-[#353535] w-[90%] mx-auto py-3 pt-5">
         <a href="/"><img src="/assets/logos/tiimbooktu.png" alt="Logo" /></a>
 
         {/* Search Input */}
@@ -79,8 +79,9 @@ function NavBarComp() {
         <div className="flex items-center gap-4">
           {/* Show search icon only on mobile */}
 
-          <div className="relative w-[90%] " 
-              ref={iconRef}>
+          <div className="relative"
+            ref={iconRef}>
+
             <img
               className={isActive ? "absolute top-1/2 left-4 -translate-y-1/2" : "hidden max800:block w-6 h-6"}
               src="/assets/icons/Magnifier.svg"
@@ -93,7 +94,7 @@ function NavBarComp() {
               onChange={(e) => handleSearch(e.target.value)}
               value={searchValue}
               placeholder="Search"
-              className={isActive ? "w-full h-auto rounded-none bg-transparent border border-[#34343C] py-[14px] pl-12 pr-5": "hidden"}
+              className={isActive ? "w-full h-auto rounded-none bg-transparent border border-[#34343C] py-[14px] pl-12 pr-5" : "hidden"}
             />
           </div>
 
@@ -102,6 +103,17 @@ function NavBarComp() {
             <img src="/assets/icons/user-rounded.svg" alt="" />
             <img src="/assets/icons/nav-arrow-down.svg" alt="" />
           </div>}
+
+          {!isActive && <div className="flex justify-between md:ml-4 gap-6 md:gap-8 lg:hidden text-black">
+          <Link className="relative" to='/cart'>
+            <img src="/assets/icons/Bag-4.svg" alt="" />
+            <span className="absolute top-[-15px] right-[-15px] text-sm w-5 h-5 md:w-6 md:h-6 flex items-center justify-center rounded-[100%] bg-[#CDFFAD]">{cartItems?.cart_count || '0'}</span>
+          </Link>
+          <Link className="relative" to='/wishlist'>
+            <img src="/assets/icons/Heart.svg" alt="" />
+            <span className="absolute top-[-15px] right-[-15px] text-sm w-5 h-5 md:w-6 md:h-6 flex items-center justify-center rounded-[100%] bg-[#CDFFAD]">{wishlistItems.length || '0'}</span>
+          </Link>
+        </div>}
 
           {/* Hamburger/X toggle */}
           <button
@@ -134,7 +146,7 @@ function NavBarComp() {
             Content
             {contentMenu ? <img className="rotate-180" onClick={() => toggleSubMenu('content')} src="/assets/icons/nav-arrow-down.svg" alt="" /> : <img onClick={() => toggleSubMenu('content')} src="/assets/icons/nav-arrow-down.svg" alt="" />}
             {contentMenu &&
-(              <div className="absolute top-8 w-[250px] flex flex-col gap-4 left-0 border-[2px] border-[#595959] rounded-[20px] bg-[#0A0A0A] p-3">
+              (<div className="absolute top-8 w-[250px] flex flex-col gap-4 left-0 border-[2px] border-[#595959] rounded-[20px] bg-[#0A0A0A] p-3">
                 <Link to='/lacomposmentis'>La Compos Mentis</Link>
                 <Link to='/guestnetno'>Guest Content</Link>
               </div>)
@@ -150,7 +162,7 @@ function NavBarComp() {
             <span className="absolute top-[-15px] right-[-15px] text-sm w-6 h-6 flex items-center justify-center rounded-[100%] bg-[#CDFFAD]">{cartItems?.cart_count || '0'}</span>
           </Link>
           <Link className="relative" to='/wishlist'>
-          <img src="/assets/icons/Heart.svg" alt="" />
+            <img src="/assets/icons/Heart.svg" alt="" />
             <span className="absolute top-[-15px] right-[-15px] text-sm w-6 h-6 flex items-center justify-center rounded-[100%] bg-[#CDFFAD]">{wishlistItems.length || '0'}</span>
           </Link>
         </div>
