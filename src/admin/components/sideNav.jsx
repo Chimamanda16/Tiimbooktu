@@ -14,6 +14,13 @@ export const SideNav = () => {
                         to="/dashboard"
                         className={({ isActive }) => (isActive ? 'nav-link bg-[#CDFFAD] rounded-[8px] !text-[#0A0A0A]' : 'nav-link')}
                     >
+                        <img src="/assets/icons/overview.svg" alt="artwork" />
+                        Overview
+                    </NavLink>
+                    <NavLink
+                        to="/dashboard/artworks"
+                        className={({ isActive }) => (isActive ? 'nav-link bg-[#CDFFAD] rounded-[8px] !text-[#0A0A0A]' : 'nav-link')}
+                    >
                         <img src="/assets/icons/artwork.svg" alt="artwork" />
                         Artwork
                     </NavLink>

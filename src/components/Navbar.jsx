@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import { useArtworkStore } from "../Store/useArtworkStore";
 import { useCartStore } from "../Store/useCartStore";
@@ -11,9 +11,23 @@ function NavBarComp() {
   const { fetchCart, cartItems } = useCartStore();
   const { error} = useCartStore()
   const {  fetchWishlist, wishlistItems } = useWishlistStore();
-
   const [tiimbooktuMenu, setTiimbooktuMenu] = useState(false);
   const [contentMenu, setContentMenu] = useState(false);
+  const [isActive, setIsActive] = useState(false);
+  const iconRef = useRef(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (iconRef.current && !iconRef.current.contains(event.target)) {
+        setIsActive(false);
+      }
+    };
+
+    document.addEventListener('click', handleClickOutside);
+    return () => {
+      document.removeEventListener('click', handleClickOutside);
+    };
+  }, []);
 
   useEffect(() => {
     fetchCart();
@@ -64,21 +78,30 @@ function NavBarComp() {
         {/* Search Icon + Hamburger */}
         <div className="flex items-center gap-4">
           {/* Show search icon only on mobile */}
-          <img
-            src="/assets/icons/Magnifier.svg"
-            alt="Search Icon"
-            className="hidden max800:block w-6 h-6"
-          />
+
+          <div className="relative w-[90%] " 
+              ref={iconRef}>
+            <img
+              className={isActive ? "absolute top-1/2 left-4 -translate-y-1/2" : "hidden max800:block w-6 h-6"}
+              src="/assets/icons/Magnifier.svg"
+              alt="Search Icon"
+              ref={iconRef}
+              onClick={() => setIsActive(true)}
+            />
+            <input
+              type="text"
+              onChange={(e) => handleSearch(e.target.value)}
+              value={searchValue}
+              placeholder="Search"
+              className={isActive ? "w-full h-auto rounded-none bg-transparent border border-[#34343C] py-[14px] pl-12 pr-5": "hidden"}
+            />
+          </div>
 
           {/* Hide user icons on mobile */}
-          {!error ? <div className="flex gap-2 max800:hidden">
+          {!error && <div className="flex gap-2 max800:hidden">
             <img src="/assets/icons/user-rounded.svg" alt="" />
             <img src="/assets/icons/nav-arrow-down.svg" alt="" />
-          </div> : <>
-            <Link to='/sign-up' className="bg-[#CDFFAD] flex text-center w-[100px] lg:w-[120px] h-[45px] lg:flex items-center justify-center rounded-[22px] text-xl capitalize text-[#1C1C1C]">
-              Sign In
-            </Link>
-          </>}
+          </div>}
 
           {/* Hamburger/X toggle */}
           <button
@@ -118,7 +141,7 @@ function NavBarComp() {
             }
           </div>
           <Link to="/#fotografie" className="capitalize">Fotos</Link>
-          <Link to="rich-us" className="capitalize">Rich Us</Link>
+          <Link to="/rich-us" className="capitalize">Rich Us</Link>
           <Link to="/shop" className="capitalize">Our Things</Link>
         </div>
         <div className="flex justify-between gap-10 text-black">
@@ -160,6 +183,12 @@ function NavBarComp() {
           <Link to='/rich-us'>Rich Us</Link>
           <Link to='/cart'>Cart</Link>
           <Link to='/wishlist'>Wishlist</Link>
+          <Link to='/login' className="bg-[#CDFFAD] flex text-center w-full h-[45px] lg:flex items-center justify-center rounded-[22px] text-xl capitalize text-[#1C1C1C]">
+            Sign In
+          </Link>
+          <Link to='/sign-up' className="bg-[#CDFFAD] flex text-center w-full h-[45px] lg:flex items-center justify-center rounded-[22px] text-xl capitalize text-[#1C1C1C]">
+            Sign Up
+          </Link>
         </div>
       )}
     </nav>

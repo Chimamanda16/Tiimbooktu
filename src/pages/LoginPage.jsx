@@ -32,6 +32,9 @@ const LoginPage = () => {
       alert(error.message || "Login failed. Please try again.");
     } finally {
       setLoading(false);
+    const submitForm = async(e) => {
+        e.preventDefault();
+         login(formData);
     }
   };
   return (

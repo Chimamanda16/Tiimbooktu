@@ -35,6 +35,10 @@ const SignUpPage = () => {
       alert(error.message || "Signup failed. Please try again.");
     } finally {
       setLoading(false);
+    const submitForm = async(e) => {
+        e.preventDefault();
+        register(formData);
+        
     }
   };
   return (
