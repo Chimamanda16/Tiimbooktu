@@ -42,6 +42,7 @@ export const useAuthStore = create((set) =>({
                 localStorage.setItem('access_token', res.data.access_token);
                 toast.success(res?.data?.message);
                 return res.data;
+                window.location.href = '/shop'
             }
         }
         catch(error){
