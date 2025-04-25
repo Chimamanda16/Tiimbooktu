@@ -29,12 +29,14 @@ import ResetPassword from "./pages/ResetPassword";
 import { Layout } from "./admin/layout/layout";
 import { Artwork } from "./admin/pages/artwork";
 import { OrderDashboard } from "./admin/pages/order";
+import { OverViewPage } from "./admin/pages/overview";
+
 function App() {
   const {fetchWishlist} = useWishlistStore();
 
   useEffect(() => {
     fetchWishlist();
-  }, []);
+  }, [fetchWishlist]);
   
   return (
     <><Router>
@@ -59,10 +61,11 @@ function App() {
               <Route path="/wishlist" element={<WishlistPage />} />
               <Route path="/checkout" element={<CheckoutPage />} />
               <Route path="/order" element={<OrderPage />} />
-              <Route path="/reset-password" element={< ResetPassword/>}/>
-         {/* Admin Routes */}
-         <Route path="/dashboard" element={<Layout />}>
-                <Route index element={<Artwork />} />
+
+              {/* Admin Routes */}
+              <Route path="/dashboard" element={<Layout />}>
+                <Route index element={<OverViewPage />} />
+              <Route path="artworks" element={<Artwork />} />
               <Route path="orders" element={<OrderDashboard />} />
               </Route>
          

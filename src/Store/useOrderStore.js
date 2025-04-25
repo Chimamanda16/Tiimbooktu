@@ -26,7 +26,6 @@ export const useOrderStore = create((set) => ({
     fetchOrder: async(id) => {
         try {
             const res = await axiosInstance.get(`/orders/${id}`);
-            console.log(res)
             set({ orderDetail: res?.data.data })
             return res.data
         } 

@@ -1,33 +1,29 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import PaginationTable from "../components/paginationTable";
 import { Modal } from "../components/modal";
 import { Input } from "../../components/Input";
 import { Link } from "react-router-dom";
-
-const data = [
-    {
-        id: 1,
-        name: 'Croqskin Purse',
-        price: 29.99,
-        description: 'Yes, It Is Real; The Crocodile Head Right Through To The Croc Skin. All Real. No Cap.',
-        image: 'https://via.placeholder.com/40', // Replace with actual image URL
-    },
-    // ... add more
-];
+import useAdminStore from "../../Store/useAdminStore";
 
 export const Artwork = () => {
+    const { fetchAllArtworks, artworks, createArtwork, updateArtwork, deleteArtwork } = useAdminStore();
+
     const [form, setForm] = useState({
         name: '',
-        price: null,
+        base_price: null,
+        stock: null,
         description: '',
     })
-
     const [isOpen, setIsOpen] = useState(null);
     const [images, setImages] = useState([null, null, null, null, null, null]);
 
+    useEffect(() => {
+        fetchAllArtworks();
+    }, [fetchAllArtworks])
+
     const handleInputChange = (e) => {
-        const {name, value} = e.target;
-        setForm((prev) => ({...prev, [name]: value}));
+        const { name, value } = e.target;
+        setForm((prev) => ({ ...prev, [name]: value }));
     }
 
     const handleImageChange = (index, file) => {
@@ -40,26 +36,83 @@ export const Artwork = () => {
         setIsOpen(!isOpen)
     }
 
-    const addNewArt = () => {
+    const deleteItem = (id) => {
+        deleteArtwork(id);
+    }
+
+    const resetForm = () => {
         setForm({
             name: '',
-            price: null,
+            base_price: null,
+            stock: null,
             description: '',
         })
         setImages([null, null, null, null, null, null])
-        toggleModal()
     }
 
-    const toggleUpdate = (artwork)  => {
+    const addNewArt = () => {
+        resetForm();
+        toggleModal();
+    }
 
+    const create = async (e) => {
+        e.preventDefault();
+        const formData = new FormData();
+        formData.append('name', form.name);
+        formData.append('base_price', form.base_price);
+        formData.append('description', form.description);
+        formData.append('category_id', '');
+        formData.append('artist', form.name);
+        formData.append('stock', form.stock);
+
+        images.forEach((img, index) => {
+            if (img) {
+                formData.append(`images[${index}]`, img);
+            }
+        });
+        const res = await createArtwork(formData);
+        if (res) {
+            toggleModal();
+            resetForm();
+        }
+    }
+
+    const update = async(e) => {
+        e.preventDefault();
+        const formData = new FormData();
+        formData.append('name', form.name);
+        formData.append('base_price', form.base_price);
+        formData.append('description', form.description);
+        formData.append('category_id', '');
+        formData.append('artist', form.name);
+        formData.append('stock', form.stock);
+
+        images.forEach((img, index) => {
+            if (img) {
+                formData.append(`images[${index}]`, img);
+            }
+        });
+        const res = await updateArtwork(formData, form.id);
+        if (res) {
+            toggleModal();
+            resetForm();
+        }
+    }
+
+    const toggleUpdate = (artwork) => {
         setForm(artwork);
-        toggleModal()
+        const imageUrls = artwork.images.map(img => img.url);
+        while (imageUrls.length < 6) {
+            imageUrls.push(null);
+        }
+        setImages(imageUrls);
+        toggleModal();
     }
     return (
         <div className="flex flex-col gap-8">
             <div className="flex flex-col gap-1">
                 <h3 className="font-bold text-white text-[24px]">Artwork</h3>
-                <span className="text-[#A9A9A9]">Artwork {'>'} <Link to='/dashboard/orders'>Orders</Link></span>
+                <span className="text-[#A9A9A9]">Artwork {'>'} <Link to='/dashboard'>Overview</Link></span>
             </div>
 
 
@@ -71,15 +124,16 @@ export const Artwork = () => {
                         Add New Art Work
                     </button>
                 </div>
-                <PaginationTable type="normal" data={data} onUpdateClick={toggleUpdate} />
+                <PaginationTable type="normal" data={artworks} onUpdateClick={toggleUpdate} onDeleteClick={deleteItem} />
             </div>
 
             <Modal isOpen={isOpen} onClose={toggleModal} title={form.id ? form.name : 'Add new artwork'}>
-                <div className="flex flex-col gap-[110px] px-6 py-8">
+                <form onSubmit={(e) => form.id ? update(e) : create(e)} className="flex flex-col gap-[110px] px-6 py-8">
                     <div className="flex flex-col gap-6">
-                        <Input label="Art Name" id="name" name="name" onChange={handleInputChange} value={form.name} placeholder="Enter Art Name" />
-                        <Input type="number" label="Art Price" id="price" name="price" onChange={handleInputChange} value={form.price} placeholder="Enter Art Price" />
-                        <Input type="textarea" label="About Art" id="description" onChange={handleInputChange} name="description" value={form.description} placeholder="Describe Art" />
+                        <Input required label="Art Name" id="name" name="name" onChange={handleInputChange} value={form.name} placeholder="Enter Art Name" />
+                        <Input required type="number" label="Art Price" id="base_price" name="base_price" onChange={handleInputChange} value={form.base_price} placeholder="Enter Art Price" />
+                        <Input required type="number" label="Number of Item in Stock" id="stock" name="stock" onChange={handleInputChange} value={form.stock} placeholder="Enter Number of Item In Stock" />
+                        <Input required type="textarea" label="About Art" id="description" onChange={handleInputChange} name="description" value={form.description} placeholder="Describe Art" />
                         <div className="flex flex-col gap-[5px]">
                             <label className="text-sm text-white font-bold capitalize">Art Image</label>
                             <div className="grid grid-cols-3 gap-3">
@@ -90,7 +144,11 @@ export const Artwork = () => {
                                     >
                                         {img ? (
                                             <img
-                                                src={URL.createObjectURL(img)}
+                                                src={
+                                                    img instanceof File
+                                                        ? URL.createObjectURL(img)
+                                                        : img
+                                                }
                                                 alt="preview"
                                                 className="h-full w-full object-cover rounded-md"
                                             />
@@ -109,10 +167,10 @@ export const Artwork = () => {
                         </div>
                     </div>
                     {form.id ? <button className="w-full py-3 border border-[#CDFFAD] rounded-xl text-[#CDFFAD]">Update</button>
-                    :
-                    <button className="w-full py-3 bg-[#CDFFAD] rounded-xl text-[#0A0A0A]">Add</button>
-                     }
-                </div>
+                        :
+                        <button type="submit" className="w-full py-3 bg-[#CDFFAD] rounded-xl text-[#0A0A0A]">Add</button>
+                    }
+                </form>
             </Modal>
         </div>
     )

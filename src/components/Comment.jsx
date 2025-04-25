@@ -5,8 +5,7 @@ import { toast } from "react-toastify";
 
 export const Comment = () => {
     const [form, setForm] = useState({
-        first_name: '',
-        last_name: '',
+        name: '',
         email: '',
         message: '',
     })
@@ -21,8 +20,7 @@ export const Comment = () => {
         try {
             const res = await axiosInstance.post('feedback', form);
             setForm({
-                first_name: '',
-                last_name: '',
+                name: '',
                 email: '',
                 message: '',
             })
@@ -37,8 +35,7 @@ export const Comment = () => {
             <h4 className="text-[26px] font-chango text-white text-center">COMMENT?</h4>
             <div className="flex flex-col gap-4 font-sans">
                 <div className="flex flex-col lg:flex-row w-full gap-4 lg:gap-[30px] items-center">
-                    <Input onChange={handleInputChange} label="First name" id="first_name" required name="first_name" type="text" value={form.first_name} placeholder="Enter first name" />
-                    <Input onChange={handleInputChange} label="Last name" id="last_name" required name="last_name" value={form.last_name} type="text" placeholder="Enter last name" />
+                    <Input onChange={handleInputChange} label="Name" id="name" required name="name" type="text" value={form.name} placeholder="Enter name" />
                 </div>
                 <Input onChange={handleInputChange} label="Email" id="email" name="email" required type="email" value={form.email} placeholder="Enter your Email" />
                 <Input onChange={handleInputChange} label="Your message" type="textarea" required name="message" value={form.message} id="message" placeholder="Enter your message" />

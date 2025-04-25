@@ -18,13 +18,7 @@ const LoginPage = () => {
 
     const submitForm = async(e) => {
         e.preventDefault();
-        try {
-            const response = await login(formData);
-           console.log("Login Successful", response);
-        } catch (error) {
-            console.error("Error submitting form:", error);
-            console.log(error.message);
-        }
+         login(formData);
     }
 
   return (

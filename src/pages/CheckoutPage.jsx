@@ -123,7 +123,6 @@ export const CheckoutPage = () => {
             resetForm();
             if (response) {
                 resetForm()
-                console.log(response)
                 window.location.href = response.checkout_url
             }
         } catch (error) {

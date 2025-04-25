@@ -19,13 +19,7 @@ const SignUpPage = () => {
 
     const submitForm = async(e) => {
         e.preventDefault();
-        try {
-            const response = await register(formData);
-           console.log("Registration Successful", response);
-        } catch (error) {
-            console.error("Error submitting form:", error);
-            console.log(error.message);
-        }
+        register(formData);
         
     }
 
