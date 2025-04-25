@@ -118,7 +118,7 @@ function NavBarComp() {
             }
           </div>
           <Link to="/#fotografie" className="capitalize">Fotos</Link>
-          <Link to="rich-us" className="capitalize">Rich Us</Link>
+          <Link to="/rich-us" className="capitalize">Rich Us</Link>
           <Link to="/shop" className="capitalize">Our Things</Link>
         </div>
         <div className="flex justify-between gap-10 text-black">

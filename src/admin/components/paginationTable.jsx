@@ -140,8 +140,8 @@ const PaginationTable = ({ data, itemsPerPage = 10, onUpdateClick, type, onDelet
                             </div>
                             <div className='flex justify-start'>
                                 <div className='flex rounded-lg bg-[#2B2B2B]'>
-                                    <button className={`py-2 px-2 rounded-lg ${item.status.toLowerCase() !== 'delivered' ? 'bg-[#322A21] text-[#F57C00]' : 'text-[#595959]'}`}>In Progress</button>
-                                    <button className={`py-2 px-2 rounded-lg ${item.status.toLowerCase() === 'delivered' ? 'bg-[#61C45312] text-[#61C453]' : 'text-[#595959]'}`}>Delivered</button>
+                                    <button className={`py-2 px-2 rounded-lg ${item.status.toLowerCase() !== 'delivered' && item.status.toLowerCase() !== 'shipped' ? 'bg-[#322A21] text-[#F57C00]' : 'text-[#595959]'}`}>In Progress</button>
+                                    <button className={`py-2 px-2 rounded-lg ${item.status.toLowerCase() === 'delivered' || item.status.toLowerCase() === 'shipped' ? 'bg-[#61C45312] text-[#61C453]' : 'text-[#595959]'}`}>Delivered</button>
                                 </div>
                             </div>
                         </div>

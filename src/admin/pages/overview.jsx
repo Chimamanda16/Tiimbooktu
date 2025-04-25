@@ -6,8 +6,8 @@ import useAdminStore from "../../Store/useAdminStore";
 
 const filterBtn = ['All', 'Pending Order', 'Delivered Orders']
 
-export const OrderDashboard = () => {
-    const { fetchAllOrders, orders, updateOrder } = useAdminStore();
+export const OverViewPage = () => {
+    const { fetchAllOrders, fetchAllArtworks, orders, artworks, updateOrder } = useAdminStore();
 
     const successfulOrders = orders.filter((order) => (order.status.toLowerCase() === 'delivered'));
     const pendingOrders = orders.filter((order) => (order.status.toLowerCase() !== 'delivered'));
@@ -27,7 +27,8 @@ export const OrderDashboard = () => {
 
     useEffect(() => {
         fetchAllOrders();
-    }, [fetchAllOrders])
+        fetchAllArtworks()
+    }, [fetchAllOrders, fetchAllArtworks])
 
     const setActive = (option) => {
         setActiveOption(option);
@@ -73,11 +74,11 @@ export const OrderDashboard = () => {
     return (
         <div className="flex flex-col gap-8">
             <div className="flex flex-col gap-1">
-                <h3 className="font-bold text-white text-[24px]">Order</h3>
-                <span className="text-[#A9A9A9]">Order {'>'} <Link to='/dashboard'>Overview</Link></span>
+                <h3 className="font-bold text-white text-[24px]">Dashboard</h3>
+                <span className="text-[#A9A9A9]">Dashboard {'>'} <Link to='/dashboard'>Overview</Link></span>
             </div>
 
-            <div className="grid grid-cols-3 gap-5">
+            <div className="grid grid-cols-2 gap-5">
                 <div className="bg-[#0A0A0A] border border-[#353535] rounded-xl p-6 flex gap-4">
                     <div className="bg-[#242424] h-[65px] w-[65px] rounded-2xl flex items-center justify-center">
                         <img src="/assets/icons/total-order.svg" alt="" />
@@ -89,20 +90,11 @@ export const OrderDashboard = () => {
                 </div>
                 <div className="bg-[#0A0A0A] border border-[#353535] rounded-xl p-6 flex gap-4">
                     <div className="bg-[#242424] h-[65px] w-[65px] rounded-2xl flex items-center justify-center">
-                        <img src="/assets/icons/successful-order.svg" alt="" />
+                        <img src="/assets/icons/artwork-green.svg" alt="" />
                     </div>
                     <div className="flex flex-col">
-                        <h6 className="text-xl text-[#A9A9A9] capitalize">successful order</h6>
-                        <span className="font-bold text-[24px] text-white">{successfulOrders.length}</span>
-                    </div>
-                </div>
-                <div className="bg-[#0A0A0A] border border-[#353535] rounded-xl p-6 flex gap-4">
-                    <div className="bg-[#242424] h-[65px] w-[65px] rounded-2xl flex items-center justify-center">
-                        <img src="/assets/icons/pending-order.svg" alt="" />
-                    </div>
-                    <div className="flex flex-col">
-                        <h6 className="text-xl text-[#A9A9A9] capitalize">Pending order</h6>
-                        <span className="font-bold text-[24px] text-white">{pendingOrders.length}</span>
+                        <h6 className="text-xl text-[#A9A9A9] capitalize">Artwork</h6>
+                        <span className="font-bold text-[24px] text-white">{artworks.length}</span>
                     </div>
                 </div>
             </div>
@@ -119,7 +111,7 @@ export const OrderDashboard = () => {
                         </button>
                     ))}
                 </div>
-                <PaginationTable data={data} onUpdateClick={showDetail} type="order" />
+                <PaginationTable itemsPerPage={5} data={data} onUpdateClick={showDetail} type="order" />
             </div>
             {detail &&
                 <Modal isOpen={isOpen} onClose={toggleModal} title={detail.id}>

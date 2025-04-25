@@ -38,7 +38,7 @@ export const useAuthStore = create((set) =>({
                 return res.data;
             } else {
                 const res = await axiosInstance.post("/login", data);
-                window.location.href = '/'
+                window.location.href = '/shop'
                 localStorage.setItem('access_token', res.data.access_token);
                 toast.success(res?.data?.message);
                 return res.data;
