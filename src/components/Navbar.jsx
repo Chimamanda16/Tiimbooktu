@@ -75,7 +75,7 @@ function NavBarComp() {
             <img src="/assets/icons/user-rounded.svg" alt="" />
             <img src="/assets/icons/nav-arrow-down.svg" alt="" />
           </div> : <>
-            <Link to='/sign-up' className="bg-[#CDFFAD] flex text-center w-[120px] h-[45px] lg:flex items-center justify-center rounded-[22px] text-xl capitalize text-[#1C1C1C]">
+            <Link to='/sign-up' className="bg-[#CDFFAD] flex text-center w-[100px] lg:w-[120px] h-[45px] lg:flex items-center justify-center rounded-[22px] text-xl capitalize text-[#1C1C1C]">
               Sign In
             </Link>
           </>}
