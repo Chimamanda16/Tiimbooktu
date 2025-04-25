@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import {Facebook, Instagram, Linkedin, MessageCircle } from "lucide-react";
 
 function FooterComp() {
   return (
@@ -29,10 +30,10 @@ function FooterComp() {
           <div className="col-span-1">
             <h3 className="text-sm uppercase mb-6 text-[#D9D9D9]">About Us</h3>
             <div className="flex flex-col gap-2 text-[#FFFFFF]">
-              <Link to="/facebook">Facebook</Link>
-              <Link to="/instagram">Instagram</Link>
-              <Link to="/linkedin">LinkedIn</Link>
-              <Link to="/whatsapp">WhatsApp</Link>
+              <Link to="/facebook">< Facebook /></Link>
+              <Link to="/instagram">< Instagram /></Link>
+              <Link to="/linkedin"><Linkedin /></Link>
+              <Link to="/whatsapp"><MessageCircle /> {/* Using MessageCircle for WhatsApp-like look */}</Link>
             </div>
           </div>
 
