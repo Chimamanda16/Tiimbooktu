@@ -75,5 +75,15 @@ export const useAuthStore = create((set) =>({
             throw new Error("Email submission failed. Please try again.");
         }
     },
+    resetPassword: async(data) =>{
+        try{
+            const res = await axiosInstance.post("/reset-password", data);
+            return res;
+        }catch(error){
+            console.error(error);
+            throw new Error("Reset password Failed. Please try again");
+            
+        }
+    }
 
 }))
