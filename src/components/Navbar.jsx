@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import { useArtworkStore } from "../Store/useArtworkStore";
 import { useCartStore } from "../Store/useCartStore";
@@ -11,9 +11,23 @@ function NavBarComp() {
   const { fetchCart, cartItems } = useCartStore();
   const { error} = useCartStore()
   const {  fetchWishlist, wishlistItems } = useWishlistStore();
-
   const [tiimbooktuMenu, setTiimbooktuMenu] = useState(false);
   const [contentMenu, setContentMenu] = useState(false);
+  const [isActive, setIsActive] = useState(false);
+  const iconRef = useRef(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (iconRef.current && !iconRef.current.contains(event.target)) {
+        setIsActive(false);
+      }
+    };
+
+    document.addEventListener('click', handleClickOutside);
+    return () => {
+      document.removeEventListener('click', handleClickOutside);
+    };
+  }, []);
 
   useEffect(() => {
     fetchCart();
@@ -64,11 +78,24 @@ function NavBarComp() {
         {/* Search Icon + Hamburger */}
         <div className="flex items-center gap-4">
           {/* Show search icon only on mobile */}
-          <img
-            src="/assets/icons/Magnifier.svg"
-            alt="Search Icon"
-            className="hidden max800:block w-6 h-6"
-          />
+
+          <div className="relative w-[90%] " 
+              ref={iconRef}>
+            <img
+              className={isActive ? "absolute top-1/2 left-4 -translate-y-1/2" : "hidden max800:block w-6 h-6"}
+              src="/assets/icons/Magnifier.svg"
+              alt="Search Icon"
+              ref={iconRef}
+              onClick={() => setIsActive(true)}
+            />
+            <input
+              type="text"
+              onChange={(e) => handleSearch(e.target.value)}
+              value={searchValue}
+              placeholder="Search"
+              className={isActive ? "w-full h-auto rounded-none bg-transparent border border-[#34343C] py-[14px] pl-12 pr-5": "hidden"}
+            />
+          </div>
 
           {/* Hide user icons on mobile */}
           {!error && <div className="flex gap-2 max800:hidden">
