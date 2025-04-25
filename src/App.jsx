@@ -15,7 +15,7 @@ import { MyHair } from "./pages/MyHair";
 import { Guestnetno } from "./pages/Guestnetno";
 import Composmentis from "./pages/ComposMentis";
 import DetailsPage from "./pages/Details";
-import ResetComp from "./pages/ResetPassword";
+import ForgotPassword from "./pages/ForgotPassword";
 import WishlistPage from "./pages/Wishlist";
 import { Cart } from "./pages/Cart";
 import { ConfirmationPage } from "./pages/ConfirmationPage";
@@ -24,10 +24,11 @@ import 'react-toastify/dist/ReactToastify.css'
 import { CheckoutPage } from "./pages/CheckoutPage";
 import { OrderPage } from "./pages/Order";
 import { useWishlistStore } from "./Store/useWishlistStore";
+
+import ResetPassword from "./pages/ResetPassword";
 import { Layout } from "./admin/layout/layout";
 import { Artwork } from "./admin/pages/artwork";
 import { OrderDashboard } from "./admin/pages/order";
-
 function App() {
   const {fetchWishlist} = useWishlistStore();
 
@@ -54,16 +55,17 @@ function App() {
               <Route path="/cart" element={<Cart />} />
               <Route path="/confirmation" element={<ConfirmationPage />} />
               <Route path="/details/:id" element={< DetailsPage />}/>
-              <Route path="/reset" element={< ResetComp />}/>
+              <Route path="/forgot-password" element={< ForgotPassword />}/>
               <Route path="/wishlist" element={<WishlistPage />} />
               <Route path="/checkout" element={<CheckoutPage />} />
               <Route path="/order" element={<OrderPage />} />
-
-              {/* Admin Routes */}
-              <Route path="/dashboard" element={<Layout />}>
+              <Route path="/reset-password" element={< ResetPassword/>}/>
+         {/* Admin Routes */}
+         <Route path="/dashboard" element={<Layout />}>
                 <Route index element={<Artwork />} />
               <Route path="orders" element={<OrderDashboard />} />
               </Route>
+         
           </Routes>
       </Router><ToastContainer
         position="top-right"
