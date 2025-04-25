@@ -35,12 +35,9 @@ const SignUpPage = () => {
       alert(error.message || "Signup failed. Please try again.");
     } finally {
       setLoading(false);
-    const submitForm = async(e) => {
-        e.preventDefault();
-        register(formData);
-        
     }
   };
+
   return (
     <div className="bg-[#1c1c1c] w-full text-white">
       <NavBarComp />

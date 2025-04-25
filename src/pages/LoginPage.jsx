@@ -4,6 +4,7 @@ import NavBarComp from "../components/Navbar.jsx";
 import FooterComp from "../components/Footer.jsx";
 import { Link } from "react-router-dom";
 import { Loader } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const LoginPage = () => {
   useEffect(() => {
@@ -17,6 +18,7 @@ const LoginPage = () => {
   });
 
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   const submitForm = async (e) => {
     e.preventDefault();
@@ -32,11 +34,10 @@ const LoginPage = () => {
       alert(error.message || "Login failed. Please try again.");
     } finally {
       setLoading(false);
-    const submitForm = async(e) => {
-        e.preventDefault();
-         login(formData);
     }
   };
+
+  
   return (
     <div className="bg-[#1c1c1c] w-full">
       <NavBarComp />
@@ -81,7 +82,7 @@ const LoginPage = () => {
               }
             />
           </div>
-          <Link className="underline text-[#CDFFAD] text-right">
+          <Link to="/forgot-password" className="underline text-[#CDFFAD] text-right">
             Forgot Password?
           </Link>
 
