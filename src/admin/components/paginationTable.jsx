@@ -1,7 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Ellipsis } from 'lucide-react';
+import { format } from 'date-fns';
 
-const PaginationTable = ({ data, itemsPerPage = 10, onUpdateClick, type }) => {
+const PaginationTable = ({ data, itemsPerPage = 10, onUpdateClick, type, onDeleteClick }) => {
     const [currentPage, setCurrentPage] = useState(1);
     const [openIndex, setOpenIndex] = useState(null);
     const totalPages = Math.ceil(data.length / itemsPerPage);
@@ -44,6 +45,10 @@ const PaginationTable = ({ data, itemsPerPage = 10, onUpdateClick, type }) => {
         onUpdateClick(art);
         openOption(index)
     }
+    const deleteItem = (id, index) => {
+        onDeleteClick(id);
+        openOption(index);
+    }
     const showDetail = (e, item) => {
         e.stopPropagation();
         onUpdateClick(item);
@@ -63,12 +68,15 @@ const PaginationTable = ({ data, itemsPerPage = 10, onUpdateClick, type }) => {
                     {currentItems.map((item, index) => (
                         <div key={index} className='grid bg-[#242424] items-center grid-cols-9 gap-3 p-2 border border-[#595959] rounded-xl'>
                             <div className='col-span-2 flex gap-2 items-center'>
-                                <img src="/assets/images/art.png" alt="art" className="w-[38px] h-[38px] object-cover rounded" />
-                                {item.name}
+                                <img src={item.images[0].url} alt="art" className="w-[38px] h-[38px] object-cover rounded" />
+                                <p className='truncate w-[96%]'>
+                                    {item.name}
+                                </p>
+
                             </div>
                             <div className='col-span-2'>
                                 <p className='truncate w-[96%]'>
-                                    ${item.price}
+                                    ${item.base_price}
                                 </p>
                             </div>
                             <div className='col-span-4'>
@@ -77,11 +85,21 @@ const PaginationTable = ({ data, itemsPerPage = 10, onUpdateClick, type }) => {
                                 </p>
                             </div>
                             <div ref={(el) => (menuRefs.current[index] = el)} className='col-span-1 w-full flex pr-4 justify-end relative'>
-                                <img onClick={() => openOption(index)} src="/assets/icons/action.svg" alt="action" />
+                                <Ellipsis
+                                    onClick={() => openOption(index)}
+                                    className="text-[#CDFFAD] cursor-pointer"
+                                />
                                 {openIndex === index && (
                                     <div className="absolute right-0 flex flex-col w-[120px] z-[99] top-full bg-white text-black rounded-lg modal">
-                                        <button onClick={() => update(item, index)} className='py-2 px-3 text-start'>Update</button>
-                                        <button className='text-red-700 py-2 px-3 text-start'>Delete</button>
+                                        <button
+                                            onClick={() => update(item, index)}
+                                            className="py-2 px-3 text-start hover:bg-[#CDFFAD] m-1 rounded-xl"
+                                        >
+                                            Update
+                                        </button>
+                                        <button onClick={()=> deleteItem(item.id, index)} className="text-red-700 py-2 px-3 text-start hover:bg-[#CDFFAD] m-1 rounded-xl">
+                                            Delete
+                                        </button>
                                     </div>
                                 )}
                             </div>
@@ -91,38 +109,39 @@ const PaginationTable = ({ data, itemsPerPage = 10, onUpdateClick, type }) => {
                 </>
                 :
                 <>
-                    <div className='grid bg-[#2B2B2B] grid-cols-8 gap-3 p-4 border border-[#595959] rounded-xl'>
-                        <div className='col-span-2'>Artwork</div>
+                    <div className='grid bg-[#2B2B2B] grid-cols-5 gap-3 p-4 border border-[#595959] rounded-xl'>
                         <div>Price</div>
                         <div>Order ID</div>
-                        <div className='col-span-2'>Description</div>
-                        <div className='col-span-2'>Action</div>
+                        <div>Conact</div>
+                        <div>Order Date</div>
+                        <div>Action</div>
                     </div>
                     {currentItems.map((item, index) => (
-                        <div onClick={(e) => showDetail(e, item)} key={index} className='grid bg-[#242424] items-center grid-cols-8 gap-3 p-2 border border-[#595959] rounded-xl cursor-pointer'>
-                            <div className='flex col-span-2 gap-2 items-center'>
-                                <img src="/assets/images/art.png" alt="art" className="w-[38px] h-[38px] object-cover rounded" />
-                                {item.name}
-                            </div>
+                        <div onClick={(e) => showDetail(e, item)} key={index} className='grid bg-[#242424] items-center grid-cols-5 gap-3 p-2 border border-[#595959] rounded-xl cursor-pointer'>
                             <div>
                                 <p className='truncate w-[96%]'>
-                                    ${item.price}
+                                    ${item?.total_amount}
                                 </p>
                             </div>
                             <div>
                                 <p className='truncate w-[96%]'>
-                                    {item.order_id}
+                                    {item.id}
                                 </p>
                             </div>
-                            <div className='col-span-2'>
+                            <div>
                                 <p className='truncate w-[96%]'>
-                                    {item.description}
+                                    {item.contact}
                                 </p>
                             </div>
-                            <div className='col-span-2 flex justify-start'>
+                            <div>
+                                <p className='truncate w-[96%]'>
+                                   {format(new Date(item?.placed_on), 'd MMMM yyyy h:mm a')}
+                                </p>
+                            </div>
+                            <div className='flex justify-start'>
                                 <div className='flex rounded-lg bg-[#2B2B2B]'>
-                                    <button className={`py-2 px-2 rounded-lg ${item.status == 'in progress' ? 'bg-[#322A21] text-[#F57C00]' : 'text-[#595959]'}`}>In Progress</button>
-                                    <button className={`py-2 px-2 rounded-lg ${item.status == 'delivered' ? 'bg-[#61C45312] text-[#61C453]' : 'text-[#595959]'}`}>Delivered</button>
+                                    <button className={`py-2 px-2 rounded-lg ${item.status.toLowerCase() !== 'delivered' ? 'bg-[#322A21] text-[#F57C00]' : 'text-[#595959]'}`}>In Progress</button>
+                                    <button className={`py-2 px-2 rounded-lg ${item.status.toLowerCase() === 'delivered' ? 'bg-[#61C45312] text-[#61C453]' : 'text-[#595959]'}`}>Delivered</button>
                                 </div>
                             </div>
                         </div>

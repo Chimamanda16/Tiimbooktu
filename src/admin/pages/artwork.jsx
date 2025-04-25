@@ -1,29 +1,25 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import PaginationTable from "../components/paginationTable";
 import { Modal } from "../components/modal";
 import { Input } from "../../components/Input";
 import { Link } from "react-router-dom";
-
-const data = [
-    {
-        id: 1,
-        name: 'Croqskin Purse',
-        price: 29.99,
-        description: 'Yes, It Is Real; The Crocodile Head Right Through To The Croc Skin. All Real. No Cap.',
-        image: 'https://via.placeholder.com/40', // Replace with actual image URL
-    },
-    // ... add more
-];
+import useAdminStore from "../../Store/useAdminStore";
 
 export const Artwork = () => {
+    const{fetchAllArtworks, artworks, createArtwork, updateArtwork, deleteArtwork} = useAdminStore();
+
     const [form, setForm] = useState({
         name: '',
-        price: null,
+        base_price: null,
+        stock: null,
         description: '',
     })
-
     const [isOpen, setIsOpen] = useState(null);
     const [images, setImages] = useState([null, null, null, null, null, null]);
+
+    useEffect(() => {
+        fetchAllArtworks();
+    }, [fetchAllArtworks])
 
     const handleInputChange = (e) => {
         const {name, value} = e.target;
@@ -40,18 +36,45 @@ export const Artwork = () => {
         setIsOpen(!isOpen)
     }
 
+    const deleteItem = (id) => {
+        deleteArtwork(id);
+    }
+
     const addNewArt = () => {
         setForm({
             name: '',
-            price: null,
+            base_price: null,
+            stock: null,
             description: '',
         })
         setImages([null, null, null, null, null, null])
         toggleModal()
     }
 
-    const toggleUpdate = (artwork)  => {
+    const create = (e) => {
+        e.preventDefault();
+        const formData = new FormData();
+        formData.append('name', form.name);
+        formData.append('base_price', form.base_price);
+        formData.append('description', form.description);
+        formData.append('category_id', '');
+        formData.append('artist', form.name);
+        formData.append('stock', form.stock);
+      
+        images.forEach((img, index) => {
+          if (img) {
+            formData.append(`images[${index}]`, img);
+          }
+        });
+        createArtwork(formData)
+    }
 
+    const update = (e) => {
+        e.preventDefault();
+        updateArtwork(form);
+    }
+
+    const toggleUpdate = (artwork)  => {
         setForm(artwork);
         toggleModal()
     }
@@ -71,15 +94,16 @@ export const Artwork = () => {
                         Add New Art Work
                     </button>
                 </div>
-                <PaginationTable type="normal" data={data} onUpdateClick={toggleUpdate} />
+                <PaginationTable type="normal" data={artworks} onUpdateClick={toggleUpdate} onDeleteClick={deleteItem} />
             </div>
 
             <Modal isOpen={isOpen} onClose={toggleModal} title={form.id ? form.name : 'Add new artwork'}>
-                <div className="flex flex-col gap-[110px] px-6 py-8">
+                <form onSubmit={(e) => form.id ? update(e) : create(e)} className="flex flex-col gap-[110px] px-6 py-8">
                     <div className="flex flex-col gap-6">
-                        <Input label="Art Name" id="name" name="name" onChange={handleInputChange} value={form.name} placeholder="Enter Art Name" />
-                        <Input type="number" label="Art Price" id="price" name="price" onChange={handleInputChange} value={form.price} placeholder="Enter Art Price" />
-                        <Input type="textarea" label="About Art" id="description" onChange={handleInputChange} name="description" value={form.description} placeholder="Describe Art" />
+                        <Input required label="Art Name" id="name" name="name" onChange={handleInputChange} value={form.name} placeholder="Enter Art Name" />
+                        <Input required type="number" label="Art Price" id="base_price" name="base_price" onChange={handleInputChange} value={form.base_price} placeholder="Enter Art Price" />
+                        <Input required type="number" label="Number of Item in Stock" id="stock" name="stock" onChange={handleInputChange} value={form.stock} placeholder="Enter Number of Item In Stock" />
+                        <Input required type="textarea" label="About Art" id="description" onChange={handleInputChange} name="description" value={form.description} placeholder="Describe Art" />
                         <div className="flex flex-col gap-[5px]">
                             <label className="text-sm text-white font-bold capitalize">Art Image</label>
                             <div className="grid grid-cols-3 gap-3">
@@ -110,9 +134,9 @@ export const Artwork = () => {
                     </div>
                     {form.id ? <button className="w-full py-3 border border-[#CDFFAD] rounded-xl text-[#CDFFAD]">Update</button>
                     :
-                    <button className="w-full py-3 bg-[#CDFFAD] rounded-xl text-[#0A0A0A]">Add</button>
+                    <button type="submit" className="w-full py-3 bg-[#CDFFAD] rounded-xl text-[#0A0A0A]">Add</button>
                      }
-                </div>
+                </form>
             </Modal>
         </div>
     )

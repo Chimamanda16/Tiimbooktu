@@ -34,7 +34,6 @@ export const useArtworkStore = create((set) => ({
             const res = await axiosInstance.get(`/artworks/${id}`);
             if(res.data) {
                 set({artworkItem: res.data.artwork})
-                console.log(res.data)
             }
             return res.data;
         }
