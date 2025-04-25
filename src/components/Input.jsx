@@ -9,7 +9,8 @@ export const Input = ({
     value = "",
     required = false,
     options = [],
-    onChange = () => { }
+    onChange = () => { },
+    phone = false
 }) => {
     const [isOpen, setIsOpen] = useState(false);
     const handleChange = (e) => {
@@ -24,11 +25,11 @@ export const Input = ({
             <label className="text-sm text-white font-bold capitalize" htmlFor={id}>{label}</label>
             {type === 'textarea' ?
                 <textarea rows={4} onChange={(e) => handleChange(e)} name={name} id={id} value={value} placeholder={placeholder}></textarea> :
-                type === 'number' ?
+                phone ?
                     <div className="flex py-3 px-5 bg-[#2B2B2B] border border-[#595959] rounded-[12px]">
-                        <div className="border-r pr-[10px] border-r-[#595959]">
+                        {phone && <div className="border-r pr-[10px] border-r-[#595959]">
                             +234
-                        </div>
+                        </div>}
                         <input className="border-none bg-[#2B2B2B] px-6 outline-none w-full" required={required} onChange={(e) => handleChange(e)} type={type} placeholder={placeholder} name={name} id={id} value={value} />
                     </div> : type === 'select' ?
                         <>

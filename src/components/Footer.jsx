@@ -1,90 +1,47 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
 
 function FooterComp() {
-  const [tiimbooktuMenu, setTiimbooktuMenu] = useState(false);
-  const [contentMenu, setContentMenu] = useState(false);
   return (
-    <section className="bg-[#2B2B2B] w-full pt-12 pb-6 font-cinzel">
-      <div className="w-[90%] mx-auto text-center">
-        <div className="flex flex-col lg:flex-row gap-16 justify-between">
-          {/* Subscribe Section */}
-          <div className="w-full sm:w-full flex flex-col justify-between gap-8 lg:w-[35%] text-start">
-            <div className="flex flex-col gap-8">
-              <div className="flex flex-col gap-6 lg:w-[571px]">
-                <p className="text-white text-start">
-                  YOU MIGHT WANT TO
-                </p>
-                <h2 className="lg:text-[40px] text-[22px] text-white text-start font-medium font-chango uppercase">
-                  Subscribe for <br className="hidden lg:flex" /> our newsletters
-                </h2>
-              </div>
-              <div className="relative">
-                <input
-                  type="email"
-                  placeholder="E-mail"
-                  className="w-full h-auto rounded-none bg-transparent border border-[#34343C] py-[14px] px-5"
-                />
-                <img className="absolute right-6 top-6" src="/assets/icons/arrow-right-icon-black.svg" alt="arrow-right" />
-              </div>
-            </div>
-            <div className="flex items-center justify-between lg:justify-start gap-[30px]">
-              <a href=""><img src="/assets/icons/facebook-icon.svg" alt="facebook" /></a>
-              <a href=""><img src="/assets/icons/linkedin-icon.svg" alt="linkedin" /></a>
-              <a href=""><img src="/assets/icons/whatsapp-icon.svg" alt="whatsapp" /></a>
-              <a href=""><img src="/assets/icons/instagram-icon.svg" alt="instagram" /></a>
+    <section className="bg-[#000000] w-full py-16 font-sans text-white">
+      <div className="w-[90%] max-w-6xl mx-auto ">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
+          <div className="col-span-1">
+            <img
+              src="/assets/images/logo.svg"
+              alt="Tiimbooktu"
+              className="h-12 mb-4"
+            />
+            <p className="mt-4 text-[#D9D9D9]">Stories. Alliance. Art.</p>
+          </div>
+
+          <div className="col-span-1 ">
+            <h3 className="text-sm uppercase mb-6 text-[#D9D9D9]">
+              Contacts Us
+            </h3>
+            <div className="flex flex-col gap-2 text-[#FFFFFF]">
+              <a href="tel:+2349015019295">+[234] 901 501 9295</a>
+              <a href="mailto:kijagoban@tiimbooktu.com">
+                Kijagoban@Tiimbooktu.Com
+              </a>
             </div>
           </div>
 
-          {/* About & Links Section */}
-          <div className="w-full lg:w-[35%] flex flex-col gap-12 text-start">
-            <div className="flex gap-8 text-start md:gap-[120px]">
-              <div className="flex flex-col gap-5">
-                <p className="text-[#FFFFFF] text-[10px] mb-[2%]">About Us</p>
-                <div className="flex gap-[120px] text-white">
-                  <div className="flex flex-col gap-4">
-                    <div className="flex gap-2 capitalize">
-                      Tiimbooktu
-                      {tiimbooktuMenu ? <img className=" rotate-180" onClick={() => setTiimbooktuMenu(!tiimbooktuMenu)} src="/assets/icons/nav-arrow-down.svg" alt="" /> : <img onClick={() => setTiimbooktuMenu(!tiimbooktuMenu)} src="/assets/icons/nav-arrow-down.svg" alt="" />}
-                    </div>
-                    {tiimbooktuMenu && <>
-                      <Link to='/tiimbooktu'>On Tiimbooktu</Link>
-                      <Link to='/tuiites'>From The Tutsi</Link>
-                    </>}
-                    <div className="flex gap-2 capitalize">
-                      Content
-                      {contentMenu ? <img className=" rotate-180" onClick={() => setContentMenu(!contentMenu)} src="/assets/icons/nav-arrow-down.svg" alt="" /> : <img onClick={() => setContentMenu(!contentMenu)} src="/assets/icons/nav-arrow-down.svg" alt="" />}
-                    </div>
-                    {contentMenu && <>
-                      <Link to='/lacomposmentis'>La Compos Mentis</Link>
-                      <Link to='/guestnetno'>Guest Content</Link>
-                    </>}
-                    <Link to=''>Fotos</Link>
-                    <Link to='/rich-us'>Rich Us</Link>
-                  </div>
-                  <div className="flex flex-col gap-4">
-                    <Link to='/shop'>Our Things</Link>
-
-                  </div>
-                </div>
-              </div>
+          <div className="col-span-1">
+            <h3 className="text-sm uppercase mb-6 text-[#D9D9D9]">About Us</h3>
+            <div className="flex flex-col gap-2 text-[#FFFFFF]">
+              <Link to="/facebook">Facebook</Link>
+              <Link to="/instagram">Instagram</Link>
+              <Link to="/linkedin">LinkedIn</Link>
+              <Link to="/whatsapp">WhatsApp</Link>
             </div>
+          </div>
 
-            {/* Contact & Privacy Section */}
-            <div className="flex flex-col gap-[120px] text-white">
-              <div className="flex flex-col gap-6">
-                <p className="text-[10px] uppercase">Contact Us</p>
-                <div>
-                  <a href="tel:+2349015019295">+[234] 901 501 9295</a> <br />
-                  <a href="mailto:kijagoban@tiimbooktu.com">kijagoban@tiimbooktu.com</a> <br /> <br />
-                  <a href="https://www.google.com/maps/dir/9.0578598,7.4922416/Millennium+Plaza/@9.0581268,7.4790519,15z/data=!3m1!4b1!4m9!4m8!1m1!4e1!1m5!1m1!1s0x104e0bb745872e9d:0xdd22f306d1ed9d5!2m2!1d7.4851904!2d9.0523852?entry=ttu&g_ep=EgoyMDI1MDExMC4wIKXMDSoASAFQAw%3D%3D">303, Suite D, Millennium Plaza, Central Business District,Abuja, FCT, Nigeria.</a>
-                </div>
-              </div>
-              <div className="flex flex-col lg:flex-row gap-6 lg:justify-between">
-                <p className="text-sm">Privacy</p>
-                <p className="text-sm">2025-Copyright</p>
-              </div>
-            </div>
+          <div className="col-span-1">
+            <h3 className="text-sm uppercase mb-6 text-[#D9D9D9]">Address</h3>
+            <p className="text-[#FFFFFF]">
+              303, Suite D, Millennium Plaza, Central Business District,Abuja,
+              FCT, Nigeria.
+            </p>
           </div>
         </div>
       </div>

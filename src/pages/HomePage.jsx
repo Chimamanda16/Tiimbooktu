@@ -11,16 +11,15 @@ import { useArtworkStore } from "../Store/useArtworkStore";
 
 function HomeComp() {
   const location = useLocation();
-  const { isSearching } = useArtworkStore()
-  
+  const { isSearching } = useArtworkStore();
 
   useEffect(() => {
     setTimeout(() => {
       if (location.hash) {
-        const id = location.hash.replace('#', '');
+        const id = location.hash.replace("#", "");
         const el = document.getElementById(id);
         if (el) {
-          el.scrollIntoView({ behavior: 'smooth' });
+          el.scrollIntoView({ behavior: "smooth" });
         }
       }
     }, 100);
@@ -29,23 +28,24 @@ function HomeComp() {
   return (
     <div className="bg-[#1c1c1c] text-white font-[Satoshi]">
       <NavBarComp />
-      {!isSearching &&
+      {!isSearching && (
         <>
-        <HeroComp />
-        <AboutComp />
-        <div className="text-center">
-          <h1 className="font-[Chango] relative z-[999] text-[40px] lg:text-[112px] max-md:text-5xl max-sm:text-4xl">
-            Thought
-          </h1>
-          <ThoughtComp />
-          <div className="flex justify-center items-center">
-            <Link to='/lacomposmentis' className="bg-[#cdffad] text-[#1c1c1c] font-normal rounded-[22px] mt-20 px-4 py-2">
-              View all
-            </Link>
+          <HeroComp />
+          <AboutComp />
+          <div className="text-center">
+            <h1 className="font-[Chango] lg:-mt-24 relative z-[999] text-[40px] lg:text-[112px] max-md:text-5xl max-sm:text-4xl">
+              Thought
+            </h1>
+            <FotografieComp />
+            <div className="bg-[#0A0A0A] py-8">
+              <h2 className="font-[Chango] text-[40px] lg:text-[112px] mb-5">
+                Fotografie
+              </h2>
+              <ThoughtComp />
+            </div>
           </div>
-        </div>
-        <FotografieComp /></>
-      }
+        </>
+      )}
       <ShopComp />
       <FooterComp />
     </div>
