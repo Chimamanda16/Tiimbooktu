@@ -14,7 +14,6 @@ const ForgotPassword = () =>{
     const submitForm = async(e) => {
         e.preventDefault();
         try {
-            console.log("FormData:",formData);
             const response = await forgotPassword(formData);
            console.log("Email Sent Successfully", response);
         } catch (error) {
