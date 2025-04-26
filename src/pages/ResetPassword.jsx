@@ -23,7 +23,6 @@ const ResetPassword = () => {
         e.preventDefault();
         try {
             console.log("FormData:",formData);
-            console.log(formData);
             const res = await resetPassword(formData);
             console.log(res);
         } catch (error) {

@@ -24,7 +24,6 @@ import 'react-toastify/dist/ReactToastify.css'
 import { CheckoutPage } from "./pages/CheckoutPage";
 import { OrderPage } from "./pages/Order";
 import { useWishlistStore } from "./Store/useWishlistStore";
-
 import ResetPassword from "./pages/ResetPassword";
 import { Layout } from "./admin/layout/layout";
 import { Artwork } from "./admin/pages/artwork";
@@ -58,6 +57,7 @@ function App() {
               <Route path="/confirmation" element={<ConfirmationPage />} />
               <Route path="/details/:id" element={< DetailsPage />}/>
               <Route path="/forgot-password" element={< ForgotPassword />}/>
+              <Route path="?reset-password" element={< ResetPassword />}/>
               <Route path="/wishlist" element={<WishlistPage />} />
               <Route path="/checkout" element={<CheckoutPage />} />
               <Route path="/order" element={<OrderPage />} />

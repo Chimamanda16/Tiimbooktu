@@ -97,6 +97,7 @@ export const useAuthStore = create((set) =>({
         set({ loading: true });
         try{
             const res = await axiosInstance.post("/reset-password", data);
+            window.location.href = '/login'
             return res;
         }catch(error){
             console.error(error);
