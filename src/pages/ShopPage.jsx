@@ -15,7 +15,7 @@ const ShopPage = () =>{
     }, [fetchArtworks]);
     
     return(
-        <div className="bg-[#1c1c1c] text-center text-[#fff] p-6">
+        <div className="bg-[#1c1c1c] text-center text-[#fff]">
             <NavBarComp />
             <ShopComp artworks={artworks} fetchingArtwork={fetchingArtwork} />
             <FooterComp />

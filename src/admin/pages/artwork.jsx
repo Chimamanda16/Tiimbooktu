@@ -85,19 +85,14 @@ export const Artwork = () => {
 
     const update = async (e) => {
         e.preventDefault();
-        const formData = new FormData();
-        formData.append('name', form.name);
-        formData.append('base_price', form.base_price);
-        formData.append('description', form.description);
-        formData.append('artist', form.artist);
-        formData.append('stock', form.stock);
+        let payload = {
+            name: form.name,
+            base_price: form.base_price,
+            description: form.description,
+            stock: form.stock
+        }
 
-        images.forEach((img, index) => {
-            if (img) {
-                formData.append(`images[${index}]`, img);
-            }
-        });
-        const res = await updateArtwork(formData, form.id);
+        const res = await updateArtwork(payload, form.id);
         if (res) {
             toggleModal();
             resetForm();
@@ -139,7 +134,7 @@ export const Artwork = () => {
                         <Input required type="number" label="Art Price" id="base_price" name="base_price" onChange={handleInputChange} value={form.base_price} placeholder="Enter Art Price" />
                         <Input required type="number" label="Number of Item in Stock" id="stock" name="stock" onChange={handleInputChange} value={form.stock} placeholder="Enter Number of Item In Stock" />
                         <Input required type="textarea" label="About Art" id="description" onChange={handleInputChange} name="description" value={form.description} placeholder="Describe Art" />
-                        <div className="flex flex-col gap-[5px]">
+                        {!form?.id && <div className="flex flex-col gap-[5px]">
                             <label className="text-sm text-white font-bold capitalize">Art Image</label>
                             <div className="grid grid-cols-3 gap-3">
                                 {images.map((img, index) => (
@@ -169,11 +164,12 @@ export const Artwork = () => {
                                     </label>
                                 ))}
                             </div>
-                        </div>
+                        </div>}
+
                     </div>
                     {form.id ? <button disabled={loading} className="w-full py-3 border flex justify-center border-[#CDFFAD] rounded-xl text-[#CDFFAD]">
                         {loading ? (<Loader className="animate-spin" />) : ("Update")}
-                        </button>
+                    </button>
                         :
                         <button disabled={loading} type="submit" className="w-full py-3 bg-[#CDFFAD] rounded-xl flex justify-center text-[#0A0A0A]">
                             {loading ? (<Loader className="animate-spin" />) : ("Add")}

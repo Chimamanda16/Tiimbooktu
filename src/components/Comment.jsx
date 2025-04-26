@@ -1,14 +1,18 @@
 import React, { useState } from "react";
+import { useLocation } from "react-router-dom";
 import { Input } from "../components/Input";
 import axiosInstance from "../lib/axios";
 import { toast } from "react-toastify";
+import { Loader } from "lucide-react";
 
 export const Comment = () => {
+    const location = useLocation();
     const [form, setForm] = useState({
         name: '',
         email: '',
         message: '',
     })
+    const [loading, setLoading] = useState(false);
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
@@ -17,6 +21,12 @@ export const Comment = () => {
 
     const handleSubmit =  async (e) => {
         e.preventDefault();
+        setLoading(true)
+        if(location.pathname === '/rich-us') {
+            form.type = 'feedback'
+        } else {
+            form.type = 'comment'
+        }
         try {
             const res = await axiosInstance.post('feedback', form);
             setForm({
@@ -24,10 +34,12 @@ export const Comment = () => {
                 email: '',
                 message: '',
             })
-            toast.success(res.data.message)
+            toast.success(res.data.message);
+            setLoading(false)
         } catch (error) {
             console.error(error)
             toast.error(error?.response?.data?.message)
+            setLoading(false)
         }
     }
     return (
@@ -40,7 +52,9 @@ export const Comment = () => {
                 <Input onChange={handleInputChange} label="Email" id="email" name="email" required type="email" value={form.email} placeholder="Enter your Email" />
                 <Input onChange={handleInputChange} label="Your message" type="textarea" required name="message" value={form.message} id="message" placeholder="Enter your message" />
             </div>
-            <button type="submit" className="bg-[#CDFFAD] rounded-xl p-[10px] w-full text-[#1C1C1C] text-center uppercase font-bold">Send</button>
+            <button disabled={loading} type="submit" className="bg-[#CDFFAD] rounded-xl p-[10px] w-full flex justify-center text-[#1C1C1C] text-center uppercase font-bold">
+                {!loading ? 'Send' : <Loader className="animate-spin" />}
+            </button>
         </form>
     )
 }

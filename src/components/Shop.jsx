@@ -1,10 +1,11 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useCartStore } from "../Store/useCartStore";
 import { useEffect } from "react";
 import { useArtworkStore } from "../Store/useArtworkStore";
 import { useWishlistStore } from "../Store/useWishlistStore";
 function ShopComp() {
   const navigate = useNavigate();
+  const location = useLocation();
   const { artworks, fetchingArtwork, fetchArtworks } = useArtworkStore();
   const { fetchWishlist, addToWishlist, removeFromWishlist, wishlistItems } =
     useWishlistStore();
@@ -23,6 +24,9 @@ function ShopComp() {
       addToWishlist(id);
     }
   }
+
+  const artworksToDisplay =
+  location.pathname === "/shop" ? artworks : artworks.slice(0, 8);
 
   const addArtToCart = (e, data) => {
     let payload = {
@@ -48,7 +52,7 @@ function ShopComp() {
         {fetchingArtwork ? (
           <h2 className="text-white text-start w-full">Loading...</h2>
         ) : artworks?.length > 0 ? (
-          artworks?.map((artwork) => (
+          artworksToDisplay?.map((artwork) => (
             <div
               onClick={(e) => goToDetail(e, artwork.id)}
               key={artwork.id}
@@ -87,30 +91,12 @@ function ShopComp() {
           "No Artwork Found"
         )}
       </div>
-
-      <Link
+        {location.pathname !== "/shop" && <Link
         to="/shop"
         className="bg-[#cdffad] text-[#1c1c1c] font-normal rounded-[22px] px-4 py-2 cursor-pointer text-lg max-sm:text-base max-sm:px-5 max-sm:py-3"
       >
         View All
-      </Link>
-      <div className="w-[90%] max-w-6xl mx-auto my-20">
-        <div className="text-center mb-8">
-          <h2 className="text-3xl md:text-7xl font-bold mb-12 font-[Chango]">
-            SIGN UP FOR NEWSLETTERS
-          </h2>
-        </div>
-        <div className="flex flex-col md:flex-row gap-4 justify-center max-w-3xl mx-auto">
-          <input
-            type="email"
-            placeholder="Enter Your E-Mail"
-            className="flex-grow py-3 px-4 bg-transparent border border-gray-700 text-white"
-          />
-          <button className="bg-green-200 text-black py-3 px-8 font-medium">
-            Subscribe
-          </button>
-        </div>
-      </div>
+      </Link>}
     </div>
   );
 }

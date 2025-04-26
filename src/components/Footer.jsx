@@ -31,7 +31,7 @@ function FooterComp() {
             <h3 className="text-sm uppercase mb-6 text-[#D9D9D9]">
               Social Media
             </h3>
-            <div className="flex flex-col gap-2 text-[#FFFFFF]">
+            <div className="flex gap-4 text-[#FFFFFF]">
               <Link to="/facebook">
                 <Facebook />
               </Link>
@@ -40,10 +40,6 @@ function FooterComp() {
               </Link>
               <Link to="/linkedin">
                 <Linkedin />
-              </Link>
-              <Link to="/whatsapp">
-                <MessageCircle />{" "}
-                {/* Using MessageCircle for WhatsApp-like look */}
               </Link>
             </div>
           </div>
