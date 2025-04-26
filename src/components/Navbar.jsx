@@ -15,6 +15,12 @@ function NavBarComp() {
   const [contentMenu, setContentMenu] = useState(false);
   const [isActive, setIsActive] = useState(false);
   const iconRef = useRef(null);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    const stored = localStorage.getItem("isLoggedIn");
+    setIsLoggedIn(stored === "true");
+  }, []);
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -191,16 +197,18 @@ function NavBarComp() {
               <Link to='/guestnetno'>Guest Content</Link>
             </>}
           </div>
-          <Link>Fotos</Link>
-          <Link to='/rich-us'>Rich Us</Link>
-          <Link to='/cart'>Cart</Link>
-          <Link to='/wishlist'>Wishlist</Link>
-          <Link to='/login' className="bg-[#CDFFAD] flex text-center w-full h-[45px] lg:flex items-center justify-center rounded-[22px] text-xl capitalize text-[#1C1C1C]">
+          <Link className="text-left">Fotos</Link>
+          <Link to='/rich-us' className="text-left">Rich Us</Link>
+          <Link to='/cart' className="text-left">Cart</Link>
+          <Link to='/wishlist' className="text-left">Wishlist</Link>
+          {isLoggedIn ?<></> : <>
+            <Link to='/login' className="bg-[#CDFFAD] flex text-center w-full h-[45px] lg:flex items-center justify-center rounded-[22px] text-xl capitalize text-[#1C1C1C]">
             Sign In
-          </Link>
-          <Link to='/sign-up' className="bg-[#CDFFAD] flex text-center w-full h-[45px] lg:flex items-center justify-center rounded-[22px] text-xl capitalize text-[#1C1C1C]">
-            Sign Up
-          </Link>
+            </Link>
+            <Link to='/sign-up' className="bg-[#CDFFAD] flex text-center w-full h-[45px] lg:flex items-center justify-center rounded-[22px] text-xl capitalize text-[#1C1C1C]">
+              Sign Up
+            </Link>
+          </>}
         </div>
       )}
     </nav>
