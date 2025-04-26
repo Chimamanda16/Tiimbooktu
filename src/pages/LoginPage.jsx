@@ -4,37 +4,23 @@ import NavBarComp from "../components/Navbar.jsx";
 import FooterComp from "../components/Footer.jsx";
 import { Link } from "react-router-dom";
 import { Loader } from "lucide-react";
-import { useNavigate } from "react-router-dom";
 
 const LoginPage = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
-  const { login } = useAuthStore();
+  const { login, loading } = useAuthStore();
   const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
 
-  const [loading, setLoading] = useState(false);
-  const navigate = useNavigate();
 
   const submitForm = async (e) => {
     e.preventDefault();
-    setLoading(true);
-    try {
-      const response = await login(formData);
-      console.log("Login Successful", response);
-      setTimeout(() => {
-        navigate("/dashboard");
-      }, 1000);
-    } catch (error) {
-      console.error("Login Error:", error);
-      alert(error.message || "Login failed. Please try again.");
-    } finally {
-      setLoading(false);
-    }
+     await login(formData);
+
   };
 
   
