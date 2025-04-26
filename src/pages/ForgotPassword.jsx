@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { useAuthStore } from "../Store/useAuthStore.js";
 import NavBarComp from "../components/Navbar.jsx";
 import FooterComp from "../components/Footer.jsx";
-
 const ForgotPassword = () =>{
         useEffect(() => {
             window.scrollTo(0, 0)
@@ -10,12 +9,14 @@ const ForgotPassword = () =>{
     const [formData, setFormData] = useState({
         email: ""
     });
+    const [emailSent, setEmailSent] = useState(false);
     const { forgotPassword } = useAuthStore();
     const submitForm = async(e) => {
         e.preventDefault();
         try {
             const response = await forgotPassword(formData);
-           console.log("Email Sent Successfully", response);
+            console.log("Email Sent Successfully", response);
+            setEmailSent(true);
         } catch (error) {
             console.error("Error submitting form:", error);
             console.log(error.message);
@@ -34,6 +35,10 @@ const ForgotPassword = () =>{
                         <input className="border-2 placeholder:text-white border-[#000] rounded-[12px] mb-2 px-4 py-2 bg-[#595959] w-full" type="email" id="email" name="email" placeholder="Enter Your Mail" value={formData.email} required onChange={(e) =>(setFormData({...formData, email: e.target.value}))} autoComplete="email"/>
                     </div>
                 <button className="bg-[#CDFFAD] w-full rounded-[12px] text-black px-6 py-2 my-4" type="submit">Send</button>
+                {emailSent ? 
+                    <p className="mb-4">A link to reset your password has been sent to your Email.</p>
+                    : <></>
+                }
                 <p className="text-[#D9D9D9] text-center">Remember Password? <span className="underline font-bold">Signin</span></p>
                 </form>
             </div>
