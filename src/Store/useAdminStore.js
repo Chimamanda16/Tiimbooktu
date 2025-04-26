@@ -3,14 +3,13 @@ import axiosInstance from '../lib/axios';
 import { toast } from 'react-toastify';
 
 const useAdminStore = create((set, get) => ({
-    fetchingOrders: false,
-    fetchingArtwork: false,
+    loading: false,
     success: null,
     orders: [],
     artworks: [],
     error: null,
     fetchAllOrders: async() => {
-        set({fetchingOrders: true})
+        set({loading: true})
         try {
             const res = await axiosInstance.get('/orders');
             set({ orders: res?.data.data })
@@ -21,10 +20,11 @@ const useAdminStore = create((set, get) => ({
             set({error: err.message})
         } 
         finally {
-            set({fetchingOrders: false})
+            set({loading: false})
         }
     },
     updateOrder: async(data, id) => {
+        set({loading: true})
         try {
             const res = await axiosInstance.post(`/orders/${id}/update`, data)
             toast.success(res.data.message);
@@ -35,10 +35,12 @@ const useAdminStore = create((set, get) => ({
             console.error(error);
             set({error: error.message});
             toast.error(error.response.data.error || 'Cannot Update Artwork')
+        } finally {
+            set({loading: false})
         }
     },
     fetchAllArtworks: async() => {
-        set({fetchingArtwork: true, error: null});
+        set({loading: true, error: null});
         try {
             const res = await axiosInstance.get('/artworks');
             if(res.data) {
@@ -51,14 +53,14 @@ const useAdminStore = create((set, get) => ({
             set({error: err.message})
         }
         finally {
-            set({fetchingArtwork: false, isSearching: false})
+            set({loading: false, isSearching: false})
         }     
     },
     createArtwork: async(data) => {
+        set({loading: true})
         try {
             const res = await axiosInstance.post('/artwork', data)
             if(res.data) {
-                toast.success(res.data.message);
                 const {fetchAllArtworks} = get();
                 await fetchAllArtworks();
             }
@@ -67,9 +69,12 @@ const useAdminStore = create((set, get) => ({
             console.error(error);
             set({error: error.message});
             toast.error(error.response.data.message || 'Cannot Create Artwork')
-        } 
+        } finally {
+            set({loading: false})
+        }
     },
     updateArtwork: async(data, id) => {
+        set({loading: true})
         try {
             const res = await axiosInstance.put(`/artworks/${id}`, data)
             toast.success(res.data.message);
@@ -78,6 +83,8 @@ const useAdminStore = create((set, get) => ({
             console.error(error);
             set({error: error.message});
             toast.error(error.response.data.message || 'Cannot Update Artwork')
+        } finally {
+            set({loading: false})
         }
     },
     deleteArtwork: async(id) => {

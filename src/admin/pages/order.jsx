@@ -3,11 +3,12 @@ import { Link } from "react-router-dom";
 import PaginationTable from "../components/paginationTable";
 import { Modal } from "../components/modal";
 import useAdminStore from "../../Store/useAdminStore";
+import { Loader } from "lucide-react";
 
 const filterBtn = ['All', 'Pending Order', 'Delivered Orders']
 
 export const OrderDashboard = () => {
-    const { fetchAllOrders, orders, updateOrder } = useAdminStore();
+    const { fetchAllOrders, orders, updateOrder, loading } = useAdminStore();
 
     const successfulOrders = orders.filter((order) => (order.status.toLowerCase() === 'delivered'));
     const pendingOrders = orders.filter((order) => (order.status.toLowerCase() !== 'delivered'));
@@ -157,7 +158,9 @@ export const OrderDashboard = () => {
                                 </div>
                             </div>
                         </div>
-                        <button onClick={() => updateOrderItem(detail)} disabled={updateBtn} className="w-full disabled:bg-[#f5f5f5] disabled:cursor-not-allowed py-3 bg-[#CDFFAD] rounded-xl text-[#0A0A0A]">Update</button>
+                        <button onClick={() => updateOrderItem(detail)} disabled={updateBtn || loading} className="w-full flex justify-center disabled:bg-[#f5f5f5] disabled:cursor-not-allowed py-3 bg-[#CDFFAD] rounded-xl text-[#0A0A0A]">
+                             {loading ? (<Loader className="animate-spin" />) : ("Update")}
+                        </button>
                     </div>
                 </Modal>
             }

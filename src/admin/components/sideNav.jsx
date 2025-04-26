@@ -9,27 +9,38 @@ export const SideNav = () => {
             </div>
             <div className="px-6 py-8 flex flex-col">
                 <nav className="flex flex-col gap-2">
-                    <NavLink
-                    end
-                        to="/dashboard"
-                        className={({ isActive }) => (isActive ? 'nav-link bg-[#CDFFAD] rounded-[8px] !text-[#0A0A0A]' : 'nav-link')}
-                    >
-                        <img src="/assets/icons/overview.svg" alt="artwork" />
-                        Overview
+                    <NavLink end to="/dashboard">
+                        {({ isActive }) => (
+                            <div className={isActive ? 'nav-link bg-[#CDFFAD] rounded-[8px] !text-[#0A0A0A]' : 'nav-link'}>
+                                <img
+                                    src={isActive ? '/assets/icons/overview.svg' : '/assets/icons/overview-white.svg'}
+                                    alt="overview"
+                                />
+                                Overview
+                            </div>
+                        )}
                     </NavLink>
-                    <NavLink
-                        to="/dashboard/artworks"
-                        className={({ isActive }) => (isActive ? 'nav-link bg-[#CDFFAD] rounded-[8px] !text-[#0A0A0A]' : 'nav-link')}
-                    >
-                        <img src="/assets/icons/artwork.svg" alt="artwork" />
-                        Artwork
+                    <NavLink to="/dashboard/artworks">
+                        {({ isActive }) => (
+                            <div className={isActive ? 'nav-link bg-[#CDFFAD] rounded-[8px] !text-[#0A0A0A]' : 'nav-link'}>
+                                <img
+                                    src={isActive ? '/assets/icons/artwork-black.svg' : '/assets/icons/artwork.svg'}
+                                    alt="artwork"
+                                />
+                                Artwork
+                            </div>
+                        )}
                     </NavLink>
-                    <NavLink
-                        to="/dashboard/orders"
-                        className={({ isActive }) => (isActive ? 'nav-link bg-[#CDFFAD] rounded-[8px] !text-[#0A0A0A]' : 'nav-link')}
-                    >
-                        <img src="/assets/icons/order.svg" alt="order" />
-                        Orders
+                    <NavLink end to="/dashboard/orders">
+                        {({ isActive }) => (
+                            <div className={isActive ? 'nav-link bg-[#CDFFAD] rounded-[8px] !text-[#0A0A0A]' : 'nav-link'}>
+                                <img
+                                    src={isActive ? '/assets/icons/order-black.svg' : '/assets/icons/order.svg'}
+                                    alt="order"
+                                />
+                                Orders
+                            </div>
+                        )}
                     </NavLink>
                 </nav>
             </div>
