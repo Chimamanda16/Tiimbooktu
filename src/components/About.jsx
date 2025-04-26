@@ -21,6 +21,7 @@ function AboutComp() {
             <h4 className="font-chango hidden lg:block uppercase">
               I am my hair
             </h4>
+            <audio className="w-full lg:w-[300px]" src="/assets/audio/Tiimbooku-audio.mp3" controls></audio>
             <p className="lg:text-[22px]">
               "... it's toughness and strength. I am a city wall built against
               attacks; built to build from ashes and adversity: built to use

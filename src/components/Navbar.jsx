@@ -8,19 +8,13 @@ function NavBarComp() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [searchValue, setSearchValue] = useState('');
   const { searchArtworks, fetchArtworks } = useArtworkStore();
-  const { fetchCart, cartItems } = useCartStore();
-  const { error } = useCartStore()
+  const { fetchCart, cartItems, errorCode } = useCartStore();
   const { fetchWishlist, wishlistItems } = useWishlistStore();
   const [tiimbooktuMenu, setTiimbooktuMenu] = useState(false);
   const [contentMenu, setContentMenu] = useState(false);
   const [isActive, setIsActive] = useState(false);
   const iconRef = useRef(null);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  useEffect(() => {
-    const stored = localStorage.getItem("isLoggedIn");
-    setIsLoggedIn(stored === "true");
-  }, []);
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -105,21 +99,25 @@ function NavBarComp() {
           </div>
 
           {/* Hide user icons on mobile */}
-          {!error && <div className="flex gap-2 max800:hidden">
+          {errorCode !== 401 ? <div className="flex gap-2 max800:hidden">
             <img src="/assets/icons/user-rounded.svg" alt="" />
             <img src="/assets/icons/nav-arrow-down.svg" alt="" />
-          </div>}
+          </div> :
+            <Link to='/login' className="bg-[#CDFFAD] lg:flex text-center py-3 px-4 hidden items-center justify-center rounded-[22px] text-xl capitalize text-[#1C1C1C]">
+              Sign In
+            </Link>
+          }
 
-          {!isActive && <div className="flex justify-between md:ml-4 gap-6 md:gap-8 lg:hidden text-black">
-          <Link className="relative" to='/cart'>
-            <img src="/assets/icons/Bag-4.svg" alt="" />
-            <span className="absolute top-[-15px] right-[-15px] text-sm w-5 h-5 md:w-6 md:h-6 flex items-center justify-center rounded-[100%] bg-[#CDFFAD]">{cartItems?.cart_count || '0'}</span>
-          </Link>
-          <Link className="relative" to='/wishlist'>
-            <img src="/assets/icons/Heart.svg" alt="" />
-            <span className="absolute top-[-15px] right-[-15px] text-sm w-5 h-5 md:w-6 md:h-6 flex items-center justify-center rounded-[100%] bg-[#CDFFAD]">{wishlistItems.length || '0'}</span>
-          </Link>
-        </div>}
+          {(!isActive && errorCode !== 401) && <div className="flex justify-between md:ml-4 gap-6 md:gap-8 lg:hidden text-black">
+            <Link className="relative" to='/cart'>
+              <img src="/assets/icons/Bag-4.svg" alt="" />
+              <span className="absolute top-[-15px] right-[-15px] text-sm w-5 h-5 md:w-6 md:h-6 flex items-center justify-center rounded-[100%] bg-[#CDFFAD]">{cartItems?.cart_count || '0'}</span>
+            </Link>
+            <Link className="relative" to='/wishlist'>
+              <img src="/assets/icons/Heart.svg" alt="" />
+              <span className="absolute top-[-15px] right-[-15px] text-sm w-5 h-5 md:w-6 md:h-6 flex items-center justify-center rounded-[100%] bg-[#CDFFAD]">{wishlistItems.length || '0'}</span>
+            </Link>
+          </div>}
 
           {/* Hamburger/X toggle */}
           <button
@@ -161,8 +159,10 @@ function NavBarComp() {
           <Link to="/#fotografie" className="capitalize">Fotos</Link>
           <Link to="/rich-us" className="capitalize">Rich Us</Link>
           <Link to="/shop" className="capitalize">Our Things</Link>
+          <Link to='/shop' className="capitalize">Shop</Link>
+          <Link to='/order' className="capitalize">Order</Link>
         </div>
-        <div className="flex justify-between gap-10 text-black">
+        {errorCode !== 401 && <div className="flex justify-between gap-10 text-black">
           <Link className="relative" to='/cart'>
             <img src="/assets/icons/Bag-4.svg" alt="" />
             <span className="absolute top-[-15px] right-[-15px] text-sm w-6 h-6 flex items-center justify-center rounded-[100%] bg-[#CDFFAD]">{cartItems?.cart_count || '0'}</span>
@@ -171,7 +171,7 @@ function NavBarComp() {
             <img src="/assets/icons/Heart.svg" alt="" />
             <span className="absolute top-[-15px] right-[-15px] text-sm w-6 h-6 flex items-center justify-center rounded-[100%] bg-[#CDFFAD]">{wishlistItems.length || '0'}</span>
           </Link>
-        </div>
+        </div>}
       </div>
 
       {/* Mobile Dropdown Menu */}
@@ -201,9 +201,11 @@ function NavBarComp() {
           <Link to='/rich-us' className="text-left">Rich Us</Link>
           <Link to='/cart' className="text-left">Cart</Link>
           <Link to='/wishlist' className="text-left">Wishlist</Link>
-          {isLoggedIn ?<></> : <>
+          <Link to='/shop' className="text-left">Shop</Link>
+          <Link to='/order' className="text-left">Order</Link>
+          {errorCode === 401 && <>
             <Link to='/login' className="bg-[#CDFFAD] flex text-center w-full h-[45px] lg:flex items-center justify-center rounded-[22px] text-xl capitalize text-[#1C1C1C]">
-            Sign In
+              Sign In
             </Link>
             <Link to='/sign-up' className="bg-[#CDFFAD] flex text-center w-full h-[45px] lg:flex items-center justify-center rounded-[22px] text-xl capitalize text-[#1C1C1C]">
               Sign Up
