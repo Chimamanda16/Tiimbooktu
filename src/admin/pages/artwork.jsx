@@ -89,8 +89,7 @@ export const Artwork = () => {
         formData.append('name', form.name);
         formData.append('base_price', form.base_price);
         formData.append('description', form.description);
-        formData.append('category_id', '');
-        formData.append('artist', form.name);
+        formData.append('artist', form.artist);
         formData.append('stock', form.stock);
 
         images.forEach((img, index) => {

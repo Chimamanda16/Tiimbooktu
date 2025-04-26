@@ -78,6 +78,8 @@ const useAdminStore = create((set, get) => ({
         try {
             const res = await axiosInstance.put(`/artworks/${id}`, data)
             toast.success(res.data.message);
+            const {fetchAllArtworks} = get();
+            await fetchAllArtworks();
             return res.data;
         } catch (error) {
             console.error(error);
