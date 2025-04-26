@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { useAuthStore } from "../Store/useAuthStore.js";
 import NavBarComp from "../components/Navbar";
 import FooterComp from "../components/Footer";
@@ -7,7 +6,7 @@ import { Link } from "react-router-dom";
 import { Loader } from "lucide-react";
 
 const SignUpPage = () => {
-  const { register } = useAuthStore();
+  const { register, loading } = useAuthStore();
   const [formData, setFormData] = useState({
     first_name: "",
     last_name: "",
@@ -18,24 +17,10 @@ const SignUpPage = () => {
     password_confirmation: "",
   });
 
-  const [loading, setLoading] = useState(false);
-  const navigate = useNavigate();
 
   const submitForm = async (e) => {
     e.preventDefault();
-    setLoading(true);
-    try {
-      const response = await register(formData);
-      console.log("Signup Successful", response);
-      setTimeout(() => {
-        navigate("/login");
-      }, 3000);
-    } catch (error) {
-      console.error("Signup Error:", error);
-      alert(error.message || "Signup failed. Please try again.");
-    } finally {
-      setLoading(false);
-    }
+    await register(formData);
   };
 
   return (

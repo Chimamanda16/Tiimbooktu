@@ -183,7 +183,7 @@ export const CheckoutPage = () => {
                                 <div className="flex flex-col gap-4">
                                     <span className="text-xl text-white font-bold">Delivery</span>
                                     <div className="flex flex-col gap-4">
-                                        <Input options={['test', 'chizu']} label="Country" type="select" onChange={handleShippingDetails} placeholder="Select a Country" value={shippingDetails.country} name="country" />
+                                        <Input label="Country" type="text" onChange={handleShippingDetails} placeholder="Enter a Country" value={shippingDetails.country} name="country" />
                                         <div className="flex flex-col lg:flex-row gap-5">
                                             <Input onChange={handleShippingDetails} label='First Name' required id="first_name" name="first_name" value={shippingDetails.first_name} type="text" placeholder="Enter First Name" />
                                             <Input onChange={handleShippingDetails} label='Last Name' required id="last_name" name="last_name" value={shippingDetails.last_name} type="text" placeholder="Enter Last Name" />
@@ -194,8 +194,8 @@ export const CheckoutPage = () => {
                                         </div>
                                         <Input onChange={handleShippingDetails} label='Address' required id="address" name="address" value={shippingDetails.address} type="text" placeholder='Enter Delivery Address' />
                                         <div className="flex flex-col lg:flex-row gap-5">
-                                            <Input options={['test', 'chizu']} onChange={handleShippingDetails} label='State' placeholder="Select a State" required id="state" name="state" value={shippingDetails.state} type="select" />
-                                            <Input options={['test', 'chizu']} onChange={handleShippingDetails} label='City' placeholder="Select a City" required id="city" name="city" value={shippingDetails.city} type="select" />
+                                            <Input onChange={handleShippingDetails} label='State' placeholder="Enter a State" required id="state" name="state" value={shippingDetails.state} type="text" />
+                                            <Input onChange={handleShippingDetails} label='City' placeholder="Enter a City" required id="city" name="city" value={shippingDetails.city} type="text" />
                                         </div>
                                     </div>
                                 </div>
