@@ -2,6 +2,7 @@ import { useEffect, useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import { Loader } from "lucide-react";
 import { useArtworkStore } from "../Store/useArtworkStore";
+import { useAuthStore } from "../Store/useAuthStore"
 import { useCartStore } from "../Store/useCartStore";
 import { useWishlistStore } from "../Store/useWishlistStore";
 
@@ -11,11 +12,18 @@ function NavBarComp() {
   const { searchArtworks, fetchArtworks } = useArtworkStore();
   const { fetchCart, cartItems, errorCode } = useCartStore();
   const { fetchWishlist, wishlistItems } = useWishlistStore();
+  const { logout, loading } = useAuthStore();
   const [tiimbooktuMenu, setTiimbooktuMenu] = useState(false);
   const [userMenu, setUserMenu] = useState(false);
   const [contentMenu, setContentMenu] = useState(false);
   const [isActive, setIsActive] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const iconRef = useRef(null);
+
+  useEffect(() => {
+    const stored = localStorage.getItem("isLoggedIn");
+    setIsLoggedIn(stored === "true");
+  }, []);
 
 
   useEffect(() => {
@@ -45,15 +53,27 @@ function NavBarComp() {
     }
   }
 
+  const logOut = async() =>{
+    await logout();
+  }
+
   const toggleSubMenu = (menu) => {
     if (menu === 'content') {
       setContentMenu(!contentMenu)
       setTiimbooktuMenu(false)
-    } else {
+      setUserMenu(false);
+    }
+    else if(menu === "userMenu"){
+      setContentMenu(false);
+      setTiimbooktuMenu(false);
+      setUserMenu(!userMenu);
+    }
+     else {
       setContentMenu(false)
       setTiimbooktuMenu(!tiimbooktuMenu)
+      setUserMenu(false);
     }
-  };
+  }
 
   return (
     <nav className="relative mb-[10px] text-[#fff] font-cinzel">
@@ -97,25 +117,42 @@ function NavBarComp() {
           </div>
 
           {/* Hide user icons on mobile */}
-          {errorCode !== 401 ? <div className="flex gap-2 max800:hidden">
-            <img src="/assets/icons/user-rounded.svg" alt="" />
-            <img src="/assets/icons/nav-arrow-down.svg" alt="" />
-          </div> :
+          {/* User Icon */}
+          {errorCode !== 401 ? <div>
+            <div className="flex gap-2 max800:hidden">
+              <img src="/assets/icons/user-rounded.svg" alt="" />
+              <img className={userMenu ? "rotate-180" : ""} onClick={() => toggleSubMenu('userMenu')} src="/assets/icons/nav-arrow-down.svg" alt="" />
+            </div>
+            <div>  
+              {isLoggedIn && userMenu && (
+
+                <div className="max800:hidden absolute z-[1000] border-[2px] mt-2 mx-[1%] right-2 border-[#595959] rounded-[20px] bg-[#0A0A0A] p-4">
+                  <button onClick={ () => logOut()}
+                    className="relative block font-cinzel text-[15px] bg-[#c53636] text-[#fff] font-normal rounded-[12px] p-2"
+                    disabled={loading}
+                  >
+                    {loading ? (
+                      <>
+                        <Loader className="animate-spin min-w-[80px]" />
+                      </>
+                    ) : (
+                      "Logout"
+                    )}
+                  </button>
+                </div>
+              )}
+
+
+            </div>
+          </div>
+          
+          :
             <Link to='/login' className="bg-[#CDFFAD] lg:flex text-center py-3 px-4 hidden items-center justify-center rounded-[22px] text-xl capitalize text-[#1C1C1C]">
               Sign In
             </Link>
           }
 
-          {(!isActive && errorCode !== 401) && <div className="flex justify-between md:ml-4 gap-6 md:gap-8 lg:hidden text-black">
-            <Link className="relative" to='/cart'>
-              <img src="/assets/icons/Bag-4.svg" alt="" />
-              <span className="absolute top-[-15px] right-[-15px] text-sm w-5 h-5 md:w-6 md:h-6 flex items-center justify-center rounded-[100%] bg-[#CDFFAD]">{cartItems?.cart_count || '0'}</span>
-            </Link>
-            <Link className="relative" to='/wishlist'>
-              <img src="/assets/icons/Heart.svg" alt="" />
-              <span className="absolute top-[-15px] right-[-15px] text-sm w-5 h-5 md:w-6 md:h-6 flex items-center justify-center rounded-[100%] bg-[#CDFFAD]">{wishlistItems.length || '0'}</span>
-            </Link>
-          </div>}
+          
 
           {/* Hamburger/X toggle */}
           <button
@@ -213,6 +250,21 @@ function NavBarComp() {
           <Link to='/wishlist' className="text-left">Wishlist</Link>
           <Link to='/shop' className="text-left">Shop</Link>
           <Link to='/order' className="text-left">Order</Link>
+          {isLoggedIn && <>
+            <button onClick={ () => logOut()}
+                    className="relative flex font-cinzel items-center justify-center text-[15px] bg-[#c53636] text-[#fff] font-normal rounded-[12px] p-2"
+                    disabled={loading}
+                  >
+                    {loading ? (
+                      <>
+                        <Loader className="animate-spin min-w-[80px] w-full" />
+                      </>
+                    ) : (
+                      "Logout"
+                    )}
+                  </button>
+            </>}
+
           {errorCode === 401 && <>
             <Link to='/login' className="bg-[#CDFFAD] flex text-center w-full h-[45px] lg:flex items-center justify-center rounded-[22px] text-xl capitalize text-[#1C1C1C]">
               Sign In

@@ -34,6 +34,7 @@ export const useAuthStore = create((set) =>({
                 data.type = 'admin'
                 const res = await axiosInstance.post("/login", data);
                 localStorage.setItem('access_token', res.data.access_token);
+                localStorage.setItem("isLoggedIn", true);
                 window.location.href = '/dashboard';
                 toast.success(res?.data?.message);
                 setTimeout(() => {
@@ -43,6 +44,7 @@ export const useAuthStore = create((set) =>({
             } else {
                 const res = await axiosInstance.post("/login", data);
                 localStorage.setItem('access_token', res.data.access_token);
+                localStorage.setItem("isLoggedIn", true);
                 toast.success(res?.data?.message);
                 setTimeout(() => {
                     window.location.href = '/shop'
