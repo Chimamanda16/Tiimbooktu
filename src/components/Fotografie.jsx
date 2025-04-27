@@ -21,6 +21,12 @@ const FotografieComp = () => {
           prevEl: ".swiper-button-prev",
         },
         modules: [Navigation, EffectCoverflow],
+        breakpoints: {
+          768: {
+            slidesPerView: 3,
+            spaceBetween: 20,
+          },
+        },
       });
     }
   }, []);
