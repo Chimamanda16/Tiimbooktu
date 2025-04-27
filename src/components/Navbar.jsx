@@ -1,21 +1,25 @@
 import { useEffect, useState, useRef } from "react";
 import { Link } from "react-router-dom";
+import { Loader } from "lucide-react";
 import { useArtworkStore } from "../Store/useArtworkStore";
+import { useAuthStore } from "../Store/useAuthStore"
 import { useCartStore } from "../Store/useCartStore";
 import { useWishlistStore } from "../Store/useWishlistStore";
 
 function NavBarComp() {
+  const { searchArtworks, fetchArtworks } = useArtworkStore();
+  const { fetchWishlist, wishlistItems } = useWishlistStore();
+  const { logout, loading } = useAuthStore();
+  const { error } = useCartStore()
   const [menuOpen, setMenuOpen] = useState(false);
   const [searchValue, setSearchValue] = useState('');
-  const { searchArtworks, fetchArtworks } = useArtworkStore();
   const { fetchCart, cartItems } = useCartStore();
-  const { error } = useCartStore()
-  const { fetchWishlist, wishlistItems } = useWishlistStore();
   const [tiimbooktuMenu, setTiimbooktuMenu] = useState(false);
+  const [userMenu, setUserMenu] = useState(false);
   const [contentMenu, setContentMenu] = useState(false);
   const [isActive, setIsActive] = useState(false);
-  const iconRef = useRef(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const iconRef = useRef(null);
 
   useEffect(() => {
     const stored = localStorage.getItem("isLoggedIn");
@@ -49,13 +53,25 @@ function NavBarComp() {
     }
   }
 
+  const logOut = async() =>{
+    await logout();
+  }
+
   const toggleSubMenu = (menu) => {
     if (menu === 'content') {
       setContentMenu(!contentMenu)
       setTiimbooktuMenu(false)
-    } else {
+      setUserMenu(false);
+    }
+    else if(menu === "userMenu"){
+      setContentMenu(false);
+      setTiimbooktuMenu(false);
+      setUserMenu(!userMenu);
+    }
+     else {
       setContentMenu(false)
       setTiimbooktuMenu(!tiimbooktuMenu)
+      setUserMenu(false);
     }
   }
 
@@ -105,9 +121,33 @@ function NavBarComp() {
           </div>
 
           {/* Hide user icons on mobile */}
-          {!error && <div className="flex gap-2 max800:hidden">
-            <img src="/assets/icons/user-rounded.svg" alt="" />
-            <img src="/assets/icons/nav-arrow-down.svg" alt="" />
+          {/* User Icons */}
+          {!error && <div>
+            <div className="flex gap-2 max800:hidden">
+              <img src="/assets/icons/user-rounded.svg" alt="" />
+              <img className={userMenu ? "rotate-180" : ""} onClick={() => toggleSubMenu('userMenu')} src="/assets/icons/nav-arrow-down.svg" alt="" />
+            </div>
+            <div>  
+              {isLoggedIn && userMenu && (
+
+                <div className=" absolute z-[1000] border-[2px] mt-2 mx-[1%] border-[#595959] rounded-[20px] bg-[#0A0A0A] p-4">
+                  <button onClick={ () => logOut()}
+                    className="relative block font-cinzel text-[15px] bg-[#cdffad] text-[#1c1c1c] font-normal rounded-[12px] p-2"
+                    disabled={loading}
+                  >
+                    {loading ? (
+                      <>
+                        <Loader className="animate-spin min-w-[80px]" />
+                      </>
+                    ) : (
+                      "Logout"
+                    )}
+                  </button>
+                </div>
+              )}
+
+
+            </div>
           </div>}
 
           {!isActive && <div className="flex justify-between md:ml-4 gap-6 md:gap-8 lg:hidden text-black">
@@ -180,7 +220,7 @@ function NavBarComp() {
           <div className="flex flex-col gap-3 w-full">
             <div className="flex justify-between w-full">
               Tiimbooktu
-              {tiimbooktuMenu ? <img className=" rotate-180" onClick={() => setTiimbooktuMenu(!tiimbooktuMenu)} src="/assets/icons/nav-arrow-down.svg" alt="" /> : <img onClick={() => setTiimbooktuMenu(!tiimbooktuMenu)} src="/assets/icons/nav-arrow-down.svg" alt="" />}
+              <img className={tiimbooktuMenu ? "rotate-180" : ""} onClick={() => setTiimbooktuMenu(!tiimbooktuMenu)} src="/assets/icons/nav-arrow-down.svg" alt="" />
             </div>
             {tiimbooktuMenu && <>
               <Link to='/tiimbooktu'>On Tiimbooktu</Link>
@@ -190,7 +230,7 @@ function NavBarComp() {
           <div className="flex flex-col gap-3 w-full">
             <div className="flex justify-between w-full">
               Content
-              {contentMenu ? <img className=" rotate-180" onClick={() => setContentMenu(!contentMenu)} src="/assets/icons/nav-arrow-down.svg" alt="" /> : <img onClick={() => setContentMenu(!contentMenu)} src="/assets/icons/nav-arrow-down.svg" alt="" />}
+              <img className={contentMenu ? "rotate-180" : ""} onClick={() => setContentMenu(!contentMenu)} src="/assets/icons/nav-arrow-down.svg" alt="" />
             </div>
             {contentMenu && <>
               <Link to='/lacomposmentis'>La Compos Mentis</Link>

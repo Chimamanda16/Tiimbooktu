@@ -66,6 +66,7 @@ export const useAuthStore = create((set) =>({
         try{
             await axiosInstance.get("https://tiimbooktu-qmkn.onrender.com/sanctum/csrf-cookie");
             const res = await axiosInstance.post("/log-out");
+            toast.success("Logged out successfully");
             window.location.href = '/login'
             localStorage.clear();
             return res.data;
