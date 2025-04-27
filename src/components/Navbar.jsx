@@ -132,7 +132,7 @@ function NavBarComp() {
 
                 <div className=" absolute z-[1000] border-[2px] mt-2 mx-[1%] border-[#595959] rounded-[20px] bg-[#0A0A0A] p-4">
                   <button onClick={ () => logOut()}
-                    className="relative block font-cinzel text-[15px] bg-[#cdffad] text-[#1c1c1c] font-normal rounded-[12px] p-2"
+                    className="relative block font-cinzel text-[15px] bg-[#c53636] text-[#fff] font-normal rounded-[12px] p-2"
                     disabled={loading}
                   >
                     {loading ? (
@@ -148,18 +148,7 @@ function NavBarComp() {
 
 
             </div>
-          </div>}
-
-          {!isActive && <div className="flex justify-between md:ml-4 gap-6 md:gap-8 lg:hidden text-black">
-          <Link className="relative" to='/cart'>
-            <img src="/assets/icons/Bag-4.svg" alt="" />
-            <span className="absolute top-[-15px] right-[-15px] text-sm w-5 h-5 md:w-6 md:h-6 flex items-center justify-center rounded-[100%] bg-[#CDFFAD]">{cartItems?.cart_count || '0'}</span>
-          </Link>
-          <Link className="relative" to='/wishlist'>
-            <img src="/assets/icons/Heart.svg" alt="" />
-            <span className="absolute top-[-15px] right-[-15px] text-sm w-5 h-5 md:w-6 md:h-6 flex items-center justify-center rounded-[100%] bg-[#CDFFAD]">{wishlistItems.length || '0'}</span>
-          </Link>
-        </div>}
+          </div>}          
 
           {/* Hamburger/X toggle */}
           <button
@@ -241,7 +230,21 @@ function NavBarComp() {
           <Link to='/rich-us' className="text-left">Rich Us</Link>
           <Link to='/cart' className="text-left">Cart</Link>
           <Link to='/wishlist' className="text-left">Wishlist</Link>
-          {isLoggedIn ?<></> : <>
+          {isLoggedIn ?<>
+            <button onClick={ () => logOut()}
+                    className="relative block font-cinzel text-[15px] bg-[#c53636] text-[#fff] font-normal rounded-[12px] p-2"
+                    disabled={loading}
+                  >
+                    {loading ? (
+                      <>
+                        <Loader className="animate-spin min-w-[80px]" />
+                      </>
+                    ) : (
+                      "Logout"
+                    )}
+                  </button>
+            </> 
+          : <>
             <Link to='/login' className="bg-[#CDFFAD] flex text-center w-full h-[45px] lg:flex items-center justify-center rounded-[22px] text-xl capitalize text-[#1C1C1C]">
             Sign In
             </Link>
