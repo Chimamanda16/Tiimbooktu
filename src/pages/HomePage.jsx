@@ -36,12 +36,12 @@ function HomeComp() {
             <h1 className="font-[Chango] lg:-mt-24 relative z-[999] text-[40px] lg:text-[112px] max-md:text-5xl max-sm:text-4xl">
               Thought
             </h1>
-            <FotografieComp />
+            <ThoughtComp />
             <div className="bg-[#0A0A0A] py-8">
               <h2 className="font-[Chango] text-[40px] lg:text-[112px] mb-5">
                 Fotografie
               </h2>
-              <ThoughtComp />
+              <FotografieComp />
             </div>
           </div>
         </>
