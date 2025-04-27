@@ -6,6 +6,7 @@ export const useCartStore = create((set, get) => ({
     fetchingCartItem: false,
     cartItems: [],
     error: null,
+    errorCode: null,
     addToCart: async (data) => {
         set({ fetchingCartItem: true, error: null });
         try {
@@ -22,14 +23,14 @@ export const useCartStore = create((set, get) => ({
             if (err.status === 401) {
                 window.location.href = '/login'
             }
-            set({ error: err.message })
+            set({ error: err.message})
         }
         finally {
             set({ fetchingCartItem: false })
         }
     },
     fetchCart: async () => {
-        set({ fetchingCartItem: true })
+        set({ fetchingCartItem: true, errorCode: null })
         try {
             const res = await axiosInstance.get('/cart');
             set({ cartItems: res?.data })
@@ -38,7 +39,7 @@ export const useCartStore = create((set, get) => ({
         }
         catch (err) {
             console.error('Error fetching artworks:', err);
-            set({ error: err.message })
+            set({ error: err.message, errorCode: err.status  })
         }
         finally {
             set({ fetchingCartItem: false })
