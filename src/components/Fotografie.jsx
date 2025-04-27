@@ -1,5 +1,5 @@
 import { useRef, useEffect } from "react";
-import "../Styles/ThoughtComp.css";
+import "../Styles/FotografieComp.css";
 import Swiper from "swiper";
 import "swiper/css";
 import "swiper/css/effect-coverflow";
@@ -13,7 +13,7 @@ const FotografieComp = () => {
     if (swiperContainerRef.current) {
       new Swiper(swiperContainerRef.current, {
         loop: true,
-        slidesPerView: 2,
+        slidesPerView: 1,
         spaceBetween: 10,
         centeredSlides: true,
         navigation: {
@@ -39,7 +39,7 @@ const FotografieComp = () => {
           { id: 4, img: "/image 96.png", desc: "Illegal" },
         ].map((img, index) => (
           <div
-            className="swiper-slide relative z-[9999] flex items-center w-[250px]"
+            className="swiper-slide relative z-[9999] flex items-center"
             key={index}
           >
             <img
