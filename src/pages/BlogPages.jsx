@@ -23,7 +23,7 @@ const StoryPage = () =>{
                     return data === 'ruller' ? 
                     <img className="lg:w-1/2 w-full mx-auto" src="/assets/icons/ruller.svg" alt="ruller" /> 
                     :
-                    <p key={index} className="font-[cinzel]">{data}</p>    
+                    <p key={index} className="font-glacial">{data}</p>    
                 })}
             </div>
             <Comment />

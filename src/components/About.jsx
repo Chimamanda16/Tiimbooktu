@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 function AboutComp() {
   return (
     <div className="bg-[#0A0A0A]">
-      <div className="mb-[10%] py-20 w-[90%] mx-auto font-cinzel flex flex-col gap-12 ">
+      <div className="mb-[10%] py-20 w-[90%] mx-auto font-glacial flex flex-col gap-12 ">
         <h2 className="lg:text-[80px] font-chango uppercase text-[26px] mb-[2%]">
           Feat. Post
         </h2>

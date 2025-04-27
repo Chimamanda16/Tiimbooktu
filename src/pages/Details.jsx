@@ -63,7 +63,7 @@ const DetailsPage = () => {
                          <span>{artworkItem?.name}</span>
                     </div>
                 </div>
-            <div className="px-4 w-[90%] mx-auto mt-6 mb-6 font-cinzel">
+            <div className="px-4 w-[90%] mx-auto mt-6 mb-6 font-glacial">
                 <div className="block justify-between bp900:flex mb-6">
                     <div className="bp900:w-[50%] w-full p-4 border-[#595959] border-[1px] rounded-[20px] bg-[#2B2B2B]">
                         <img src={focusImg} className="h-[250px] w-[100%] mb-[5%] object-cover rounded-[20px]" alt={artworkItem?.name} />

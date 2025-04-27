@@ -17,10 +17,10 @@ export const Feedbacks = () => {
   } = useAdminStore();
 
   const readFeedbacks = feedbacks.filter(
-    (feedback) => feedback.status === true
+    (feedback) => feedback.read === true
   );
   const unreadFeedbacks = feedbacks.filter(
-    (feedback) => feedback.status === false || feedback.status === null
+    (feedback) => feedback.read === false || feedback.read === null
   );
 
   const [isOpen, setIsOpen] = useState(false);
@@ -58,20 +58,12 @@ export const Feedbacks = () => {
 
   const handleMarkAsRead = async () => {
     if (!detail) return;
-
-    try {
       await markFeedbackAsRead(detail.id);
-
-      setDetail({ ...detail, status: true });
+      setDetail({ ...detail, read: true });
       setData(
-        data.map((fb) => (fb.id === detail.id ? { ...fb, status: true } : fb))
+        data.map((fb) => (fb.id === detail.id ? { ...fb, read: true } : fb))
       );
-
-      toast.success("Feedback marked as read!");
       toggleModal();
-    } catch (error) {
-      console.error("Error in handleMarkAsRead:", error);
-    }
   };
 
   const handleMarkAllAsRead = async () => {
@@ -150,21 +142,21 @@ export const Feedbacks = () => {
                 <span className="text-[#D9D9D9]">Status</span>
                 <span
                   className={`text-white ${
-                    detail.status ? "text-green-400" : "text-yellow-400"
+                    detail.read ? "text-green-400" : "text-yellow-400"
                   }`}
                 >
-                  {detail.status ? "Read" : "Unread"}
+                  {detail.read ? "Read" : "Unread"}
                 </span>
               </div>
             </div>
             <button
               onClick={handleMarkAsRead}
-              disabled={detail.status === true || loading}
+              disabled={detail.read === true || loading}
               className="w-full flex justify-center disabled:bg-gray-600 disabled:cursor-not-allowed py-3 bg-[#CDFFAD] rounded-xl text-[#0A0A0A]"
             >
               {loading ? (
                 <Loader className="animate-spin" />
-              ) : detail.status ? (
+              ) : detail.read ? (
                 "Already Read"
               ) : (
                 "Mark As Read"

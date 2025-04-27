@@ -11,6 +11,7 @@ export default {
       fontFamily: {
         chango: ["Chango", "cursive"],
         cinzel: ["Cinzel", "cursive"],
+        glacial: ["Glacial Indifference", "sans-serif"]
       },
       screens: {
         'bp900': '900px',

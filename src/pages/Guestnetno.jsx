@@ -33,13 +33,13 @@ export const Guestnetno = () => {
                 <div className="flex flex-col w-full lg:items-center gap-4 lg:gap-[123px] mb-6">
                     <div className="flex flex-col gap-2 lg:text-center">
                         <h1 className="lg:text-[81px] text-[24px] font-chango text-white lg:text-center uppercase">GuesTnetno</h1>
-                        <p className="font-cinzel text-xl text-[#D9D9D9]">“It’s sorta like, we write what we want. Not what they like.” <br /> _Thee Guest.</p>
+                        <p className="font-glacial text-xl text-[#D9D9D9]">“It’s sorta like, we write what we want. Not what they like.” <br /> _Thee Guest.</p>
                     </div>
                     <button className="bg-white hidden lg:flex h-[99px] w-[99px] items-center justify-center rounded-full">
                         <img src="/assets/icons/arrow-down-icon-black.svg" alt="download" />
                     </button>
                 </div>
-                <div className="grid lg:grid-cols-3 w-full gap-5 font-cinzel">
+                <div className="grid lg:grid-cols-3 w-full gap-5 font-glacial">
                     {guestnetnoData.map((data, index) => {
                         return <div key={index} className="bg-white py-4 px-5 flex flex-col gap-[14px] uppercase">
                             <div className="flex flex-col text-[#0A0A0A] gap-2 text-center">

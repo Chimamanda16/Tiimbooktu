@@ -103,7 +103,7 @@ const useAdminStore = create((set, get) => ({
   fetchAllFeedbacks: async () => {
     set({ loading: true, error: null });
     try {
-      const res = await axiosInstance.get("feedbacks");
+      const res = await axiosInstance.get("/feedbacks");
       if (res.data) {
         set({ feedbacks: res.data.feedback });
       }
@@ -119,16 +119,16 @@ const useAdminStore = create((set, get) => ({
   markFeedbackAsRead: async (id) => {
     set({ loading: true });
     try {
-      const res = await axiosInstance.put(`feedbacks/${id}`, {
-        status: true,
+      const res = await axiosInstance.put(`/feedbacks/${id}`, {
+        read: true,
       });
-
-      set((state) => ({
-        feedbacks: state.feedbacks.map((fb) =>
-          fb.id === id ? { ...fb, status: true } : fb
-        ),
-      }));
-
+      // set((state) => ({
+      //   feedbacks: state.feedbacks.map((fb) =>
+      //     fb.id === id ? { ...fb, read: true } : fb
+      //   ),
+      // }));
+      const {fetchAllFeedbacks} = get();
+      await fetchAllFeedbacks();
       toast.success(res.data.message);
       return res.data;
     } catch (error) {
@@ -147,8 +147,7 @@ const useAdminStore = create((set, get) => ({
     set({ loading: true });
     try {
       const res = await axiosInstance.post("feedback/mark-all-read", {
-        type: "feedback",
-        status: true,
+        type: "comment",
       });
       toast.success(res.data.message || "All feedbacks marked as read");
       const { fetchAllFeedbacks } = get();
