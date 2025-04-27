@@ -1,6 +1,7 @@
 import { useEffect, useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import { Loader } from "lucide-react";
+import { LogOut } from 'lucide-react';
 import { useArtworkStore } from "../Store/useArtworkStore";
 import { useAuthStore } from "../Store/useAuthStore"
 import { useCartStore } from "../Store/useCartStore";
@@ -126,9 +127,8 @@ function NavBarComp() {
             <div>  
               {isLoggedIn && userMenu && (
 
-                <div className="max800:hidden absolute z-[1000] border-[2px] mt-2 mx-[1%] right-2 border-[#595959] rounded-[20px] bg-[#0A0A0A] p-4">
                   <button onClick={ () => logOut()}
-                    className="relative block font-cinzel text-[15px] bg-[#c53636] text-[#fff] font-normal rounded-[12px] p-2"
+                    className="max800:hidden absolute z-[1000] right-2 px-4 py-2 mt-2 mx-[1%] flex font-cinzel text-[15px] bg-[#c53636] text-[#fff] font-normal rounded-[12px]"
                     disabled={loading}
                   >
                     {loading ? (
@@ -136,10 +136,12 @@ function NavBarComp() {
                         <Loader className="animate-spin min-w-[80px]" />
                       </>
                     ) : (
-                      "Logout"
+                      <>
+                        <LogOut />
+                        Logout
+                      </>
                     )}
                   </button>
-                </div>
               )}
 
 
@@ -257,10 +259,13 @@ function NavBarComp() {
                   >
                     {loading ? (
                       <>
-                        <Loader className="animate-spin min-w-[80px] w-full" />
+                        <Loader className="animate-spin min-w-[80px]" />
                       </>
                     ) : (
-                      "Logout"
+                      <>
+                        <LogOut />
+                        Logout
+                      </>
                     )}
                   </button>
             </>}
