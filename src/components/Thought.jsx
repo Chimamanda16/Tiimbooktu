@@ -1,60 +1,43 @@
-import { useRef, useEffect } from "react";
-import "../Styles/ThoughtComp.css";
-import Swiper from "swiper";
-import "swiper/css";
-import "swiper/css/effect-coverflow";
-import "swiper/css/navigation";
-import { Navigation, EffectCoverflow } from "swiper/modules";
+import { Link } from "react-router-dom";
 
-const ThoughtComp = () => {
-  const swiperContainerRef = useRef(null);
-
-  useEffect(() => {
-    if (swiperContainerRef.current) {
-      new Swiper(swiperContainerRef.current, {
-        loop: true,
-        slidesPerView: 2,
-        spaceBetween: 10,
-        centeredSlides: true,
-        navigation: {
-          nextEl: ".swiper-button-next",
-          prevEl: ".swiper-button-prev",
-        },
-        modules: [Navigation, EffectCoverflow],
-      });
-    }
-  }, []);
+function ThoughtComp() {
+  const images = [
+    { id: 2, src: "/thought-card1.png", text: "Tattoo" },
+    { id: 9, src: "/thought-card2.png", text: "Skeleton. Cloak. Scythe" },
+    { id: 5, src: "/thought-card3.png", text: "Knowledge" },
+    { id: 4, src: "/thought-card4.png", text: "Illegal" },
+  ];
 
   return (
-    <div
-      className="swiper-container w-full relative h-[500px] mx-auto overflow-hidden"
-      ref={swiperContainerRef}
-    >
-      <div className="swiper-wrapper relative">
-        {[
-          { id: 2, img: "/image 92.png", desc: "Tatto" },
-          { id: 4, img: "/image 97.png", desc: "Illegal" },
-          { id: 9, img: "/image 94.png", desc: "Skeleton. Cloak. Scythe" },
-          { id: 5, img: "/image 95.png", desc: "Knowledge" },
-          { id: 4, img: "/image 96.png", desc: "Illegal" },
-        ].map((img, index) => (
-          <div
-            className="swiper-slide relative z-[9999] flex items-center w-[250px]"
-            key={index}
-          >
-            <img
-              src={img.img}
-              alt={`Slide ${index + 1}`}
-              className="w-full h-full object-cover rounded-[20px] cursor-grab"
-            />
-          </div>
-        ))}
+    <section id="fotografie" className="my-[80px] text-center">
+      <div className="w-[90%] mx-auto flex flex-col items-center">
+        <div className="flex flex-col md:grid md:grid-cols-2 lg:grid-cols-4 justify-center gap-5">
+          {images.map((img, index) => (
+            <div
+              key={index}
+              className="text-left w-full md:w-[75%] lg:w-[85%] mx-auto"
+            >
+              <Link to={`/blog/${img.id}`}>
+                <img
+                  src={img.src}
+                  alt={`Thought Card ${index}`}
+                  className="h-[326px] w-full"
+                />
+              </Link>
+
+              <p className="mt-1 text-base">{img.text}</p>
+            </div>
+          ))}
+        </div>
+        <Link
+          to="/lacomposmentis"
+          className="relative block mt-5 font-cinzel lg:mt-16 bg-[#cdffad] text-[#1c1c1c] font-normal rounded-[22px] px-4 py-2 cursor-pointer text-lg max-sm:text-base max-sm:px-5 max-sm:py-3"
+        >
+          View All
+        </Link>
       </div>
-      <div className="curve_bottom rounded-t-[100%]"></div>
-      <div className="swiper-button-next"></div>
-      <div className="swiper-button-prev"></div>
-    </div>
+    </section>
   );
-};
+}
 
 export default ThoughtComp;
