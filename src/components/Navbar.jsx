@@ -167,6 +167,17 @@ function NavBarComp() {
             </Link>
           )}
 
+          {!isActive && isLoggedIn && <div className="hidden justify-between md:ml-4 gap-6 md:gap-8 max800:flex text-black">
+            <Link className="relative" to='/cart'>
+              <img src="/assets/icons/Bag-4.svg" alt="" />
+              <span className="absolute top-[-15px] right-[-15px] text-sm w-5 h-5 md:w-6 md:h-6 flex items-center justify-center rounded-[100%] bg-[#CDFFAD]">{cartItems?.cart_count || '0'}</span>
+            </Link>
+            <Link className="relative" to='/wishlist'>
+              <img src="/assets/icons/Heart.svg" alt="" />
+              <span className="absolute top-[-15px] right-[-15px] text-sm w-5 h-5 md:w-6 md:h-6 flex items-center justify-center rounded-[100%] bg-[#CDFFAD]">{wishlistItems.length || '0'}</span>
+            </Link>
+          </div>}
+
           {/* Hamburger/X toggle */}
           <button
             onClick={() => setMenuOpen(!menuOpen)}
@@ -185,7 +196,7 @@ function NavBarComp() {
       <div className="flex justify-between items-center border-b-2 border-[#353535] px-[5%] py-[2%] max800:hidden">
         <div className="flex gap-6">
           <div className="flex gap-2 relative capitalize">
-            Tiimbooktu
+            TIIMBOOKTU
             {tiimbooktuMenu ? (
               <img
                 className="rotate-180"
@@ -208,7 +219,7 @@ function NavBarComp() {
             )}
           </div>
           <div className="flex gap-2 relative capitalize">
-            Content
+            CONTENT
             {contentMenu ? (
               <img
                 className="rotate-180"
@@ -231,22 +242,29 @@ function NavBarComp() {
             )}
           </div>
           <Link to="/#fotografie" className="capitalize">
-            Fotos
+            FOTOS
           </Link>
           <Link to="/rich-us" className="capitalize">
-            Rich Us
+            RICH US
           </Link>
+          {isLoggedIn ? <>
+            <Link to="/cart" className="text-left">
+              CART
+            </Link>
+            <Link to="/wishlist" className="text-left">
+              WISHLIST
+            </Link>
+          </>: <></>}
           <Link to="/shop" className="capitalize">
-            Our Things
+            SHOP
           </Link>
-          <Link to="/shop" className="capitalize">
-            Shop
-          </Link>
-          <Link to="/order" className="capitalize">
-            Order
-          </Link>
+          {isLoggedIn ? <>
+              <Link to="/order" className="text-left">
+              ORDER
+            </Link>
+          </>: <></>}
         </div>
-        {errorCode !== 401 && (
+        {isLoggedIn && (
           <div className="flex justify-between gap-10 text-black">
             <Link className="relative" to="/cart">
               <img src="/assets/icons/Bag-4.svg" alt="" />
@@ -266,10 +284,10 @@ function NavBarComp() {
 
       {/* Mobile Dropdown Menu */}
       {menuOpen && (
-        <div className="flex lg:hidden flex-col border-[2px] mt-2 mx-[1%] border-[#595959] rounded-[20px] gap-4 bg-[#0A0A0A] px-[5%] py-6 max800:flex">
+        <div className="hidden flex-col border-[2px] mt-2 mx-[1%] border-[#595959] rounded-[20px] gap-4 bg-[#0A0A0A] px-[5%] py-6 max800:flex">
           <div className="flex flex-col gap-3 w-full">
             <div className="flex justify-between w-full">
-              Tiimbooktu
+              TIIMBOOKTU
               <img
                 className={tiimbooktuMenu ? "rotate-180" : ""}
                 onClick={() => setTiimbooktuMenu(!tiimbooktuMenu)}
@@ -286,7 +304,7 @@ function NavBarComp() {
           </div>
           <div className="flex flex-col gap-3 w-full">
             <div className="flex justify-between w-full">
-              Content
+              THOUGHTS
               <img
                 className={contentMenu ? "rotate-180" : ""}
                 onClick={() => setContentMenu(!contentMenu)}
@@ -301,22 +319,27 @@ function NavBarComp() {
               </>
             )}
           </div>
-          <Link className="text-left">Fotos</Link>
-          <Link to="/rich-us" className="text-left">
-            Rich Us
+          <Link className="text-left">FOTOS</Link>
+          <Link to="/reach-us" className="text-left">
+            RICH US
           </Link>
-          <Link to="/cart" className="text-left">
-            Cart
-          </Link>
-          <Link to="/wishlist" className="text-left">
-            Wishlist
-          </Link>
+         {isLoggedIn ? <>
+            <Link to="/cart" className="text-left">
+              CART
+            </Link>
+            <Link to="/wishlist" className="text-left">
+              WISHLIST
+            </Link>
+          </>: <></>}
           <Link to="/shop" className="text-left">
-            Shop
+            OUR THING
           </Link>
-          <Link to="/order" className="text-left">
-            Order
-          </Link>
+          {isLoggedIn ? <>
+              <Link to="/order" className="text-left">
+              ORDER
+            </Link>
+          </>: <></>}
+          
           {isLoggedIn && (
             <>
               <button
@@ -338,22 +361,22 @@ function NavBarComp() {
             </>
           )}
 
-          {errorCode === 401 && (
-            <>
-              <Link
-                to="/login"
-                className="bg-[#CDFFAD] flex text-center w-full h-[45px] lg:flex items-center justify-center rounded-[22px] text-xl capitalize text-[#1C1C1C]"
-              >
-                Sign In
-              </Link>
-              <Link
-                to="/sign-up"
-                className="bg-[#CDFFAD] flex text-center w-full h-[45px] lg:flex items-center justify-center rounded-[22px] text-xl capitalize text-[#1C1C1C]"
-              >
-                Sign Up
-              </Link>
-            </>
-          )}
+          {isLoggedIn ? (
+            <></>
+          ): <>
+          <Link
+            to="/login"
+            className="bg-[#CDFFAD] flex text-center w-full h-[45px] lg:flex items-center justify-center rounded-[22px] text-xl capitalize text-[#1C1C1C]"
+          >
+            Sign In
+          </Link>
+          <Link
+            to="/sign-up"
+            className="bg-[#CDFFAD] flex text-center w-full h-[45px] lg:flex items-center justify-center rounded-[22px] text-xl capitalize text-[#1C1C1C]"
+          >
+            Sign Up
+          </Link>
+        </>}
         </div>
       )}
     </nav>

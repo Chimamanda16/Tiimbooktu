@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useAuthStore } from "../Store/useAuthStore.js";
+import {Link} from "react-router-dom";
 import NavBarComp from "../components/Navbar.jsx";
 import FooterComp from "../components/Footer.jsx";
 const ForgotPassword = () =>{
@@ -39,7 +40,7 @@ const ForgotPassword = () =>{
                     <p className="mb-4">A link to reset your password has been sent to your Email.</p>
                     : <></>
                 }
-                <p className="text-[#D9D9D9] text-center">Remember Password? <span className="underline font-bold">Signin</span></p>
+                <p className="text-[#D9D9D9] text-center">Remember Password? <Link to="/login" className="underline font-bold">Signin</Link></p>
                 </form>
             </div>
             <FooterComp />
