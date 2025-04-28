@@ -256,7 +256,7 @@ function NavBarComp() {
             </Link>
           </>: <></>}
           <Link to="/shop" className="capitalize">
-            SHOP
+            OUR THINGS
           </Link>
           {isLoggedIn ? <>
               <Link to="/order" className="text-left">
@@ -320,7 +320,7 @@ function NavBarComp() {
             )}
           </div>
           <Link className="text-left">FOTOS</Link>
-          <Link to="/reach-us" className="text-left">
+          <Link to="/rich-us" className="text-left">
             RICH US
           </Link>
          {isLoggedIn ? <>
