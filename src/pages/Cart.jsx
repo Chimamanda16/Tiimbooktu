@@ -75,7 +75,7 @@ export const Cart = () => {
                                                     </div>
                                                     <div className="text-white flex items-center">
                                                         <button onClick={() => decreaseQuantity(index, data)} className="border-r border-[#595959] py-4 px-5 bg-[#0A0A0A] rounded-l-[12px]"> - </button>
-                                                        <div className="py-4 px-5 bg-[#0A0A0A] font-cinzel"> {data?.quantity} </div>
+                                                        <div className="py-4 px-5 bg-[#0A0A0A] font-glacial"> {data?.quantity} </div>
                                                         <button onClick={() => increaseQuantity(index, data)} className="border-l border-[#595959] py-4 px-5 bg-[#0A0A0A] rounded-r-[12px]"> + </button>
                                                     </div>
                                                 </div>

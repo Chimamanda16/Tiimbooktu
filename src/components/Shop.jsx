@@ -43,7 +43,7 @@ function ShopComp() {
   };
 
   return (
-    <div className="w-[90%] mx-auto text-center flex flex-col gap-[30px] items-center font-cinzel py-20  text-white">
+    <div className="w-[90%] mx-auto text-center flex flex-col gap-[30px] items-center font-glacial py-20  text-white">
       <h2 className="font-chango text-[26px] md:text-[40px] lg:text-[50px] tracking-[2px]">
         THE SHOP
       </h2>

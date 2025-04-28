@@ -29,7 +29,7 @@ const WishlistPage = () => {
     }, [fetchWishlist]);
 
     return (
-        <div className="bg-[#1A1A1A] text-white text-center font-cinzel">
+        <div className="bg-[#1A1A1A] text-white text-center font-glacial">
             <NavBarComp />
             <h2 className="font-chango font-[400] text-[40px] md:text-[81px]">Wishlist</h2>
 

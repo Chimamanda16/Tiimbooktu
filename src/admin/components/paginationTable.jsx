@@ -120,40 +120,40 @@ const PaginationTable = ({
         </>
       ) : type === "feedback" ? (
         <>
-          <div className="grid bg-[#2B2B2B] grid-cols-5 gap-3 p-4 border border-[#595959] rounded-xl">
-            <div>Name</div>
-            <div>Email</div>
-            <div>Message</div>
-            <div>Status</div>
-            <div></div>
+          <div className="grid bg-[#2B2B2B] grid-cols-6 gap-3 p-4 border border-[#595959] rounded-xl">
+            <div className="col-span-1">Name</div>
+            <div className="col-span-1">Email</div>
+            <div className="col-span-2">Message</div>
+            <div className="col-span-1">Status</div>
+            <div className="col-span-1"></div>
           </div>
           {currentItems.map((item, index) => (
             <div
               onClick={(e) => showDetail(e, item)}
               key={index}
-              className="grid bg-[#242424] items-center grid-cols-5 gap-3 p-2 border border-[#595959] rounded-xl cursor-pointer"
+              className="grid bg-[#242424] items-center grid-cols-6 gap-3 p-2 border border-[#595959] rounded-xl cursor-pointer"
             >
-              <div>
+              <div className="col-span-1">
                 <p className="truncate w-[96%]">{item.name}</p>
               </div>
-              <div>
+              <div className="col-span-1">
                 <p className="truncate w-[96%]">{item.email}</p>
               </div>
-              <div>
+              <div className="col-span-2">
                 <p className="truncate w-[96%]">{item.message}</p>
               </div>
-              <div>
+              <div className="col-span-1">
                 <span
                   className={`px-2 py-1 rounded-full text-xs ${
-                    item.status
+                    item.read
                       ? "bg-green-900 text-green-400"
                       : "bg-yellow-900 text-yellow-400"
                   }`}
                 >
-                  {item.status ? "Read" : "Unread"}
+                  {item.read ? "Read" : "Unread"}
                 </span>
               </div>
-              <div className="flex justify-end">
+              <div className="flex justify-end col-span-1">
                 <button
                   className="text-[#CDFFAD] text-xs hover:underline"
                   onClick={(e) => {

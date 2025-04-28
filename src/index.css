@@ -8,6 +8,14 @@ html {
 }
 
 @font-face {
+    font-family: "Glacial Indifference";
+    src: url("./assets/fonts/GlacialIndifference-Regular.otf") format("opentype");
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+}
+
+@font-face {
     font-family: "MyFont";
     src: url("./assets/fonts/first-class-demo.ttf") format("truetype");
     font-style: normal;

@@ -74,7 +74,7 @@ function NavBarComp() {
   };
 
   return (
-    <nav className="relative mb-[10px] text-[#fff] font-cinzel">
+    <nav className="relative mb-[10px] text-[#fff] font-glacial">
       {/* Top Nav */}
       <div className="flex justify-between gap-4 items-center border-b-2 border-[#353535] w-[90%] mx-auto py-3 pt-5">
         <a href="/">
@@ -141,7 +141,7 @@ function NavBarComp() {
                 {isLoggedIn && userMenu && (
                   <button
                     onClick={() => logOut()}
-                    className="max800:hidden absolute z-[1000] right-2 px-4 py-2 mt-2 mx-[1%] flex gap-1 items-center hover:bg-red-900 font-cinzel text-[15px] bg-[#c53636] text-[#fff] font-normal rounded-[12px]"
+                    className="max800:hidden absolute z-[1000] right-2 px-4 py-2 mt-2 mx-[1%] flex gap-1 items-center hover:bg-red-900 font-glacial text-[15px] bg-[#c53636] text-[#fff] font-normal rounded-[12px]"
                     disabled={loading}
                   >
                     {loading ? (
@@ -321,7 +321,7 @@ function NavBarComp() {
             <>
               <button
                 onClick={() => logOut()}
-                className="relative flex gap-1 font-cinzel items-center justify-center text-[15px] bg-[#c53636] text-[#fff] font-normal rounded-[12px] p-2"
+                className="relative flex gap-1 font-glacial items-center justify-center text-[15px] bg-[#c53636] text-[#fff] font-normal rounded-[12px] p-2"
                 disabled={loading}
               >
                 {loading ? (

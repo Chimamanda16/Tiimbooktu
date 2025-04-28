@@ -17,7 +17,7 @@ export const RichUs = () => {
                 <div className="flex flex-col w-full lg:items-center gap-4 lg:gap-8 mb-6">
                     <div className="flex flex-col gap-2">
                         <h1 className="lg:text-[81px] text-[24px] font-chango text-white lg:text-center uppercase">Rich us.</h1>
-                        <p className="font-cinzel text-xl text-[#D9D9D9]">Feedback? Suggestions? Opinions? Critiques? Yup, drop it laikit’s haat.</p>
+                        <p className="font-glacial text-xl text-[#D9D9D9]">Feedback? Suggestions? Opinions? Critiques? Yup, drop it laikit’s haat.</p>
                     </div>
                     <Comment />
                 </div>

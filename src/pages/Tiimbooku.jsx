@@ -16,7 +16,7 @@ export const Tiimbooktu = () => {
       >
         <div className="flex flex-col lg:items-center gap-4 lg:gap-6 mb-6">
           <h1 className="lg:text-[81px] text-[26px] font-chango text-white lg:text-center uppercase">ON TIIMBOOKTU</h1>
-          <p className="lg:text-xl lg:text-center text-white font-cinzel">
+          <p className="lg:text-xl lg:text-center text-white font-glacial">
             Lorem ipsum dolor sit amet consectetur. Vulputate commodo sit massa
             vitae. Sagittis tempor tempus ac sodales elementum eu convallis dui
             malesuada. Neque vulputate non nunc in gravida fringilla arcu id
