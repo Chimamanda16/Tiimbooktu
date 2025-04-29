@@ -1,11 +1,11 @@
 import NavBarComp from "../components/Navbar";
 import FooterComp from "../components/Footer";
 import { Comment } from "../components/Comment";
-import blogData from "../data/blog.json";
+import blogData from "../data/guest.json";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 
-const StoryPage = () => {
+const GuestData = () => {
   const { id } = useParams();
   const [blog, setBlog] = useState(null);
   useEffect(() => {
@@ -18,7 +18,7 @@ const StoryPage = () => {
       <NavBarComp />
       {blog && (
         <>
-          <h2 className="text-[50px] lg:text-center font-chango lg:mt-4 px-2">
+          <h2 className="md:text-[50px] text-[20px] lg:text-center font-chango lg:mt-4 px-2">
             {blog[0].title}
           </h2>
           <div className="flex flex-col lg:justify-center gap-8 lg:gap-12 lg:text-center py-4 px-2">
@@ -30,7 +30,7 @@ const StoryPage = () => {
                   alt="ruller"
                 />
               ) : (
-                <p key={index} className="font-glacial">
+                <p key={index} className="font-glacial ">
                   {data}
                 </p>
               );
@@ -44,4 +44,4 @@ const StoryPage = () => {
   );
 };
 
-export default StoryPage;
+export default GuestData;
