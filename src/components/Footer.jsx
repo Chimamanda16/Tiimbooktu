@@ -22,7 +22,7 @@ function FooterComp() {
             <div className="flex flex-col gap-2 text-[#FFFFFF]">
               <a href="tel:+2349015019295">+[234] 901 501 9295</a>
               <a href="mailto:kijagoban@tiimbooktu.com">
-                Kijagoban@Tiimbooktu.Com
+                kijagoban@tiimbooktu.art
               </a>
             </div>
           </div>
