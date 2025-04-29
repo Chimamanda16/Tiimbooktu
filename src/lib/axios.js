@@ -1,7 +1,8 @@
 import axios from "axios";
 
 const axiosInstance = axios.create({
-  baseURL: "https://tiimbooktu-qmkn.onrender.com/api",
+  // baseURL: "https://tiimbooktu-qmkn.onrender.com/api",
+  baseURL: "https://tiimbooktu.art/backend-public/api",
   withCredentials: true,
 });
 

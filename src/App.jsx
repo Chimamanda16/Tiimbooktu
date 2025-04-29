@@ -30,6 +30,7 @@ import { Artwork } from "./admin/pages/artwork";
 import { OrderDashboard } from "./admin/pages/order";
 import { OverViewPage } from "./admin/pages/overview";
 import { Feedbacks } from "./admin/pages/Feedbacks";
+import GuestData from "./pages/GuestData";
 
 function App() {
   const { fetchWishlist } = useWishlistStore();
@@ -49,6 +50,7 @@ function App() {
           <Route path="/tiimbooktu" element={<Tiimbooktu />} />
           <Route path="/shop" element={<ShopPage />} />
           <Route path="/blog/:id" element={<StoryPage />} />
+          <Route path="/guest/:id" element={<GuestData />} />
           <Route path="/tuiites" element={<Tuiites />} />
           <Route path="/rich-us" element={<RichUs />} />
           <Route path="/my-hair" element={<MyHair />} />

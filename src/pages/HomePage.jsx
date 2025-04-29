@@ -15,8 +15,8 @@ import { toast } from "react-toastify";
 function HomeComp() {
   const location = useLocation();
   const { isSearching } = useArtworkStore();
-  const [email, setEmail] = useState('')
-  const [loading, setIsLoading] = useState(false)
+  const [email, setEmail] = useState("");
+  const [loading, setIsLoading] = useState(false);
 
   useEffect(() => {
     setTimeout(() => {
@@ -30,23 +30,23 @@ function HomeComp() {
     }, 100);
   }, [location]);
 
-  const sendNewsLetter = async() => {
-    setIsLoading(true)
+  const sendNewsLetter = async () => {
+    setIsLoading(true);
     let payload = {
-      email: email
-    }
+      email: email,
+    };
     try {
-      const res = await axiosInstance.post('/newsletter/subscribe', payload);
-      toast.success(res.data.message)
-      if(res) {
-        setIsLoading(false)
+      const res = await axiosInstance.post("/newsletter/subscribe", payload);
+      toast.success(res.data.message);
+      if (res) {
+        setIsLoading(false);
       }
-    }  catch (err) {
-      console.error('Error fetching artworks:', err);
-      toast.error(err.response.data.message)
-      setIsLoading(false)
-  }
-  }
+    } catch (err) {
+      console.error("Error fetching artworks:", err);
+      toast.error(err.response.data.message);
+      setIsLoading(false);
+    }
+  };
 
   return (
     <div className="bg-[#1c1c1c] text-white font-[Satoshi]">
@@ -57,7 +57,7 @@ function HomeComp() {
           <AboutComp />
           <div className="text-center">
             <h1 className="font-[Chango] lg:-mt-24 relative z-[999] text-[40px] lg:text-[112px] max-md:text-5xl max-sm:text-4xl">
-              Thought
+              Thoughts
             </h1>
             <ThoughtComp />
             <div className="bg-[#0A0A0A] py-8">
@@ -70,7 +70,7 @@ function HomeComp() {
         </>
       )}
       <ShopComp />
-            <div className="w-[88%] max-w-6xl mx-auto my-10 mb-20">
+      <div className="w-[88%] max-w-6xl mx-auto my-10 mb-20">
         <div className="text-center mb-8">
           <h2 className="text-3xl md:text-7xl font-bold mb-12 font-[Chango]">
             SIGN UP FOR NEWSLETTERS
@@ -86,8 +86,12 @@ function HomeComp() {
             placeholder="Enter Your E-Mail"
             className="flex-grow py-3 px-4 bg-transparent border border-gray-700 text-white"
           />
-          <button disabled={loading} onClick={sendNewsLetter} className="bg-green-200 flex justify-center text-black py-3 px-8 font-medium">
-            {!loading ? 'Subscribe' : <Loader className="animate-spin" />}
+          <button
+            disabled={loading}
+            onClick={sendNewsLetter}
+            className="bg-green-200 flex justify-center text-black py-3 px-8 font-medium"
+          >
+            {!loading ? "Subscribe" : <Loader className="animate-spin" />}
           </button>
         </div>
       </div>

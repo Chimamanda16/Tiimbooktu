@@ -167,16 +167,22 @@ function NavBarComp() {
             </Link>
           )}
 
-          {!isActive && isLoggedIn && <div className="hidden justify-between md:ml-4 gap-6 md:gap-8 max800:flex text-black">
-            <Link className="relative" to='/cart'>
-              <img src="/assets/icons/Bag-4.svg" alt="" />
-              <span className="absolute top-[-15px] right-[-15px] text-sm w-5 h-5 md:w-6 md:h-6 flex items-center justify-center rounded-[100%] bg-[#CDFFAD]">{cartItems?.cart_count || '0'}</span>
-            </Link>
-            <Link className="relative" to='/wishlist'>
-              <img src="/assets/icons/Heart.svg" alt="" />
-              <span className="absolute top-[-15px] right-[-15px] text-sm w-5 h-5 md:w-6 md:h-6 flex items-center justify-center rounded-[100%] bg-[#CDFFAD]">{wishlistItems.length || '0'}</span>
-            </Link>
-          </div>}
+          {!isActive && isLoggedIn && (
+            <div className="hidden justify-between md:ml-4 gap-6 md:gap-8 max800:flex text-black">
+              <Link className="relative" to="/cart">
+                <img src="/assets/icons/Bag-4.svg" alt="" />
+                <span className="absolute top-[-15px] right-[-15px] text-sm w-5 h-5 md:w-6 md:h-6 flex items-center justify-center rounded-[100%] bg-[#CDFFAD]">
+                  {cartItems?.cart_count || "0"}
+                </span>
+              </Link>
+              <Link className="relative" to="/wishlist">
+                <img src="/assets/icons/Heart.svg" alt="" />
+                <span className="absolute top-[-15px] right-[-15px] text-sm w-5 h-5 md:w-6 md:h-6 flex items-center justify-center rounded-[100%] bg-[#CDFFAD]">
+                  {wishlistItems.length || "0"}
+                </span>
+              </Link>
+            </div>
+          )}
 
           {/* Hamburger/X toggle */}
           <button
@@ -219,7 +225,7 @@ function NavBarComp() {
             )}
           </div>
           <div className="flex gap-2 relative capitalize">
-            CONTENT
+            TOUGHTS
             {contentMenu ? (
               <img
                 className="rotate-180"
@@ -247,22 +253,30 @@ function NavBarComp() {
           <Link to="/rich-us" className="capitalize">
             RICH US
           </Link>
-          {isLoggedIn ? <>
-            <Link to="/cart" className="text-left">
-              CART
-            </Link>
-            <Link to="/wishlist" className="text-left">
-              WISHLIST
-            </Link>
-          </>: <></>}
+          {isLoggedIn ? (
+            <>
+              <Link to="/cart" className="text-left">
+                CART
+              </Link>
+              <Link to="/wishlist" className="text-left">
+                WISHLIST
+              </Link>
+            </>
+          ) : (
+            <></>
+          )}
           <Link to="/shop" className="capitalize">
-            OUR THINGS
+            OUR THING (The Shop)
           </Link>
-          {isLoggedIn ? <>
+          {isLoggedIn ? (
+            <>
               <Link to="/order" className="text-left">
-              ORDER
-            </Link>
-          </>: <></>}
+                ORDER
+              </Link>
+            </>
+          ) : (
+            <></>
+          )}
         </div>
         {isLoggedIn && (
           <div className="flex justify-between gap-10 text-black">
@@ -323,23 +337,31 @@ function NavBarComp() {
           <Link to="/rich-us" className="text-left">
             RICH US
           </Link>
-         {isLoggedIn ? <>
-            <Link to="/cart" className="text-left">
-              CART
-            </Link>
-            <Link to="/wishlist" className="text-left">
-              WISHLIST
-            </Link>
-          </>: <></>}
+          {isLoggedIn ? (
+            <>
+              <Link to="/cart" className="text-left">
+                CART
+              </Link>
+              <Link to="/wishlist" className="text-left">
+                WISHLIST
+              </Link>
+            </>
+          ) : (
+            <></>
+          )}
           <Link to="/shop" className="text-left">
-            OUR THING
+            OUR THING (The Shop)
           </Link>
-          {isLoggedIn ? <>
+          {isLoggedIn ? (
+            <>
               <Link to="/order" className="text-left">
-              ORDER
-            </Link>
-          </>: <></>}
-          
+                ORDER
+              </Link>
+            </>
+          ) : (
+            <></>
+          )}
+
           {isLoggedIn && (
             <>
               <button
@@ -363,20 +385,22 @@ function NavBarComp() {
 
           {isLoggedIn ? (
             <></>
-          ): <>
-          <Link
-            to="/login"
-            className="bg-[#CDFFAD] flex text-center w-full h-[45px] lg:flex items-center justify-center rounded-[22px] text-xl capitalize text-[#1C1C1C]"
-          >
-            Sign In
-          </Link>
-          <Link
-            to="/sign-up"
-            className="bg-[#CDFFAD] flex text-center w-full h-[45px] lg:flex items-center justify-center rounded-[22px] text-xl capitalize text-[#1C1C1C]"
-          >
-            Sign Up
-          </Link>
-        </>}
+          ) : (
+            <>
+              <Link
+                to="/login"
+                className="bg-[#CDFFAD] flex text-center w-full h-[45px] lg:flex items-center justify-center rounded-[22px] text-xl capitalize text-[#1C1C1C]"
+              >
+                Sign In
+              </Link>
+              <Link
+                to="/sign-up"
+                className="bg-[#CDFFAD] flex text-center w-full h-[45px] lg:flex items-center justify-center rounded-[22px] text-xl capitalize text-[#1C1C1C]"
+              >
+                Sign Up
+              </Link>
+            </>
+          )}
         </div>
       )}
     </nav>
