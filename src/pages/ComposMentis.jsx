@@ -84,7 +84,7 @@ const Composmentis = () => {
       <NavBarComp />
       <div className="flex flex-col gap-8 w-[88%] mb-10 lg:mb-[120px] mx-auto">
         <div className="flex flex-col gap-1">
-          <h1 className="lg:text-[70px] md:text-[60px] text-[32px] font-chango text-center uppercase">
+          <h1 className="lg:text-[70px] md:text-[40px] text-[32px] font-chango text-center uppercase">
             LA COMPOS MENTIS
           </h1>
           <p className="text-center capitalize text-xl">

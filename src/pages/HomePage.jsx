@@ -5,7 +5,7 @@ import FotografieComp from "../components/Fotografie";
 import ShopComp from "../components/Shop";
 import FooterComp from "../components/Footer";
 import ThoughtComp from "../components/Thought";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useArtworkStore } from "../Store/useArtworkStore";
 import axiosInstance from "../lib/axios";
@@ -55,13 +55,21 @@ function HomeComp() {
         <>
           <HeroComp />
           <AboutComp />
-          <div className="text-center">
-            <h1 className="font-[Chango] lg:-mt-24 relative z-[999] text-[40px] lg:text-[112px] max-md:text-5xl max-sm:text-4xl">
-              Thoughts
-            </h1>
-            <ThoughtComp />
+          <div className="text-center pb-20 bg-[#0A0A0A]">
+            <div className="bg-[#0A0A0A] flex flex-col items-center">
+              <h2 className="font-[Chango] text-[40px] lg:text-[112px] mb-5 md:mb-8">
+                Thought
+              </h2>
+              <ThoughtComp />
+              <Link
+                to="/lacomposmentis"
+                className="relative block mb-5 font-glacial bg-[#cdffad] text-[#1c1c1c] font-normal rounded-[22px] px-4 py-2 cursor-pointer lg:text-lg max-sm:text-base max-sm:px-5 max-sm:py-3"
+              >
+                View All
+              </Link>
+            </div>
             <div className="bg-[#0A0A0A] py-8">
-              <h2 className="font-[Chango] text-[40px] lg:text-[112px] mb-5">
+              <h2 className="font-[Chango] text-[40px] lg:text-[112px] mb-5 md:mb-8">
                 Fotografie
               </h2>
               <FotografieComp />
@@ -70,9 +78,10 @@ function HomeComp() {
         </>
       )}
       <ShopComp />
-      <div className="w-[88%] max-w-6xl mx-auto my-10 mb-20">
+      <div className="w-full bg-[#0A0A0A] py-10">
+      <div className="w-[88%] max-w-6xl mx-auto mb-20">
         <div className="text-center mb-8">
-          <h2 className="text-3xl md:text-7xl font-bold mb-12 font-[Chango]">
+          <h2 className="text-3xl md:text-[40px] lg:text-7xl md:leading-[48px] lg:leading-none font-bold mb-12 font-[Chango]">
             SIGN UP FOR NEWSLETTERS
           </h2>
         </div>
@@ -94,6 +103,7 @@ function HomeComp() {
             {!loading ? "Subscribe" : <Loader className="animate-spin" />}
           </button>
         </div>
+      </div>
       </div>
       <FooterComp />
     </div>
