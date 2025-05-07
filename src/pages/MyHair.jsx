@@ -15,8 +15,8 @@ export const MyHair = () => {
                 className="text-white flex flex-col pb-8 justify-center items-center gap-6 w-[88%] mx-auto font-chango"
             >
                 <div className="flex flex-col w-full lg:items-center gap-4 lg:gap-8 mb-6">
-                    <h1 className="lg:text-[81px] text-[24px] font-chango text-white lg:text-center uppercase">I AM MY HAIR</h1>
-                    <div className="flex flex-col gap-[47px] lg:gap-[50px] lg:text-center">
+                    <h1 className="lg:text-[81px] text-[24px] md:text-[40px] md:mb-5 font-chango text-white md:text-center uppercase">I AM MY HAIR</h1>
+                    <div className="flex flex-col gap-[47px] lg:gap-[50px] md:text-center">
                     <p className="text-xl font-glacial capitalize">
                         I am my hair. I am its story. I am rebellion, because when people conformed, I took a detour. <br />
                         I am my hair. I am its unlikely twists & turns, because my life has taken the same route, twisting & turning into paths, some bad, some great, all memorable. <br /> <br />
@@ -25,7 +25,7 @@ export const MyHair = () => {
 
                         I am my hair. I am heritage. Blackness. Pride. Uniqueness. A fingerprint. Never to be found elsewhere but here where I stand. Yes, because no freeform dreads are the same, no matter how much they look alike.
                     </p>
-                    <h2 className="text-[26px] font-chango uppercase">“I am my hair. I am beauty. Roughness. Grizzly. Leonine. Fierce. Soft.</h2>
+                    <h2 className="text-[24px] font-chango uppercase">“I am my hair. I am beauty. Roughness. Grizzly. Leonine. Fierce. Soft.</h2>
                     <p className="text-xl font-glacial capitalize">I am my hair. I am the patience that comes with it. The length- longevity. I am eternity. Immortality. Because hair never truly dies. It keeps growing. <br /> <br />
 
                         I am my hair. Like fine wine. The more it grows, like I grow, the more it becomes beautiful, like I become more beautiful.</p>

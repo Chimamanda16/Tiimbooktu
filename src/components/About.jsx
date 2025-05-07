@@ -3,21 +3,21 @@ import { Link } from "react-router-dom";
 function AboutComp() {
   return (
     <div className="bg-[#0A0A0A]">
-      <div className="mb-[10%] py-20 w-[90%] mx-auto font-glacial flex flex-col gap-12 ">
-        <h2 className="lg:text-[80px] font-chango uppercase text-[26px] mb-[2%]">
+      <div className="py-20 w-full md:w-[90%] mx-auto font-glacial flex flex-col gap-12 ">
+        <h2 className="lg:text-[80px] w-[90%] md:w-auto mx-auto md:text-[40px] font-chango uppercase text-[26px] mb-[2%] md:text-center lg:text-start">
           Feat. Post
         </h2>
-        <div className="grid lg:grid-cols-2 gap-8 pb-10">
-          <h4 className="font-chango text-[22px] lg:hidden uppercase">
+        <div className="grid w-full lg:grid-cols-2 gap-8 pb-10">
+          <h4 className="font-chango w-[90%] md:w-auto lg:mx-auto text-[22px] lg:hidden uppercase">
             I am my hair
           </h4>
 
           <img
-            className="w-full max-h-[500px]"
+            className="w-full max-h-[500px] rounded-[20px] md:rounded-none"
             src="/assets/images/home-hair.png"
             alt=""
           />
-          <div className="w-full flex flex-col items-start justify-end gap-6">
+          <div className="w-[90%] md:w-auto mx-auto flex flex-col items-start justify-end gap-6">
             <h4 className="font-chango hidden lg:block uppercase">
               I am my hair
             </h4>

@@ -9,6 +9,7 @@ const StoryPage = () => {
   const { id } = useParams();
   const [blog, setBlog] = useState(null);
   useEffect(() => {
+    window.scrollTo(0, 0);
     let selectedBlog = blogData.filter((data) => data.id == id);
     setBlog(selectedBlog);
   }, [id]);
@@ -18,10 +19,10 @@ const StoryPage = () => {
       <NavBarComp />
       {blog && (
         <>
-          <h2 className="text-[50px] lg:text-center font-chango lg:mt-4 px-2">
+          <h2 className="text-[40px] lg:text-[50px] md:text-center font-chango lg:mt-4 px-2">
             {blog[0].title}
           </h2>
-          <div className="flex flex-col lg:justify-center gap-8 lg:gap-12 lg:text-center py-4 px-2">
+          <div className="flex flex-col lg:justify-center gap-8 lg:gap-12 md:text-center py-4 px-2">
             {blog[0].content.map((data, index) => {
               return data === "ruller" ? (
                 <img

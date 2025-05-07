@@ -1,7 +1,7 @@
 function HeroComp() {
   return (
-    <div className="flex flex-col lg:grid grid-cols-2 justify-center gap-4 w-[90%] mx-auto py-[60px] lg:py-[120px]">
-      <div className="flex">
+    <div className="flex flex-col lg:grid grid-cols-2 justify-center gap-4 w-full md:w-[90%] mx-auto py-[60px] lg:py-[120px]">
+      <div className="flex w-[90%] md:w-full lg:w-auto mx-auto">
         <h1 className="font-chango lg:text-[36px] xl:text-[50px] uppercase text-[27px] break-words">
           We're
           <br />
@@ -13,7 +13,7 @@ function HeroComp() {
         </h1>
       </div>
       <img
-        className="xl:h-[534px] lg:h-[400px] h-[534px] w-full object-cover"
+        className="xl:h-[534px] lg:h-[400px] h-[534px] w-full object-cover rounded-[20px] md:rounded-none"
         src="/hero-img.png"
         alt=""
       />

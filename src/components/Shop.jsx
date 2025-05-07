@@ -43,9 +43,9 @@ function ShopComp() {
   };
 
   return (
-    <div className="w-[90%] mx-auto text-center flex flex-col gap-[30px] items-center font-glacial py-20  text-white">
-      <h2 className="font-chango text-[26px] md:text-[40px] lg:text-[50px] tracking-[2px]">
-        THE SHOP
+    <div className="w-[90%] mx-auto text-center flex flex-col gap-[30px] items-center font-glacial py-10 text-white">
+      <h2 className="font-chango text-[26px] md:text-[40px] lg:text-[112px] tracking-[2px]">
+      Our Thing
       </h2>
 
       <div className="grid w-full grid-cols-2 justify-center gap-4 md:grid-cols-3 lg:grid-cols-4 mb-8 lg:mb-16">
@@ -93,7 +93,7 @@ function ShopComp() {
       </div>
         {location.pathname !== "/shop" && <Link
         to="/shop"
-        className="bg-[#cdffad] text-[#1c1c1c] font-normal rounded-[22px] px-4 py-2 cursor-pointer text-lg max-sm:text-base max-sm:px-5 max-sm:py-3"
+        className="bg-[#cdffad] text-[#1c1c1c] font-normal rounded-[22px] px-4 py-2 cursor-pointer lg:text-lg max-sm:text-base max-sm:px-5 max-sm:py-3"
       >
         View All
       </Link>}
