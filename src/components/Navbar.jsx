@@ -74,11 +74,15 @@ function NavBarComp() {
   };
 
   return (
-    <nav className="relative mb-[10px] text-[#fff] font-glacial">
+    <nav className="relative mb-[10px] text-[#fff] font-glacial bg-black">
       {/* Top Nav */}
       <div className="flex justify-between gap-4 items-center border-b-2 border-[#353535] w-[90%] mx-auto py-3 pt-5">
         <a href="/">
-          <img src="/assets/logos/tiimbooktu.jpg" className="w-[125px]" alt="Logo" />
+          <img
+            src="/assets/logos/tiimbooktu.jpg"
+            className="w-[125px]"
+            alt="Logo"
+          />
         </a>
 
         {/* Search Input */}
@@ -141,7 +145,7 @@ function NavBarComp() {
                 {isLoggedIn && userMenu && (
                   <button
                     onClick={() => logOut()}
-                    className="max800:hidden absolute z-[1000] right-2 px-4 py-2 mt-2 mx-[1%] flex gap-1 items-center hover:bg-red-900 font-glacial text-[15px] bg-[#c53636] text-[#fff] font-normal rounded-[12px]"
+                    className="max800:hidden absolute z-[1000] right-2 px-4 py-2 mt-2 mx-[1%] flex gap-1 items-center hover:bg-red-900 font-glacial text-[18px] bg-[#c53636] text-[#fff] font-normal rounded-lg"
                     disabled={loading}
                   >
                     {loading ? (
@@ -150,7 +154,7 @@ function NavBarComp() {
                       </>
                     ) : (
                       <>
-                        <LogOut />
+                        <LogOut size={19} />
                         Logout
                       </>
                     )}
@@ -219,13 +223,17 @@ function NavBarComp() {
             )}
             {tiimbooktuMenu && (
               <div className="absolute top-8 w-[250px] flex flex-col gap-4 left-0 border-[2px] border-[#595959] rounded-[20px] bg-[#0A0A0A] p-3">
-                <Link to="/tiimbooktu">On Tiimbooktu</Link>
-                <Link to="/tuiites">From The Tutsi</Link>
+                <Link to="/tiimbooktu" className="hover:text-[#CDFFAD]">
+                  On Tiimbooktu
+                </Link>
+                <Link to="/tuiites" className="hover:text-[#CDFFAD]">
+                  from the tu’ites
+                </Link>
               </div>
             )}
           </div>
           <div className="flex gap-2 relative capitalize">
-            THOUGHTS
+            TOUGHTS
             {contentMenu ? (
               <img
                 className="rotate-180"
@@ -242,13 +250,17 @@ function NavBarComp() {
             )}
             {contentMenu && (
               <div className="absolute top-8 w-[250px] flex flex-col gap-4 left-0 border-[2px] border-[#595959] rounded-[20px] bg-[#0A0A0A] p-3">
-                <Link to="/lacomposmentis">La Compos Mentis</Link>
-                <Link to="/guestnetno">Guest Content</Link>
+                <Link to="/lacomposmentis" className="hover:text-[#CDFFAD]">
+                  La Compos Mentis
+                </Link>
+                <Link to="/guestnetno" className="hover:text-[#CDFFAD]">
+                  Guest Content
+                </Link>
               </div>
             )}
           </div>
           <Link to="/#fotografie" className="capitalize">
-          FOTOGRAFIE
+            FOTOGRAFIE
           </Link>
           <Link to="/rich-us" className="capitalize">
             RICH US
@@ -312,13 +324,13 @@ function NavBarComp() {
             {tiimbooktuMenu && (
               <>
                 <Link to="/tiimbooktu">On Tiimbooktu</Link>
-                <Link to="/tuiites">From The Tutsi</Link>
+                <Link to="/tuiites"> from the tu’ites</Link>
               </>
             )}
           </div>
           <div className="flex flex-col gap-3 w-full">
             <div className="flex justify-between w-full">
-              THOUGHTS
+              TOUGHTS
               <img
                 className={contentMenu ? "rotate-180" : ""}
                 onClick={() => setContentMenu(!contentMenu)}
@@ -333,7 +345,9 @@ function NavBarComp() {
               </>
             )}
           </div>
-          <Link to="/#fotografie" className="text-left">FOTOGRAFIE</Link>
+          <Link to="/#fotografie" className="text-left">
+            FOTOGRAFIE
+          </Link>
           <Link to="/rich-us" className="text-left">
             RICH US
           </Link>

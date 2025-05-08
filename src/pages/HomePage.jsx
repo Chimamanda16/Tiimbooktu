@@ -68,7 +68,7 @@ function HomeComp() {
                 View All
               </Link>
             </div>
-            <div className="bg-[#0A0A0A] py-8">
+            <div className="bg-[#0A0A0A] py-8" id="fotografie">
               <h2 className="font-[Chango] text-[40px] lg:text-[112px] mb-5 md:mb-8">
                 Fotografie
               </h2>
@@ -78,32 +78,32 @@ function HomeComp() {
         </>
       )}
       <ShopComp />
-      <div className="w-full bg-[#0A0A0A] py-10">
-      <div className="w-[88%] max-w-6xl mx-auto mb-20">
-        <div className="text-center mb-8">
-          <h2 className="text-3xl md:text-[40px] lg:text-7xl md:leading-[48px] lg:leading-none font-bold mb-12 font-[Chango]">
-            SIGN UP FOR NEWSLETTERS
-          </h2>
+      <div className="w-full bg-[#0A0A0A] py-20">
+        <div className="w-[88%] max-w-6xl mx-auto ">
+          <div className="text-center mb-8">
+            <h2 className="text-3xl md:text-[40px] lg:text-7xl md:leading-[48px] lg:leading-none font-bold mb-12 font-[Chango]">
+              SIGN UP FOR NEWSLETTERS
+            </h2>
+          </div>
+          <div className="flex flex-col md:flex-row gap-4 justify-center max-w-3xl mx-auto">
+            <input
+              type="email"
+              id="email"
+              name="email"
+              onChange={(e) => setEmail(e.target.value)}
+              value={email}
+              placeholder="Enter Your E-Mail"
+              className="flex-grow py-3 px-4 bg-transparent border border-gray-700 text-white"
+            />
+            <button
+              disabled={loading}
+              onClick={sendNewsLetter}
+              className="bg-green-200 flex justify-center text-black py-3 px-8 font-medium"
+            >
+              {!loading ? "Subscribe" : <Loader className="animate-spin" />}
+            </button>
+          </div>
         </div>
-        <div className="flex flex-col md:flex-row gap-4 justify-center max-w-3xl mx-auto">
-          <input
-            type="email"
-            id="email"
-            name="email"
-            onChange={(e) => setEmail(e.target.value)}
-            value={email}
-            placeholder="Enter Your E-Mail"
-            className="flex-grow py-3 px-4 bg-transparent border border-gray-700 text-white"
-          />
-          <button
-            disabled={loading}
-            onClick={sendNewsLetter}
-            className="bg-green-200 flex justify-center text-black py-3 px-8 font-medium"
-          >
-            {!loading ? "Subscribe" : <Loader className="animate-spin" />}
-          </button>
-        </div>
-      </div>
       </div>
       <FooterComp />
     </div>
