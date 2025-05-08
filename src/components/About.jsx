@@ -32,7 +32,7 @@ function AboutComp() {
               to="/my-hair"
               className="bg-[#CDFFAD] block border-none rounded-[22px] text-[#1c1c1c] cursor-pointer font-normal px-4 py-2"
             >
-              Learn More
+              Read More
             </Link>
           </div>
         </div>
