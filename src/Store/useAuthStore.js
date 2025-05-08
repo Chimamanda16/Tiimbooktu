@@ -7,9 +7,6 @@ export const useAuthStore = create((set) => ({
   register: async (data) => {
     set({ loading: true });
     try {
-      await axiosInstance.get(
-        "https://tiimbooktu-qmkn.onrender.com/sanctum/csrf-cookie"
-      );
       const res = await axiosInstance.post("/register", data);
       window.location.href = "login";
       toast.success("Sign up successful, continue to log in");
@@ -29,9 +26,6 @@ export const useAuthStore = create((set) => ({
   login: async (data) => {
     set({ loading: true });
     try {
-      await axiosInstance.get(
-        "https://tiimbooktu-qmkn.onrender.com/sanctum/csrf-cookie"
-      );
       if (data.email === "kijagoban@tiimbooktu.art") {
         data.type = "admin";
         const res = await axiosInstance.post("/login", data);
@@ -64,9 +58,6 @@ export const useAuthStore = create((set) => ({
   logout: async () => {
     set({ loading: true });
     try {
-      await axiosInstance.get(
-        "https://tiimbooktu-qmkn.onrender.com/sanctum/csrf-cookie"
-      );
       const res = await axiosInstance.post("/log-out");
       toast.success("Logged out successfully");
       window.location.href = "/login";
@@ -82,9 +73,6 @@ export const useAuthStore = create((set) => ({
   forgotPassword: async (data) => {
     set({ loading: true });
     try {
-      await axiosInstance.get(
-        "https://tiimbooktu-qmkn.onrender.com/sanctum/csrf-cookie"
-      );
       const res = await axiosInstance.post("/forgot-password", data);
       console.log("Forgot password response", res.data);
       return res.data;
