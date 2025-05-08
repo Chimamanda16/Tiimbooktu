@@ -11,7 +11,7 @@ export default function DelayedRouteWrapper({ children }) {
     const timer = setTimeout(() => {
       NProgress.done();
       setShowContent(true);
-    }, 500); // Adjust delay here
+    }, 500);
 
     return () => clearTimeout(timer);
   }, []);
