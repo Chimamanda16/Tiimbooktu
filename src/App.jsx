@@ -31,6 +31,8 @@ import { OrderDashboard } from "./admin/pages/order";
 import { OverViewPage } from "./admin/pages/overview";
 import { Feedbacks } from "./admin/pages/Feedbacks";
 import GuestData from "./pages/GuestData";
+import PageLoader from "./components/PageLoader";
+import DelayedRouteWrapper from "./components/DelayedRouteWrapper";
 
 function App() {
   const { fetchWishlist } = useWishlistStore();
@@ -42,29 +44,157 @@ function App() {
   return (
     <>
       <Router>
+        <PageLoader />
+
         <Routes>
           <Route path="/" element={<HomeComp />} />
-          <Route path="/thought" element={<ThoughtPage />} />
-          <Route path="/sign-up" element={<SignUpPage />} />
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/tiimbooktu" element={<Tiimbooktu />} />
-          <Route path="/shop" element={<ShopPage />} />
-          <Route path="/blog/:id" element={<StoryPage />} />
-          <Route path="/guest/:id" element={<GuestData />} />
-          <Route path="/tuiites" element={<Tuiites />} />
-          <Route path="/rich-us" element={<RichUs />} />
-          <Route path="/my-hair" element={<MyHair />} />
-          <Route path="/guestnetno" element={<Guestnetno />} />
-          <Route path="/lacomposmentis" element={<Composmentis />} />
-          <Route path="/detail/:id" element={<DetailsPage />} />
-          <Route path="/cart" element={<Cart />} />
+          <Route
+            path="/thought"
+            element={
+              <DelayedRouteWrapper>
+                <ThoughtPage />
+              </DelayedRouteWrapper>
+            }
+          />
+          <Route
+            path="/sign-up"
+            element={
+              <DelayedRouteWrapper>
+                <SignUpPage />
+              </DelayedRouteWrapper>
+            }
+          />
+          <Route
+            path="/login"
+            element={
+              <DelayedRouteWrapper>
+                <LoginPage />
+              </DelayedRouteWrapper>
+            }
+          />
+          <Route
+            path="/tiimbooktu"
+            element={
+              <DelayedRouteWrapper>
+                <Tiimbooktu />
+              </DelayedRouteWrapper>
+            }
+          />
+          <Route
+            path="/shop"
+            element={
+              <DelayedRouteWrapper>
+                <ShopPage />
+              </DelayedRouteWrapper>
+            }
+          />
+          <Route
+            path="/blog/:id"
+            element={
+              <DelayedRouteWrapper>
+                <StoryPage />
+              </DelayedRouteWrapper>
+            }
+          />
+          <Route
+            path="/guest/:id"
+            element={
+              <DelayedRouteWrapper>
+                <GuestData />{" "}
+              </DelayedRouteWrapper>
+            }
+          />
+          <Route
+            path="/tuiites"
+            element={
+              <DelayedRouteWrapper>
+                <Tuiites />{" "}
+              </DelayedRouteWrapper>
+            }
+          />
+          <Route
+            path="/rich-us"
+            element={
+              <DelayedRouteWrapper>
+                <RichUs />
+              </DelayedRouteWrapper>
+            }
+          />
+          <Route
+            path="/my-hair"
+            element={
+              <DelayedRouteWrapper>
+                <MyHair />{" "}
+              </DelayedRouteWrapper>
+            }
+          />
+          <Route
+            path="/guestnetno"
+            element={
+              <DelayedRouteWrapper>
+                <Guestnetno />{" "}
+              </DelayedRouteWrapper>
+            }
+          />
+          <Route
+            path="/lacomposmentis"
+            element={
+              <DelayedRouteWrapper>
+                <Composmentis />
+              </DelayedRouteWrapper>
+            }
+          />
+          <Route
+            path="/detail/:id"
+            element={
+              <DelayedRouteWrapper>
+                <DetailsPage />
+              </DelayedRouteWrapper>
+            }
+          />
+          <Route
+            path="/cart"
+            element={
+              <DelayedRouteWrapper>
+                <Cart />
+              </DelayedRouteWrapper>
+            }
+          />
           <Route path="/confirmation" element={<ConfirmationPage />} />
-          <Route path="/details/:id" element={<DetailsPage />} />
+          <Route
+            path="/details/:id"
+            element={
+              <DelayedRouteWrapper>
+                <DetailsPage />{" "}
+              </DelayedRouteWrapper>
+            }
+          />
           <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="?reset-password" element={<ResetPassword />} />
-          <Route path="/wishlist" element={<WishlistPage />} />
-          <Route path="/checkout" element={<CheckoutPage />} />
-          <Route path="/order" element={<OrderPage />} />
+          <Route
+            path="/wishlist"
+            element={
+              <DelayedRouteWrapper>
+                <WishlistPage />{" "}
+              </DelayedRouteWrapper>
+            }
+          />
+          <Route
+            path="/checkout"
+            element={
+              <DelayedRouteWrapper>
+                <CheckoutPage />
+              </DelayedRouteWrapper>
+            }
+          />
+          <Route
+            path="/order"
+            element={
+              <DelayedRouteWrapper>
+                <OrderPage />{" "}
+              </DelayedRouteWrapper>
+            }
+          />
 
           {/* Admin Routes */}
           <Route path="/dashboard" element={<Layout />}>
