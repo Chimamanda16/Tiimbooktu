@@ -7,7 +7,7 @@ function HeroComp() {
           <br />
           <span className="text-[#CDFFAD]"> la cultura.</span>
           <br /> class.
-          <br /> Re Birth.
+          <br /> Re-Birth
           <br /> Thee re-
           <br /> Renaissance
         </h1>

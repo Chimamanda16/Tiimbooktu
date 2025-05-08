@@ -78,7 +78,7 @@ function NavBarComp() {
       {/* Top Nav */}
       <div className="flex justify-between gap-4 items-center border-b-2 border-[#353535] w-[90%] mx-auto py-3 pt-5">
         <a href="/">
-          <img src="/assets/logos/tiimbooktu.png" alt="Logo" />
+          <img src="/assets/logos/tiimbooktu.jpg" className="w-[125px]" alt="Logo" />
         </a>
 
         {/* Search Input */}
@@ -225,7 +225,7 @@ function NavBarComp() {
             )}
           </div>
           <div className="flex gap-2 relative capitalize">
-            TOUGHTS
+            THOUGHTS
             {contentMenu ? (
               <img
                 className="rotate-180"
@@ -248,7 +248,7 @@ function NavBarComp() {
             )}
           </div>
           <Link to="/#fotografie" className="capitalize">
-            FOTOS
+          FOTOGRAFIE
           </Link>
           <Link to="/rich-us" className="capitalize">
             RICH US
@@ -333,7 +333,7 @@ function NavBarComp() {
               </>
             )}
           </div>
-          <Link className="text-left">FOTOS</Link>
+          <Link to="/#fotografie" className="text-left">FOTOGRAFIE</Link>
           <Link to="/rich-us" className="text-left">
             RICH US
           </Link>

@@ -17,7 +17,7 @@ function FooterComp() {
 
           <div className="col-span-1 ">
             <h3 className="text-sm uppercase mb-6 text-[#D9D9D9]">
-              Contacts Us
+              Contact Us
             </h3>
             <div className="flex flex-col gap-2 text-[#FFFFFF]">
               <a href="tel:+2349015019295">+[234] 901 501 9295</a>
