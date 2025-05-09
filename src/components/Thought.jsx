@@ -60,7 +60,7 @@ const ThoughtComp = () => {
               <img
                 src={img.src}
                 alt={`Thought Card ${index}`}
-                className="w-full h-[250px] object-cover rounded-[20px]"
+                className="w-full h-full object-cover rounded-[20px]"
               />
             </Link>
             <p className="pt-2 text-base">{img.text}</p>

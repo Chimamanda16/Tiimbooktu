@@ -33,6 +33,7 @@ import { Feedbacks } from "./admin/pages/Feedbacks";
 import GuestData from "./pages/GuestData";
 import PageLoader from "./components/PageLoader";
 import DelayedRouteWrapper from "./components/DelayedRouteWrapper";
+import Fotografie from "./pages/Fotografie";
 
 function App() {
   const { fetchWishlist } = useWishlistStore();
@@ -192,6 +193,14 @@ function App() {
             element={
               <DelayedRouteWrapper>
                 <OrderPage />{" "}
+              </DelayedRouteWrapper>
+            }
+          />
+          <Route
+            path="/fotografie"
+            element={
+              <DelayedRouteWrapper>
+                <Fotografie />{" "}
               </DelayedRouteWrapper>
             }
           />

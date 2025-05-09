@@ -233,7 +233,7 @@ function NavBarComp() {
             )}
           </div>
           <div className="flex gap-2 relative capitalize">
-            TOUGHTS
+            THOUGHTS
             {contentMenu ? (
               <img
                 className="rotate-180"
@@ -330,7 +330,7 @@ function NavBarComp() {
           </div>
           <div className="flex flex-col gap-3 w-full">
             <div className="flex justify-between w-full">
-              TOUGHTS
+              THOUGHTS
               <img
                 className={contentMenu ? "rotate-180" : ""}
                 onClick={() => setContentMenu(!contentMenu)}

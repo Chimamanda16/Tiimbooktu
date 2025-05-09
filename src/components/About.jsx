@@ -8,7 +8,7 @@ function AboutComp() {
           Feat. Post
         </h2>
         <div className="grid w-full lg:grid-cols-2 gap-8 pb-10">
-          <h4 className="font-chango w-[90%] md:w-auto lg:mx-auto text-[22px] lg:hidden uppercase">
+          <h4 className="font-chango w-[90%] md:w-auto mx-auto text-[22px] lg:hidden uppercase">
             I am my hair
           </h4>
 
