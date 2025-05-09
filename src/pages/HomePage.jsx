@@ -56,7 +56,7 @@ function HomeComp() {
           <HeroComp />
           <AboutComp />
           <div className="text-center pb-20 bg-[#0A0A0A]">
-            <div className="bg-[#0A0A0A] flex flex-col items-center">
+            <div className="bg-[#1c1c1c] flex flex-col items-center">
               <h2 className="font-[Chango] text-[40px] lg:text-[112px] mb-5 md:mb-8">
                 Thoughts
               </h2>
@@ -69,7 +69,7 @@ function HomeComp() {
               </Link>
             </div>
             <div
-              className="bg-[#0A0A0A] py-8 flex flex-col items-center"
+              className="bg-[#0A0A0A]  flex flex-col items-center"
               id="fotografie"
             >
               <h2 className="font-[Chango] text-[40px] lg:text-[112px] mb-5 md:mb-8">
@@ -78,7 +78,7 @@ function HomeComp() {
               <FotografieComp />
               <Link
                 to="/fotografie"
-                className="relative block mb-5 font-glacial bg-[#cdffad] text-[#1c1c1c] font-normal rounded-[22px] px-4 py-2 cursor-pointer lg:text-lg max-sm:text-base max-sm:px-5 max-sm:py-3"
+                className="relative block  font-glacial bg-[#cdffad] text-[#1c1c1c] font-normal rounded-[22px] px-4 py-2 cursor-pointer lg:text-lg max-sm:text-base max-sm:px-5 max-sm:py-3"
               >
                 View All
               </Link>
