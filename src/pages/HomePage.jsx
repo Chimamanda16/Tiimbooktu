@@ -58,7 +58,7 @@ function HomeComp() {
           <div className="text-center pb-20 bg-[#0A0A0A]">
             <div className="bg-[#0A0A0A] flex flex-col items-center">
               <h2 className="font-[Chango] text-[40px] lg:text-[112px] mb-5 md:mb-8">
-                Thought
+                Toughts
               </h2>
               <ThoughtComp />
               <Link

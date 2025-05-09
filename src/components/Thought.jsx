@@ -1,4 +1,4 @@
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import "../Styles/FotografieComp.css";
 import Swiper from "swiper";
 import "swiper/css";
@@ -16,9 +16,21 @@ const images = [
 
 const ThoughtComp = () => {
   const swiperContainerRef = useRef(null);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    if (swiperContainerRef.current) {
+    const checkScreenSize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    checkScreenSize();
+    window.addEventListener("resize", checkScreenSize);
+
+    return () => window.removeEventListener("resize", checkScreenSize);
+  }, []);
+
+  useEffect(() => {
+    if (!isMobile && swiperContainerRef.current) {
       new Swiper(swiperContainerRef.current, {
         loop: true,
         slidesPerView: 1,
@@ -37,7 +49,26 @@ const ThoughtComp = () => {
         },
       });
     }
-  }, []);
+  }, [isMobile]);
+
+  if (isMobile) {
+    return (
+      <div className="w-full  py-6 space-y-6">
+        {images.map((img, index) => (
+          <div key={index}>
+            <Link to={`/blog/${img.id}`}>
+              <img
+                src={img.src}
+                alt={`Thought Card ${index}`}
+                className="w-full h-[250px] object-cover rounded-[20px]"
+              />
+            </Link>
+            <p className="pt-2 text-base">{img.text}</p>
+          </div>
+        ))}
+      </div>
+    );
+  }
 
   return (
     <div
@@ -51,7 +82,6 @@ const ThoughtComp = () => {
             key={index}
           >
             <Link to={`/blog/${img.id}`}>
-              {" "}
               <img
                 src={img.src}
                 alt={`Thought Card ${index}`}
