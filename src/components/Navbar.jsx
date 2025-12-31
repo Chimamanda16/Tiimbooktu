@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Loader } from "lucide-react";
 import { LogOut } from "lucide-react";
 import { useArtworkStore } from "../Store/useArtworkStore";
-import { useAuthStore } from "../Store/useAuthStore";
+// import { useAuthStore } from "../Store/useAuthStore";
 import { useCartStore } from "../Store/useCartStore";
 import { useWishlistStore } from "../Store/useWishlistStore";
 
@@ -13,7 +13,7 @@ function NavBarComp() {
   const { searchArtworks, fetchArtworks } = useArtworkStore();
   const { fetchCart, cartItems, errorCode } = useCartStore();
   const { fetchWishlist, wishlistItems } = useWishlistStore();
-  const { logout, loading } = useAuthStore();
+  // const { logout, loading } = useAuthStore();
   const [tiimbooktuMenu, setTiimbooktuMenu] = useState(false);
   const [userMenu, setUserMenu] = useState(false);
   const [contentMenu, setContentMenu] = useState(false);
@@ -53,9 +53,9 @@ function NavBarComp() {
     }
   };
 
-  const logOut = async () => {
-    await logout();
-  };
+  // const logOut = async () => {
+  //   await logout();
+  // };
 
   const toggleSubMenu = (menu) => {
     if (menu === "content") {
@@ -131,44 +131,46 @@ function NavBarComp() {
           {/* Hide user icons on mobile */}
           {/* User Icon */}
           {errorCode !== 401 ? (
-            <div>
-              <div className="flex gap-2 max800:hidden">
-                <img src="/assets/icons/user-rounded.svg" alt="" />
-                <img
-                  className={userMenu ? "rotate-180" : ""}
-                  onClick={() => toggleSubMenu("userMenu")}
-                  src="/assets/icons/nav-arrow-down.svg"
-                  alt=""
-                />
-              </div>
-              <div>
-                {isLoggedIn && userMenu && (
-                  <button
-                    onClick={() => logOut()}
-                    className="max800:hidden absolute z-[1000] right-2 px-4 py-2 mt-2 mx-[1%] flex gap-1 items-center hover:bg-red-900 font-glacial text-[18px] bg-[#c53636] text-[#fff] font-normal rounded-lg"
-                    disabled={loading}
-                  >
-                    {loading ? (
-                      <>
-                        <Loader className="animate-spin min-w-[80px]" />
-                      </>
-                    ) : (
-                      <>
-                        <LogOut size={19} />
-                        Logout
-                      </>
-                    )}
-                  </button>
-                )}
-              </div>
-            </div>
+            // <div>
+            //   <div className="flex gap-2 max800:hidden">
+            //     <img src="/assets/icons/user-rounded.svg" alt="" />
+            //     <img
+            //       className={userMenu ? "rotate-180" : ""}
+            //       onClick={() => toggleSubMenu("userMenu")}
+            //       src="/assets/icons/nav-arrow-down.svg"
+            //       alt=""
+            //     />
+            //   </div>
+            //   <div>
+            //     {/* {isLoggedIn && userMenu && (
+            //       <button
+            //         onClick={() => logOut()}
+            //         className="max800:hidden absolute z-[1000] right-2 px-4 py-2 mt-2 mx-[1%] flex gap-1 items-center hover:bg-red-900 font-glacial text-[18px] bg-[#c53636] text-[#fff] font-normal rounded-lg"
+            //         disabled={loading}
+            //       >
+            //         {loading ? (
+            //           <>
+            //             <Loader className="animate-spin min-w-[80px]" />
+            //           </>
+            //         ) : (
+            //           <>
+            //             <LogOut size={19} />
+            //             Logout
+            //           </>
+            //         )}
+            //       </button>
+            //     )} */}
+            //   </div>
+            // </div>
+            <></>
           ) : (
-            <Link
-              to="/login"
-              className="bg-[#CDFFAD] lg:flex text-center py-3 px-4 hidden items-center justify-center rounded-[22px] text-xl capitalize text-[#1C1C1C]"
-            >
-              Sign In
-            </Link>
+            // <Link
+            //   to="/login"
+            //   className="bg-[#CDFFAD] lg:flex text-center py-3 px-4 hidden items-center justify-center rounded-[22px] text-xl capitalize text-[#1C1C1C]"
+            // >
+            //   Sign In
+            // </Link>
+            <></>
           )}
 
           {!isActive && isLoggedIn && (
@@ -376,7 +378,7 @@ function NavBarComp() {
             <></>
           )}
 
-          {isLoggedIn && (
+          {/* {isLoggedIn && (
             <>
               <button
                 onClick={() => logOut()}
@@ -414,7 +416,7 @@ function NavBarComp() {
                 Sign Up
               </Link>
             </>
-          )}
+          )} */}
         </div>
       )}
     </nav>
