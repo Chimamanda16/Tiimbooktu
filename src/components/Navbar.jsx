@@ -1,9 +1,9 @@
 import { useEffect, useState, useRef } from "react";
 import { Link } from "react-router-dom";
-import { Loader } from "lucide-react";
-import { LogOut } from "lucide-react";
+// import { Loader } from "lucide-react";
+// import { LogOut } from "lucide-react";
 import { useArtworkStore } from "../Store/useArtworkStore";
-import { useAuthStore } from "../Store/useAuthStore";
+// import { useAuthStore } from "../Store/useAuthStore";
 import { useCartStore } from "../Store/useCartStore";
 import { useWishlistStore } from "../Store/useWishlistStore";
 
@@ -11,9 +11,10 @@ function NavBarComp() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [searchValue, setSearchValue] = useState("");
   const { searchArtworks, fetchArtworks } = useArtworkStore();
-  const { fetchCart, cartItems, errorCode } = useCartStore();
+  const { fetchCart, cartItems, } = useCartStore();
+  // const { fetchCart, cartItems, errorCode } = useCartStore();
   const { fetchWishlist, wishlistItems } = useWishlistStore();
-  const { logout, loading } = useAuthStore();
+  // const { logout, loading } = useAuthStore();
   const [tiimbooktuMenu, setTiimbooktuMenu] = useState(false);
   const [userMenu, setUserMenu] = useState(false);
   const [contentMenu, setContentMenu] = useState(false);
@@ -53,9 +54,9 @@ function NavBarComp() {
     }
   };
 
-  const logOut = async () => {
-    await logout();
-  };
+  // const logOut = async () => {
+  //   await logout();
+  // };
 
   const toggleSubMenu = (menu) => {
     if (menu === "content") {
@@ -126,7 +127,7 @@ function NavBarComp() {
 
           {/* Hide user icons on mobile */}
           {/* User Icon */}
-          {errorCode !== 401 ? (
+          {/* {errorCode !== 401 ? (
             <div>
               <div className="flex gap-2 max800:hidden">
                 <img src="/assets/icons/user-rounded.svg" alt="" />
@@ -165,7 +166,7 @@ function NavBarComp() {
             >
               Sign In
             </Link>
-          )}
+          )} */}
 
           {!isActive && isLoggedIn && (
             <div className="hidden justify-between md:ml-4 gap-6 md:gap-8 max800:flex text-black">
@@ -201,6 +202,7 @@ function NavBarComp() {
       {/* Bottom Nav (Links and Icons) */}
       <div className="flex justify-between items-center border-b-2 border-[#353535] px-[5%] py-[2%] max800:hidden">
         <div className="flex gap-6">
+          <Link to="/">HOME</Link>
           <div className="flex gap-2 relative capitalize">
             TIIMBOOKTU
             {tiimbooktuMenu ? (
@@ -251,7 +253,7 @@ function NavBarComp() {
           FOTOGRAFIE
           </Link>
           <Link to="/rich-us" className="capitalize">
-            RICH US
+            REACH US
           </Link>
           {isLoggedIn ? (
             <>
@@ -300,6 +302,7 @@ function NavBarComp() {
       {menuOpen && (
         <div className="hidden flex-col border-[2px] mt-2 mx-[1%] border-[#595959] rounded-[20px] gap-4 bg-[#0A0A0A] px-[5%] py-6 max800:flex">
           <div className="flex flex-col gap-3 w-full">
+            <Link to="/">HOME</Link>
             <div className="flex justify-between w-full">
               TIIMBOOKTU
               <img
@@ -335,7 +338,7 @@ function NavBarComp() {
           </div>
           <Link to="/#fotografie" className="text-left">FOTOGRAFIE</Link>
           <Link to="/rich-us" className="text-left">
-            RICH US
+            REACH US
           </Link>
           {isLoggedIn ? (
             <>
@@ -362,7 +365,7 @@ function NavBarComp() {
             <></>
           )}
 
-          {isLoggedIn && (
+          {/* {isLoggedIn && (
             <>
               <button
                 onClick={() => logOut()}
@@ -381,9 +384,9 @@ function NavBarComp() {
                 )}
               </button>
             </>
-          )}
+          )} */}
 
-          {isLoggedIn ? (
+          {/* {isLoggedIn ? (
             <></>
           ) : (
             <>
@@ -400,7 +403,7 @@ function NavBarComp() {
                 Sign Up
               </Link>
             </>
-          )}
+          )} */}
         </div>
       )}
     </nav>

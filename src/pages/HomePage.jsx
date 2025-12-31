@@ -68,7 +68,7 @@ function HomeComp() {
                 View All
               </Link>
             </div>
-            <div className="bg-[#0A0A0A] py-8">
+            <div id="fotografie" className="bg-[#0A0A0A] py-8">
               <h2 className="font-[Chango] text-[40px] lg:text-[112px] mb-5 md:mb-8">
                 Fotografie
               </h2>

@@ -9,13 +9,6 @@ const Composmentis = () => {
   }, []);
   const shopData = [
     {
-      id: 1,
-      image: "/assets/images/untitled.jpeg",
-      date: "February 12, 2024",
-      title: "UNTITLED",
-      desc: "Lorem ipsum dolor sit amet consectetur. Vulputate commodo sit massa vitae. Sagittis tempor tempus ac sodales elementum eu convallis dui malesuada.",
-    },
-    {
       id: 2,
       image: "/assets/images/tatto.png",
       date: "February 12, 2024",
