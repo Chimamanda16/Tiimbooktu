@@ -1,8 +1,8 @@
 function HeroComp() {
   return (
-    <div className="flex flex-col lg:grid grid-cols-2 justify-center md:gap-28 gap-4 w-full md:w-[90%] mx-auto py-[30px] lg:py-[120px]">
+    <div className="flex flex-col lg:grid grid-cols-2 justify-center md:gap-28 gap-16 w-full md:w-[90%] mx-auto py-[30px] lg:py-[120px]">
       <div className="flex w-[90%] md:w-full lg:w-auto mx-auto md:mx-0">
-        <h1 className="font-chango lg:text-[36px] xl:text-[60px] uppercase text-[27px] break-words">
+        <h1 className="font-chango lg:text-[36px] xl:text-[60px] uppercase text-[33px] break-words">
           We're
           <br />
           <span className="text-[#CDFFAD]"> la cultura.</span>
